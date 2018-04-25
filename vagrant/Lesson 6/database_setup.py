@@ -9,12 +9,19 @@ Base = declarative_base()
 
 # Create Tables for Database
 class Restaurant(Base):
-
+  __tablename__ = 'restaurant'
+  name = Column(String(80), nullable = False)
+  id = Column(Integer, primary_key = True)
 
 class MenuItem(Base):
-
-
-
+  __tablename__ = 'menu_item'
+  name = Column(String(80), nullable = False)
+  id = Column(Integer, primary_key = True)
+  course = Column(String(250))
+  description = Column(String(250))
+  price = Column(String(8))
+  restaurant_id = Column(Integer, Foreign_key('restaurant.id'))
+  restaurant = relationship(Restaurant)
 
 ### End of File Setting ###
 engine = create_engine('sqlite:///restaurantmenu.db')
