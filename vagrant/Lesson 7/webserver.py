@@ -1,5 +1,6 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
+message = ""
 
 class WebServerHandler(BaseHTTPRequestHandler):
 
@@ -13,10 +14,25 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.wfile.write(message)
             print message
             return
-        else:
-            self.send_error(404, 'File Not Found: %s' % self.path)
-
-
+        else:   # return ftp page
+            if self.path.endswith("/ftp"):
+                self.send_response(200)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers()
+                message = ""
+                read_file("easyftp.htm")
+                self.wfile.write(message)
+                print "easyftp.htm file sent"
+                return
+            else:  # URL contains no valid path message
+                self.send_error(404, 'File Not Found: %s' % self.path)
+                
+    def read_file(filename)
+        file = open(filename, “r”) 
+        message = file.read() 
+        file.close()
+        return
+        
 def main():
     try:
         port = 8080
