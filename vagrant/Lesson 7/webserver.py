@@ -28,13 +28,15 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 return
             else:  # URL contains no valid path message
                 self.send_error(404, 'File Not Found: %s' % self.path)
-                
-    def read_file(filename):
-        file = open(filename, "r") 
-        message = file.read() 
-        file.close()
-        return
-        
+
+ 
+def read_file(filename):
+    file = open(filename, "r") 
+    message = file.read() 
+    file.close()
+    return
+
+
 def main():
     try:
         port = 8080
