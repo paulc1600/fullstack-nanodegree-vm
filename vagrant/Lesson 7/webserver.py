@@ -30,7 +30,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 self.send_error(404, 'File Not Found: %s' % self.path)
                 
     def read_file(filename):
-        file = open(filename, “r”) 
+        file = open(filename, "r") 
         message = file.read() 
         file.close()
         return
