@@ -1,3 +1,5 @@
+# encoding=utf8
+
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 message = ""
