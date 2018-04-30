@@ -22,7 +22,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
                 message = ""
-                read_file("easyftp.htm")
+                message = read_file("easyftp.htm")
                 self.wfile.write(message)
                 print "easyftp.htm file sent"
                 return
@@ -32,9 +32,9 @@ class WebServerHandler(BaseHTTPRequestHandler):
  
 def read_file(filename):
     file = open(filename, "r") 
-    message = file.read() 
+    my_message = file.read() 
     file.close()
-    return
+    return my_message
 
 
 def main():
