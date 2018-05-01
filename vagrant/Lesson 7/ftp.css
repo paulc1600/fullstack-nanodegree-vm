@@ -1,0 +1,8 @@
+iframe:focus { 
+    outline: none;
+}
+
+iframe[seamless] { 
+    display: inline;
+    width: 50%;
+}
