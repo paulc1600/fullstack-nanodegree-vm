@@ -35,7 +35,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 Get_File = Req_File.replace("/", "")
                 try:
                     filep = open(Get_File, "r")
-                    file.close()
+                    file.close(filep)
                     message = ""
                     message = read_file(Get_File)
                     self.wfile.write(message)
