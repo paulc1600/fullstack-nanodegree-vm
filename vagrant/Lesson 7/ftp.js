@@ -4,7 +4,7 @@ function Login(form) {
     var server = form.server.value;
     var local = form.local.value;
     if (username && password && server && local) {
-            window.open(local, '_blank', 
+            window.open('file:///' + local, '_blank', 
               'toolbar=yes,location=yes,status=yes,' + 
               'scrollbars=auto,copyhistory=no,menubar=no,width=' 
               + ((screen.AvailWidth/2)-12) + ',height=' + 
