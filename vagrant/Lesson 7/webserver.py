@@ -9,7 +9,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         My_Path = os.getcwd()     # returns a string representing the current working directory
-        Req_File = cstr(self.path)
+        Req_File = str(self.path)
         
         if self.path.endswith("/hello"):
             self.send_response(200)
