@@ -1,5 +1,6 @@
 # encoding=utf8
 
+import os
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 message = ""
@@ -7,6 +8,9 @@ message = ""
 class WebServerHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
+        My_Path = os.getcwd()     # returns a string representing the current working directory
+        Req_File = cstr(self.path)
+        
         if self.path.endswith("/hello"):
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
@@ -27,7 +31,19 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 print "easyftp.htm file sent"
                 return
             else:  # URL contains no valid path message
-                self.send_error(404, 'File Not Found: %s' % self.path)
+                os.chdir(My_Path)
+                Get_File = Req_File.replace("/", "")
+                try:
+                    filep = open(Get_File, "r")
+                    file.close()
+                    message = ""
+                    message = read_file(Get_File)
+                    self.wfile.write(message)
+                    print Get_File + " file sent"
+                    return                        
+                except IOError:
+                    error1 = "Could not read " + Get_File
+                    self.send_error(404, error1)
 
  
 def read_file(filename):
