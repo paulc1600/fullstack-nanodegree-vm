@@ -1,7 +1,3 @@
-iframe:focus { 
-    outline: none;
-}
-
 .resp-iframe {
     position: absolute;
     top: 0;
@@ -9,6 +5,7 @@ iframe:focus {
     width: 100%;
     height: 100%;
     border: 0;
+    outline: none;
 }
 
 .resp-container {
@@ -16,8 +13,4 @@ iframe:focus {
     position: relative;
     overflow: hidden;
     padding-top: 143%;
-}
-
-iframe[seamless] { 
-    display: inline;
 }
