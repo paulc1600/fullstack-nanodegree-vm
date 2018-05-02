@@ -2,23 +2,6 @@
 <head>
 <link rel='stylesheet' href='ftp.css'>
 <script language='javascript' src='ftp.js'></script>
-<script>
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                  '</li>');
-    }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-  }
-
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-</script>
 <title>Easy FTP 1.0</title>
 </head>
 
@@ -60,6 +43,35 @@
       type='button' value='Connect' onClick='Login(this.form)'></td>
     </tr></form></table> 
     
-    <iframe><input type="file" id="files" name="files[]" multiple /><p><p><output id="list"></output></iframe>
-    <iframe src="right_srcdoc.htm"></iframe>
+    <div class="resp-container">
+      <iframe class="resp-iframe">
+        <html>
+          <head>
+             <link rel='stylesheet' href='ftp_left.css'>
+             <script>
+              function handleFileSelect(evt) {
+                var files = evt.target.files; // FileList object
+
+                // files is a FileList of File objects. List some properties.
+                var output = [];
+                for (var i = 0, f; f = files[i]; i++) {
+                  output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                              f.size, ' bytes, last modified: ',
+                              f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                              '</li>');
+                }
+                document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+              }
+              document.getElementById('files').addEventListener('change', handleFileSelect, false);
+            </script>
+          </head>
+          <body bgcolor='#ffffff'>
+            <input type="file" id="files" name="files[]" multiple />
+            <p><p>
+            <output id="list"></output>
+          </body>
+        </html>
+      </iframe>
+      <iframe src="right_srcdoc.htm"></iframe>
+    </div>
 </body></html>
