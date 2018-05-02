@@ -1,0 +1,22 @@
+iframe:focus { 
+    outline: none;
+}
+
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.resp-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 143%;
+}
+
+iframe[seamless] { 
+    display: inline;
+}
