@@ -10,7 +10,7 @@
 
 .resp-container {
     display: inline;
-    position: relative;
     overflow: hidden;
-    padding-top: 143%;
+    width: 50%;
+    height: 66%;
 }
