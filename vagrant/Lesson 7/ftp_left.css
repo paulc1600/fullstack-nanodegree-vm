@@ -12,6 +12,7 @@ iframe:focus {
 }
 
 .resp-container {
+    display: inline;
     position: relative;
     overflow: hidden;
     padding-top: 143%;
