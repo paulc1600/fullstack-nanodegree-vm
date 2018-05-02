@@ -36,6 +36,9 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 try:
                     filep = open(Get_File, "r")
                     file.close(filep)
+                    self.send_response(200)
+                    self.send_header('Content-type', 'text/html')
+                    self.end_headers()
                     message = ""
                     message = read_file(Get_File)
                     self.wfile.write(message)
