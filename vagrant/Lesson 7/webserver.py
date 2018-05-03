@@ -1,6 +1,7 @@
 # encoding=utf8
 
 import os
+import cgi
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 message = ""
@@ -17,6 +18,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.end_headers()
             message = ""
             message += "<html><body>Hello!</body></html>"
+            message += ""
             self.wfile.write(message)
             print message
             return
@@ -48,7 +50,25 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     error1 = "Could not read " + Get_File
                     self.send_error(404, error1)
 
- 
+
+def do_POST(self):
+    try:
+        self.send_response(301)
+        self.end_headers()
+        
+        ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
+        if ctype == 'multipart/form-data':
+            fields=cgi.parse_multipart(self.rfile, pdict)
+            messagecontent = fields.get('message')
+
+        output = ""
+        output += "<html><body>"
+        output += "<h2>OK, how about this: </h2>"
+        output += "<h1> %s </h1> % messagecontent[0]
+        return                        
+    except:
+    
+    
 def read_file(filename):
     file = open(filename, "r") 
     my_message = file.read() 
