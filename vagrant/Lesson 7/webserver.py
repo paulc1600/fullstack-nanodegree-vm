@@ -68,11 +68,13 @@ class WebServerHandler(BaseHTTPRequestHandler):
             output += "<html><body>"
             output += "<h2>OK, how about this: </h2>"
             output += "<h1> %s </h1>" % messagecontent[0]
+            output += "<p></p>"
             output += "<form method='POST' enctype='multipart/form-data'  \
                         action='hello'><h2>What would you like me to say?</h2> \
                         <input name='message' type='text'> \
                         <input type='submit' vatue='Submit'></form>"
             output += "</body></html>"
+            self.wfile.write(output)
             print output
         except:
             pass
