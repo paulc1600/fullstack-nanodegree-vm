@@ -11,14 +11,17 @@ class WebServerHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         My_Path = os.getcwd()     # returns a string representing the current working directory
         Req_File = str(self.path)
-        
+
         if self.path.endswith("/hello"):
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             message = ""
             message += "<html><body>Hello!</body></html>"
-            message += ""
+            message += "<form method='POST' enctype='multipart/form-data'  \
+                        action='hello'><h2>What would you like me to say?</h2> \
+                        <input name='message' type='text'> \
+                        <input type='submit' vatue='Submit'></form>"
             self.wfile.write(message)
             print message
             return
@@ -45,33 +48,39 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     message = read_file(Get_File)
                     self.wfile.write(message)
                     print Get_File + " file sent"
-                    return                        
+                    return
                 except IOError:
                     error1 = "Could not read " + Get_File
                     self.send_error(404, error1)
 
 
-def do_POST(self):
-    try:
-        self.send_response(301)
-        self.end_headers()
-        
-        ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
-        if ctype == 'multipart/form-data':
-            fields=cgi.parse_multipart(self.rfile, pdict)
-            messagecontent = fields.get('message')
+    def do_POST(self):
+        try:
+            self.send_response(301)
+            self.end_headers()
 
-        output = ""
-        output += "<html><body>"
-        output += "<h2>OK, how about this: </h2>"
-        output += "<h1> %s </h1> % messagecontent[0]
-        return                        
-    except:
-    
-    
+            ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
+            if ctype == 'multipart/form-data':
+                fields=cgi.parse_multipart(self.rfile, pdict)
+                messagecontent = fields.get('message')
+
+            output = ""
+            output += "<html><body>"
+            output += "<h2>OK, how about this: </h2>"
+            output += "<h1> %s </h1>" % messagecontent[0]
+            output += "<form method='POST' enctype='multipart/form-data'  \
+                        action='hello'><h2>What would you like me to say?</h2> \
+                        <input name='message' type='text'> \
+                        <input type='submit' vatue='Submit'></form>"
+            output += "</body></html>"
+            print output
+        except:
+            pass
+
+
 def read_file(filename):
-    file = open(filename, "r") 
-    my_message = file.read() 
+    file = open(filename, "r")
+    my_message = file.read()
     file.close()
     return my_message
 
