@@ -74,52 +74,66 @@ class WebServerHandler(BaseHTTPRequestHandler):
     ##  Handle Posted Data sent to WebServer
     ##---------------------------------------------------------------------------##
     def do_POST(self):
-        try:
-            self.send_response(301)
-            self.end_headers()
+        self.send_response(301)
+        self.end_headers()
 
-            ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
-            if ctype == 'multipart/form-data':
-                fields=cgi.parse_multipart(self.rfile, pdict)
-                messagecontent = fields.get('message')
-                Form_Label = str(messagecontent[2])
-                print "Part 0 = " + messagecontent[0]
-                print "Part 1 = " + messagecontent[1]
-                print "Part 2 = " + messagecontent[2]
+        ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
+        if ctype == 'multipart/form-data':
+            fields=cgi.parse_multipart(self.rfile, pdict)
+            messagecontent = fields.get('message')
+            Form_Label = str(messagecontent[2])
+            print "Part 0 = " + messagecontent[0]
+            print "Part 1 = " + messagecontent[1]
+            print "Part 2 = " + messagecontent[2]
 
-            # Depending on which form posted back, create response    
-            if Form_Label == 'rest_new':
-                
-                # Coming in with new Restaurant Name for database
-                myNewRestaurant = Restaurant(name = str(messagecontent[0]))
-                session.add(myNewRestaurant)
-                sesssion.commit()
-                
-                # Rebuild / Sending Restaurant Name Page
-                Get_File_Content = restaurants_htm()
-                self.wfile.write(Get_File_Content)
-                print "New Restaurant form processed. Returning new list."
-                return
-            
-            elif Form_Label == 'hello':
-                # Hello post of what to say    
-                output = ""
-                output += "<html><body>"
-                output += "<h2>OK, how about this: </h2>"
-                output += "<h1> %s </h1>" % messagecontent[0]
-                output += "<p></p>"
-                output += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
-                              action='hello'><h2>What would you like me to say?</h2> \
-                                <input name='message' type='text'> \
-                                <input type='submit' vatue='Submit'> \
-                                <input id='label' name='label' type='hidden' value='hello'> \
-                             </form>'''
-                output += "</body></html>"
-                self.wfile.write(output)
-                print "Hello form processed. Returning " + str(messagecontent[0])
-                return
-        except:
-            pass
+        # Depending on which form posted back, create response    
+        if Form_Label == 'rest_new':
+
+            # Coming in with new Restaurant Name for database
+            myNewRestaurant = Restaurant(name = str(messagecontent[0]))
+            session.add(myNewRestaurant)
+            sesssion.commit()
+
+            # Rebuild / Sending Restaurant Name Page
+            Get_File_Content = restaurants_htm()
+            self.wfile.write(Get_File_Content)
+            print "New Restaurant form processed. Returning new list."
+            return
+
+        elif Form_Label == 'hello':
+            # Hello post of what to say    
+            output = ""
+            output += "<html>"
+            output += '''<head><link rel="icon" href="data:,"></head>'''
+            output += "<body>"
+            output += "<h2>OK, how about this: </h2>"
+            output += "<h1> %s </h1>" % messagecontent[0]
+            output += "<p></p>"
+            output += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
+                          action='hello'><h2>What would you like me to say?</h2> \
+                            <input name='message' type='text'> \
+                            <input type='submit' vatue='Submit'> \
+                            <input id='label' name='label' type='hidden' value='hello'> \
+                         </form>'''
+            output += "</body></html>"
+            self.wfile.write(output)
+            print "Hello form processed. Returning " + str(messagecontent[0])
+            return
+        else:
+            # No Idea What Posted    
+            output = ""
+            output += "<html>"
+            output += '''<head><link rel="icon" href="data:,"></head>'''
+            output += "<body>"
+            output += "<h2>Error: Unknown Post Request</h2>"
+            output += "<p></p>"
+            output += "Part 0 = %s <br>" % messagecontent[0]
+            output += "Part 1 = %s <br>" % messagecontent[1]
+            output += "Part 2 = %s <br>" % messagecontent[2]
+            output += "<p></p>"
+            output += "</body></html>"
+            self.wfile.write(output)
+            return
 
 ##---------------------------------------------------------------------------##
 ##  Create HTML for restaurant.htm page (list of restaurants)
