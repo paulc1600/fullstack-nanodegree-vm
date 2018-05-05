@@ -132,7 +132,7 @@ def read_file(filename):
 ##---------------------------------------------------------------------------##
 ##  I write an input string into a text File named for Me
 ##---------------------------------------------------------------------------## 
-def write_file(filename, filecontent)
+def write_file(filename, filecontent):
     text_file = open(filename, "w")
     text_file.write(filecontent)
     text_file.close()
