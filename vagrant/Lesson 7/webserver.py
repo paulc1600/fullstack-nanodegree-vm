@@ -22,54 +22,48 @@ class WebServerHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         My_Path = os.getcwd()     # returns a string representing the current working directory
         Req_File = str(self.path)
-
-        if self.path.endswith("/hello"):
+        os.chdir(My_Path)
+        Get_File = Req_File.replace("/", "")
+        GFT1 = Get_File[-4:]
+        GFT2 = Get_File[-5:]
+        
+        # Internal resources (server creates resources)
+        if GFT1 != '.htm' and GFT2 != '.html':
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
-            message = ""
-            message += "<html><body>Hello!</body></html>"
-            message += "<form method='POST' enctype='multipart/form-data'  \
-                        action='hello'><h2>What would you like me to say?</h2> \
-                        <input name='message' type='text'> \
-                        <input type='submit' vatue='Submit'></form>"
-            self.wfile.write(message)
-            print message
-            return
-        else:   # return ftp page
-            if self.path.endswith("/ftp"):
+            if Get_File == 'restaurants':
+                Get_File_Content = restaurants_htm()
+            else: 
+                if Get_File == 'hello':
+                    Get_File_Content = hello_htm()
+                    
+            # Send message first
+            self.wfile.write(Get_File_Content)
+            print Get_File_Content
+            
+            # Create Cache Copy / Debug, etc.
+            Get_File += '.htm'
+            write_file(Get_File, Get_File_Content)
+            return   
+        else:  # URL contains no path message / not internal resource / treat as simple file request
+            os.chdir(My_Path)
+            
+            # Attempt to get requested file
+            try:
+                filep = open(Get_File, "r")
+                file.close(filep)
                 self.send_response(200)
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
                 message = ""
-                message = read_file("easyftp.htm")
+                message = read_file(Get_File)
                 self.wfile.write(message)
-                print "easyftp.htm file sent"
+                print Get_File + " file sent"
                 return
-            else:  # URL contains no path message / treat as a normal resource request
-                os.chdir(My_Path)
-                Get_File = Req_File.replace("/", "")
-                
-                # Special File Preparation Code (if Needed)
-                if Get_File == 'restaurant.htm':
-                    Get_File_Content = restaurants_htm()
-                    write_file(Get_File, Get_File_Content)
-                
-                # Attempt to get requested file
-                try:
-                    filep = open(Get_File, "r")
-                    file.close(filep)
-                    self.send_response(200)
-                    self.send_header('Content-type', 'text/html')
-                    self.end_headers()
-                    message = ""
-                    message = read_file(Get_File)
-                    self.wfile.write(message)
-                    print Get_File + " file sent"
-                    return
-                except IOError:
-                    error1 = "Could not read " + Get_File
-                    self.send_error(404, error1)
+            except IOError:
+                error1 = "Could not read " + Get_File
+                self.send_error(404, error1)
 
 
     ##---------------------------------------------------------------------------##
@@ -117,6 +111,21 @@ def restaurants_htm():
         restaurant_list += str(RestRec.name) + " <p></p> "
     Final_HTML = restaurants_page.format(rest_list=restaurant_list)    
     return Final_HTML
+
+
+##---------------------------------------------------------------------------##
+##  Create HTML for hello code
+##---------------------------------------------------------------------------##
+def hello_htm():
+    hello_page = ""
+    hello_page += "<html><body>Hello!"
+    hello_page += "<p></p>"
+    hello_page += "<form method='POST' enctype='multipart/form-data'  \
+                    action='hello'><h2>What would you like me to say?</h2> \
+                    <input name='message' type='text'> \
+                    <input type='submit' vatue='Submit'></form>" 
+    hello_page += "</body></html>"
+    return hello_page
 
 
 ##---------------------------------------------------------------------------##
