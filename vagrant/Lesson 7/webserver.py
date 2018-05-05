@@ -51,7 +51,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 Get_File = Req_File.replace("/", "")
                 
                 # Special File Preparation Code (if Needed)
-                if Get_File is 'restaurant.htm':
+                if Get_File = 'restaurant.htm':
                     Get_File_Content = restaurants_htm()
                     write_file(Get_File, Get_File_Content)
                 
@@ -136,6 +136,7 @@ def write_file(filename, filecontent):
     text_file = open(filename, "w")
     text_file.write(filecontent)
     text_file.close()
+    return
 
     
 ##---------------------------------------------------------------------------##
