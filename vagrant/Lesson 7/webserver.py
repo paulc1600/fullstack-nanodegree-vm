@@ -162,11 +162,11 @@ def rest_new_htm():
     new_page += "<body>"
     new_page += "<h2>Make A New Restaurant</h2>"
     new_page += "<p></p>"
-    new_page += "<form method='POST' name='rest_new' enctype='multipart/form-data' action='new'> \
-                     <input name='message' type='text'> \
-                     <input type='submit' vatue='Create'></form> \ 
-                     <input id='label' name='label' type='hidden' value='rest_new'> \
-                 </form>"
+    new_page += '''<form method='POST' name='rest_new' enctype='multipart/form-data' action='new'> \
+                      <input name='message' type='text'> \
+                      <input type='submit' vatue='Create'> \ 
+                      <input id='label' name='label' type='hidden' value='rest_new'> \
+                   </form>'''
     new_page += "</body></html>"
     return new_page
 
@@ -180,12 +180,12 @@ def hello_htm():
     hello_page += '''<head><link rel="icon" href="data:,"></head>'''
     hello_page += "<body>Hello!"
     hello_page += "<p></p>"
-    hello_page += "<form method='POST' name='hello' enctype='multipart/form-data'  \
-                    action='hello'><h2>What would you like me to say?</h2> \
-                       <input name='message' type='text'> \
-                       <input type='submit' vatue='Submit'> \
-                       <input id='label' name='label' type='hidden' value='hello'> \
-                   </form>"
+    hello_page += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
+                      action='hello'><h2>What would you like me to say?</h2> \
+                         <input name='message' type='text'> \
+                         <input type='submit' vatue='Submit'> \
+                         <input id='label' name='label' type='hidden' value='hello'> \
+                     </form>'''
     hello_page += "</body></html>"
     return hello_page
 
