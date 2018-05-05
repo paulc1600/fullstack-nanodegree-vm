@@ -121,7 +121,7 @@ def restaurants_htm():
 ##---------------------------------------------------------------------------##
 def hello_htm():
     hello_page = ""
-    hello_page += "<html>
+    hello_page += "<html>"
     hello_page += "<head><link rel="icon" href="data:,"></head>"
     hello_page += "<body>Hello!"
     hello_page += "<p></p>"
