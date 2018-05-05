@@ -105,12 +105,12 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 output += "<h2>OK, how about this: </h2>"
                 output += "<h1> %s </h1>" % messagecontent[0]
                 output += "<p></p>"
-                output += "<form method='POST' name='hello' enctype='multipart/form-data'  \
-                            action='hello'><h2>What would you like me to say?</h2> \
-                            <input name='message' type='text'> \
-                            <input type='submit' vatue='Submit'> \
-                            <input id="label" name="label" type="hidden" value="hello"> \
-                            </form>"
+                output += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
+                              action='hello'><h2>What would you like me to say?</h2> \
+                                <input name='message' type='text'> \
+                                <input type='submit' vatue='Submit'> \
+                                <input id='label' name='label' type='hidden' value='hello'> \
+                             </form>'''
                 output += "</body></html>"
                 self.wfile.write(output)
                 print "Hello form processed. Returning " + str(messagecontent[0])
