@@ -140,7 +140,7 @@ def rest_new_htm():
     new_page += "<html>"
     new_page += '''<head><link rel="icon" href="data:,"></head>'''
     new_page += "<body>"
-    new_page += "<h2>Make A New Restaurant"</h2>"
+    new_page += "<h2>Make A New Restaurant</h2>"
     new_page += "<p></p>"
     new_page += "<form method='POST' enctype='multipart/form-data' action='new'> \
                     <input name='message' type='text'> \
