@@ -106,12 +106,29 @@ def restaurants_htm():
 <body>
 <h2>Restaurants List</h2>
 <p></p>
+<table style="width:100%" border=0>
+  <tr>
+    <th>Restaurant Name</th>
+    <th></th> 
+    <th></th>
+  </tr>
 {rest_list}
+</table>
+
 </body></html>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
 '''
     items = session.query(Restaurant).all()
     for RestRec in items:
-        restaurant_list += str(RestRec.name) + " <p></p> "
+        restaurant_list += "<tr>"
+        restaurant_list += "<td> " + str(RestRec.name) + "</td>"
+        restaurant_list += '''<td><a href="Rest_Edit.htm">Edit</a></td>'''
+        restaurant_list += '''<td><a href="Rest_Delete.htm">Delete</a></td>'''
+        restaurant_list += "</tr>"
     Final_HTML = restaurants_page.format(rest_list=restaurant_list)    
     return Final_HTML
 
