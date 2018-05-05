@@ -119,13 +119,7 @@ def restaurants_htm():
   </tr>
 {rest_list}
 </table>
-
 </body></html>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td> 
-    <td>94</td>
-  </tr>
 '''
     items = session.query(Restaurant).all()
     for RestRec in items:
