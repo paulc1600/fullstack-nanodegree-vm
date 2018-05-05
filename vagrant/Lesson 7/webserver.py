@@ -82,9 +82,10 @@ class WebServerHandler(BaseHTTPRequestHandler):
             if ctype == 'multipart/form-data':
                 fields=cgi.parse_multipart(self.rfile, pdict)
                 messagecontent = fields.get('message')
+                Form_Label = str(messagecontent[2])
 
             # Depending on which form posted back, create response    
-            if 'rest_new' in request.POST:
+            if Form_Label == 'rest_new':
                 
                 # Coming in with new Restaurant Name for database
                 myNewRestaurant = Restaurant(name = str(messagecontent[0]))
@@ -97,7 +98,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 print "New Restaurant form processed. Returning new list."
                 return
             
-            elif 'hello' in request.POST:
+            elif Form_Label == 'hello':
                 # Hello post of what to say    
                 output = ""
                 output += "<html><body>"
@@ -107,7 +108,9 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 output += "<form method='POST' name='hello' enctype='multipart/form-data'  \
                             action='hello'><h2>What would you like me to say?</h2> \
                             <input name='message' type='text'> \
-                            <input type='submit' vatue='Submit'></form>"
+                            <input type='submit' vatue='Submit'> \
+                            <input id="label" name="label" type="hidden" value="hello"> \
+                            </form>"
                 output += "</body></html>"
                 self.wfile.write(output)
                 print "Hello form processed. Returning " + str(messagecontent[0])
@@ -160,8 +163,10 @@ def rest_new_htm():
     new_page += "<h2>Make A New Restaurant</h2>"
     new_page += "<p></p>"
     new_page += "<form method='POST' name='rest_new' enctype='multipart/form-data' action='new'> \
-                    <input name='message' type='text'> \
-                    <input type='submit' vatue='Create'></form>" 
+                     <input name='message' type='text'> \
+                     <input type='submit' vatue='Create'></form> \ 
+                     <input id='label' name='label' type='hidden' value='rest_new'> \
+                 </form>"
     new_page += "</body></html>"
     return new_page
 
@@ -177,8 +182,10 @@ def hello_htm():
     hello_page += "<p></p>"
     hello_page += "<form method='POST' name='hello' enctype='multipart/form-data'  \
                     action='hello'><h2>What would you like me to say?</h2> \
-                    <input name='message' type='text'> \
-                    <input type='submit' vatue='Submit'></form>" 
+                       <input name='message' type='text'> \
+                       <input type='submit' vatue='Submit'> \
+                       <input id='label' name='label' type='hidden' value='hello'> \
+                   </form>"
     hello_page += "</body></html>"
     return hello_page
 
