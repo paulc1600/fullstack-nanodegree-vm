@@ -83,6 +83,9 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 fields=cgi.parse_multipart(self.rfile, pdict)
                 messagecontent = fields.get('message')
                 Form_Label = str(messagecontent[2])
+                print "Part 0 = " + messagecontent[0]
+                print "Part 1 = " + messagecontent[1]
+                print "Part 2 = " + messagecontent[2]
 
             # Depending on which form posted back, create response    
             if Form_Label == 'rest_new':
