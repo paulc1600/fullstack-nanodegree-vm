@@ -26,6 +26,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
         Get_File = Req_File.replace("/", "")
         GFT1 = Get_File[-4:]
         GFT2 = Get_File[-5:]
+        Get_File_Content = ""
         
         # Internal resources (server creates resources)
         if GFT1 != '.htm' and GFT2 != '.html':
