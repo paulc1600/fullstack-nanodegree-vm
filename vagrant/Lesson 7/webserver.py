@@ -100,7 +100,9 @@ class WebServerHandler(BaseHTTPRequestHandler):
 def restaurants_htm():
     restaurant_list = ""
     restaurants_page = '''
-<html><body>
+<html>
+<head><link rel="icon" href="data:,"></head>
+<body>
 <h2>Restaurants List</h2>
 <p></p>
 {rest_list}
@@ -118,7 +120,9 @@ def restaurants_htm():
 ##---------------------------------------------------------------------------##
 def hello_htm():
     hello_page = ""
-    hello_page += "<html><body>Hello!"
+    hello_page += "<html>
+    hello_page += "<head><link rel="icon" href="data:,"></head>"
+    hello_page += "<body>Hello!"
     hello_page += "<p></p>"
     hello_page += "<form method='POST' enctype='multipart/form-data'  \
                     action='hello'><h2>What would you like me to say?</h2> \
