@@ -35,9 +35,12 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.end_headers()
             if Get_File == 'restaurants':
                 Get_File_Content = restaurants_htm()
-            else: 
-                if Get_File == 'hello':
-                    Get_File_Content = hello_htm()
+            else:
+                if Get_File == 'rest_new':
+                    Get_File_Content = rest_new_htm()    
+                else:
+                    if Get_File == 'hello':
+                        Get_File_Content = hello_htm()
                     
             # Send message first
             self.wfile.write(Get_File_Content)
@@ -104,6 +107,8 @@ def restaurants_htm():
 <html>
 <head><link rel="icon" href="data:,"></head>
 <body>
+<h3><a href="rest_new">Create New Restaurant</a></h3>
+<p></p>
 <h2>Restaurants List</h2>
 <p></p>
 <table style="width:100%" border=0>
@@ -131,6 +136,23 @@ def restaurants_htm():
         restaurant_list += "</tr>"
     Final_HTML = restaurants_page.format(rest_list=restaurant_list)    
     return Final_HTML
+
+
+##---------------------------------------------------------------------------##
+##  Create HTML for new restaurant code
+##---------------------------------------------------------------------------##
+def rest_new_htm():
+    new_page = ""
+    new_page += "<html>"
+    new_page += '''<head><link rel="icon" href="data:,"></head>'''
+    new_page += "<body>"
+    new_page += "<h2>Make A New Restaurant"</h2>"
+    new_page += "<p></p>"
+    new_page += "<form method='POST' enctype='multipart/form-data' action='new'> \
+                    <input name='message' type='text'> \
+                    <input type='submit' vatue='Create'></form>" 
+    new_page += "</body></html>"
+    return new_page
 
 
 ##---------------------------------------------------------------------------##
