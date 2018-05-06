@@ -143,7 +143,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             output += "<html>"
             output += '''<head><link rel="icon" href="data:,"></head>'''
             output += "<body>"
-            output += "<h2>Error: Unknown Post Request</h2>"
+            output += "<h2>Error: Post Request Wrong Type</h2>"
             output += "<p></p>"
             output += messagecontent + " <br>"
             output += Form_Label + " <br>" 
