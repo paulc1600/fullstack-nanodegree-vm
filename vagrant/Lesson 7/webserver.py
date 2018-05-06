@@ -80,22 +80,17 @@ class WebServerHandler(BaseHTTPRequestHandler):
         ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
         if ctype == 'multipart/form-data':
             fields=cgi.parse_multipart(self.rfile, pdict)
+            # Don't know why had to force brackets off these strings ???
             messagecontent = str(fields.get('message')).replace("[", "")
             messagecontent = messagecontent.replace("]", "")
             Form_Label = str(fields.get('label')).replace("[", "")
-            Form_Label = Form_Label.replace("]", "")
-            
+            Form_Label = Form_Label.replace("]", "")            
             print '1' + messagecontent
             print '1' + Form_Label
-            print '2' + messagecontent[0]
-            print '2' + Form_Label[0]
-            print '3' + str(messagecontent[0])
-            print '3' + str(Form_Label[0])
-            print '4' + str(messagecontent)
-            print '4' + str(Form_Label)
+
             
         # Depending on which form posted back, create response    
-        if Form_Label == ['rest_new']:
+        if Form_Label == 'rest_new':
 
             # Coming in with new Restaurant Name for database
             myNewRestaurant = Restaurant(name = str(messagecontent))
@@ -108,7 +103,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             print "New Restaurant form processed. Returning new list."
             return
 
-        elif Form_Label == ['hello']:
+        elif Form_Label == 'hello':
             # Hello post of what to say    
             output = ""
             output += "<html>"
