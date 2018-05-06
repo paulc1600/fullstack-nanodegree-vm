@@ -124,8 +124,8 @@ class WebServerHandler(BaseHTTPRequestHandler):
             output += "<body>"
             output += "<h2>Error: Unknown Post Request</h2>"
             output += "<p></p>"
-            output += "Part 0 = %s <br>" % messagecontent[0]
-            output += "Part 1 = %s <br>" % messagecontent[1]
+            output += str(messagecontent) + " <br>"
+            output += str(Form_Label) + " <br>" 
             output += "<p></p>"
             output += "</body></html>"
             self.wfile.write(output)
