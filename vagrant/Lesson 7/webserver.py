@@ -80,8 +80,11 @@ class WebServerHandler(BaseHTTPRequestHandler):
         ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
         if ctype == 'multipart/form-data':
             fields=cgi.parse_multipart(self.rfile, pdict)
-            messagecontent = str(fields.get('message'))
-            Form_Label = str(fields.get('label'))
+            messagecontent = str(fields.get('message')).replace("[", "")
+            messagecontent = messagecontent.replace("]", "")
+            Form_Label = str(fields.get('label')).replace("[", "")
+            Form_Label = Form_Label.replace("]", "")
+            
             print '1' + messagecontent
             print '1' + Form_Label
             print '2' + messagecontent[0]
