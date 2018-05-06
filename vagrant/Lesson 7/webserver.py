@@ -81,9 +81,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
         if ctype == 'multipart/form-data':
             fields=cgi.parse_multipart(self.rfile, pdict)
             messagecontent = fields.get('message')
-            Form_Label = str(messagecontent[1])
-            print "Part 0 = " + messagecontent[0]
-            print "Part 1 = " + messagecontent[1]
+            Form_Label = fields.get('label')
 
         # Depending on which form posted back, create response    
         if Form_Label == 'rest_new':
@@ -111,7 +109,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             output += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
                           action='hello'><h2>What would you like me to say?</h2> \
                             <input name='message' type='text'> \
-                            <input type='submit' vatue='Submit'> \
+                            <input type='submit' value='Submit'> \
                             <input id='label' name='label' type='hidden' value='hello'> \
                          </form>'''
             output += "</body></html>"
