@@ -86,7 +86,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             print Form_Label
 
         # Depending on which form posted back, create response    
-        if Form_Label == 'rest_new':
+        if Form_Label == ['rest_new']:
 
             # Coming in with new Restaurant Name for database
             myNewRestaurant = Restaurant(name = str(messagecontent))
@@ -99,7 +99,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             print "New Restaurant form processed. Returning new list."
             return
 
-        elif Form_Label == 'hello':
+        elif Form_Label == ['hello']:
             # Hello post of what to say    
             output = ""
             output += "<html>"
