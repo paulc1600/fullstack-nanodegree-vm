@@ -78,6 +78,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
         ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
+        print '0 ' + ctype
         if ctype == 'multipart/form-data':
             fields=cgi.parse_multipart(self.rfile, pdict)
             # Don't know why had to force brackets off these strings ???
