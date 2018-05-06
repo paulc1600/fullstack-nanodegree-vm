@@ -78,7 +78,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
         ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
-        print '0 ' + ctype
+        # print '0 ' + ctype
         if ctype == 'multipart/form-data':
             fields=cgi.parse_multipart(self.rfile, pdict)
             # Don't know why had to force brackets off these strings ???
@@ -102,7 +102,8 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 self.wfile.write(Get_File_Content)
                 print "New Restaurant form processed. Returning new list."
                 return
-            else: 
+            else:
+                print 'Not rest_new ' + Form_Label
                 if Form_Label == 'hello':
                     # Hello post of what to say    
                     output = ""
