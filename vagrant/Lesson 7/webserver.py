@@ -82,6 +82,8 @@ class WebServerHandler(BaseHTTPRequestHandler):
             fields=cgi.parse_multipart(self.rfile, pdict)
             messagecontent = str(fields.get('message'))
             Form_Label = str(fields.get('label'))
+            print messagecontent
+            print Form_Label
 
         # Depending on which form posted back, create response    
         if Form_Label == 'rest_new':
@@ -124,8 +126,8 @@ class WebServerHandler(BaseHTTPRequestHandler):
             output += "<body>"
             output += "<h2>Error: Unknown Post Request</h2>"
             output += "<p></p>"
-            output += messagecontent[0] + " <br>"
-            output += Form_Label[0] + " <br>" 
+            output += messagecontent + " <br>"
+            output += Form_Label + " <br>" 
             output += "<p></p>"
             output += "</body></html>"
             self.wfile.write(output)
