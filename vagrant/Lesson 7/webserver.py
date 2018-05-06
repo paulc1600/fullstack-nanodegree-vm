@@ -81,7 +81,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
         if ctype == 'multipart/form-data':
             fields=cgi.parse_multipart(self.rfile, pdict)
             messagecontent = fields.get('message')
-            Form_Label = str(messagecontent[2])
+            Form_Label = str(messagecontent[1])
             print "Part 0 = " + messagecontent[0]
             print "Part 1 = " + messagecontent[1]
 
