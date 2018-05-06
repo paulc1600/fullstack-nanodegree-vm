@@ -80,14 +80,14 @@ class WebServerHandler(BaseHTTPRequestHandler):
         ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
         if ctype == 'multipart/form-data':
             fields=cgi.parse_multipart(self.rfile, pdict)
-            messagecontent = fields.get('message')
-            Form_Label = fields.get('label')
+            messagecontent = str(fields.get('message'))
+            Form_Label = str(fields.get('label'))
 
         # Depending on which form posted back, create response    
         if Form_Label == 'rest_new':
 
             # Coming in with new Restaurant Name for database
-            myNewRestaurant = Restaurant(name = str(messagecontent[0]))
+            myNewRestaurant = Restaurant(name = str(messagecontent))
             session.add(myNewRestaurant)
             sesssion.commit()
 
@@ -104,7 +104,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             output += '''<head><link rel="icon" href="data:,"></head>'''
             output += "<body>"
             output += "<h2>OK, how about this: </h2>"
-            output += "<h1> %s </h1>" % messagecontent[0]
+            output += "<h1> %s </h1>" % str(messagecontent)
             output += "<p></p>"
             output += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
                           action='hello'><h2>What would you like me to say?</h2> \
@@ -114,7 +114,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                          </form>'''
             output += "</body></html>"
             self.wfile.write(output)
-            print "Hello form processed. Returning " + str(messagecontent[0])
+            print "Hello form processed. Returning " + str(messagecontent)
             return
         else:
             # No Idea What Posted    
