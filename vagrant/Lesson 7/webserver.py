@@ -96,7 +96,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 # new Restaurant Name updates database
                 myNewRestaurant = Restaurant(name = str(messagecontent))
                 session.add(myNewRestaurant)
-                sesssion.commit()
+                session.commit()
     
                 # Back to restaurant list
                 output_msg = newr_post_type(messagecontent, Form_Label)
