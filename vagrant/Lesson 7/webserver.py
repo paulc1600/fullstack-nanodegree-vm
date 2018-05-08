@@ -33,7 +33,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
-            if Get_File == 'restaurants':
+            if Get_File == 'restaurants' or Get_File == 'index':
                 Get_File_Content = restaurants_htm()
             else:
                 if Get_File == 'rest_new':
@@ -136,6 +136,8 @@ def restaurants_htm():
   </tr>
 {rest_list}
 </table>
+<p></p>
+<h3><a href="hello">Play Hello Game</a></h3>
 </body></html>
 '''
     items = session.query(Restaurant).all()
