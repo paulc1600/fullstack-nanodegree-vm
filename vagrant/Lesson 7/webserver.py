@@ -161,10 +161,10 @@ def rest_new_htm():
     new_page += "<body>"
     new_page += "<h2>Make A New Restaurant</h2>"
     new_page += "<p></p>"
-    new_page += '''<form method='POST' name='newr_post' enctype='multipart/form-data' action='new'> \
+    new_page += '''<form method='POST' name='newr_post' enctype='multipart/form-data' action='newr_post'> \
                       <input name='message' type='text'> \
                       <input type='submit' vatue='Create'> \ 
-                      <input id='label' name='label' type='hidden' value='rest_new'> \
+                      <input id='label' name='label' type='hidden' value='newr_post'> \
                    </form>'''
     new_page += "</body></html>"
     return new_page
