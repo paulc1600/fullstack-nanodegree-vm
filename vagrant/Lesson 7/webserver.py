@@ -91,20 +91,24 @@ class WebServerHandler(BaseHTTPRequestHandler):
 
             # Depending on which form posted back, create response    
             if Form_Label == 'rest_new':
-                newr_post_type(messagecontent, Form_Label)
+                output_msg = newr_post_type(messagecontent, Form_Label)
+                self.wfile.write(output_msg)
                 return
             else:
                 print 'Not rest_new ' + Form_Label
                 if Form_Label == 'hello':
-                    hello_post_type(messagecontent, Form_Label)
+                    output_msg = hello_post_type(messagecontent, Form_Label)
+                    self.wfile.write(output_msg)
                     return
                 else:
                     print 'Not hello ' + Form_Label    
-                    unrec_post_type(ctype, messagecontent, Form_Label)
+                    output_msg = unrec_post_type(ctype, messagecontent, Form_Label)
+                    self.wfile.write(output_msg)
                     return
         else:        
             # No Idea What Posted    
-            ifmt_post_type(ctype, messagecontent, Form_Label)
+            output_msg = ifmt_post_type(ctype, messagecontent, Form_Label)
+            self.wfile.write(output_msg)
             return
         
         
@@ -190,9 +194,9 @@ def newr_post_type(My_messagecontent, My_Form_Label):
 
     # Rebuild / Sending Restaurant Name Page
     Get_File_Content = restaurants_htm()
-    self.wfile.write(Get_File_Content)
+    
     print My_Form_Label + " form processed. Returning new list."
-    return
+    return Get_File_Content
             
 ##---------------------------------------------------------------------------##
 ##  Hello Post Type -- send back desired message
@@ -213,9 +217,9 @@ def hello_post_type(My_messagecontent, My_Form_Label):
                     <input id='label' name='label' type='hidden' value='hello'> \
                  </form>'''
     output += "</body></html>"
-    self.wfile.write(output)
+   
     print My_Form_Label + " form processed. Returning " + str(My_messagecontent)
-    return
+    return output
     
 ##---------------------------------------------------------------------------##
 ##  Send Back Error -- Unrecognized Post Type
@@ -233,8 +237,7 @@ def unrec_post_type(My_ctype, My_messagecontent, My_Form_Label):
     output += "Post Type: " + "\t" + My_Form_Label + " <br>"  
     output += "<p></p>"
     output += "</body></html>"
-    self.wfile.write(output)
-    return
+    return output
 
 
 ##---------------------------------------------------------------------------##
@@ -253,8 +256,7 @@ def ifmt_post_type(My_ctype, My_messagecontent, My_Form_Label):
     output += "Post Type: " + "\t" + My_Form_Label + " <br>" 
     output += "<p></p>"
     output += "</body></html>"
-    self.wfile.write(output)
-    return
+    return output
 
 
 ##---------------------------------------------------------------------------##
