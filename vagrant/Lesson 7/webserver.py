@@ -74,12 +74,12 @@ class WebServerHandler(BaseHTTPRequestHandler):
     ##  Handle Posted Data sent to WebServer
     ##---------------------------------------------------------------------------##
     def do_POST(self):
-        self.send_response(301)
-        self.end_headers()
-
         ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
-        # print '0 ' + ctype
+
         if ctype == 'multipart/form-data':
+            self.send_response(301)
+            self.end_headers()
+        
             fields=cgi.parse_multipart(self.rfile, pdict)
             # Don't know why had to force brackets off these strings ???
             messagecontent = str(fields.get('message')).replace("[", "")
@@ -91,66 +91,23 @@ class WebServerHandler(BaseHTTPRequestHandler):
 
             # Depending on which form posted back, create response    
             if Form_Label == 'rest_new':
-
-                # Coming in with new Restaurant Name for database
-                myNewRestaurant = Restaurant(name = str(messagecontent))
-                session.add(myNewRestaurant)
-                sesssion.commit()
-
-                # Rebuild / Sending Restaurant Name Page
-                Get_File_Content = restaurants_htm()
-                self.wfile.write(Get_File_Content)
-                print "New Restaurant form processed. Returning new list."
+                newr_post_type(messagecontent, Form_Label)
                 return
             else:
                 print 'Not rest_new ' + Form_Label
                 if Form_Label == 'hello':
-                    # Hello post of what to say    
-                    output = ""
-                    output += "<html>"
-                    output += '''<head><link rel="icon" href="data:,"></head>'''
-                    output += "<body>"
-                    output += "<h2>OK, how about this: </h2>"
-                    output += "<h1> %s </h1>" % str(messagecontent)
-                    output += "<p></p>"
-                    output += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
-                                  action='hello'><h2>What would you like me to say?</h2> \
-                                    <input name='message' type='text'> \
-                                    <input type='submit' value='Submit'> \
-                                    <input id='label' name='label' type='hidden' value='hello'> \
-                                 </form>'''
-                    output += "</body></html>"
-                    self.wfile.write(output)
-                    print "Hello form processed. Returning " + str(messagecontent)
+                    hello_post_type(messagecontent, Form_Label)
                     return
                 else:
-                    # No Idea What Posted    
-                    output = ""
-                    output += "<html>"
-                    output += '''<head><link rel="icon" href="data:,"></head>'''
-                    output += "<body>"
-                    output += "<h2>Error: Unknown Post Request</h2>"
-                    output += "<p></p>"
-                    output += messagecontent + " <br>"
-                    output += Form_Label + " <br>" 
-                    output += "<p></p>"
-                    output += "</body></html>"
-                    self.wfile.write(output)
+                    print 'Not hello ' + Form_Label    
+                    unrec_post_type(ctype, messagecontent, Form_Label)
                     return
         else:        
             # No Idea What Posted    
-            output = ""
-            output += "<html>"
-            output += '''<head><link rel="icon" href="data:,"></head>'''
-            output += "<body>"
-            output += "<h2>Error: Post Request Wrong Type</h2>"
-            output += "<p></p>"
-            output += messagecontent + " <br>"
-            output += Form_Label + " <br>" 
-            output += "<p></p>"
-            output += "</body></html>"
-            self.wfile.write(output)
+            ifmt_post_type(ctype, messagecontent, Form_Label)
             return
+        
+        
 ##---------------------------------------------------------------------------##
 ##  Create HTML for restaurant.htm page (list of restaurants)
 ##---------------------------------------------------------------------------##
@@ -221,6 +178,83 @@ def hello_htm():
                      </form>'''
     hello_page += "</body></html>"
     return hello_page
+
+##---------------------------------------------------------------------------##
+##  New Restaurant Post Type -- send back results db update
+##---------------------------------------------------------------------------##  
+def newr_post_type(My_messagecontent, My_Form_Label):      
+    # Coming in with new Restaurant Name for database
+    myNewRestaurant = Restaurant(name = str(My_messagecontent))
+    session.add(myNewRestaurant)
+    sesssion.commit()
+
+    # Rebuild / Sending Restaurant Name Page
+    Get_File_Content = restaurants_htm()
+    self.wfile.write(Get_File_Content)
+    print My_Form_Label + " form processed. Returning new list."
+    return
+            
+##---------------------------------------------------------------------------##
+##  Hello Post Type -- send back desired message
+##---------------------------------------------------------------------------##  
+def hello_post_type(My_messagecontent, My_Form_Label):        
+    # Hello post of what to say    
+    output = ""
+    output += "<html>"
+    output += '''<head><link rel="icon" href="data:,"></head>'''
+    output += "<body>"
+    output += "<h2>OK, how about this: </h2>"
+    output += "<h1> %s </h1>" % str(My_messagecontent)
+    output += "<p></p>"
+    output += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
+                  action='hello'><h2>What would you like me to say?</h2> \
+                    <input name='message' type='text'> \
+                    <input type='submit' value='Submit'> \
+                    <input id='label' name='label' type='hidden' value='hello'> \
+                 </form>'''
+    output += "</body></html>"
+    self.wfile.write(output)
+    print My_Form_Label + " form processed. Returning " + str(My_messagecontent)
+    return
+    
+##---------------------------------------------------------------------------##
+##  Send Back Error -- Unrecognized Post Type
+##---------------------------------------------------------------------------##  
+def unrec_post_type(My_ctype, My_messagecontent, My_Form_Label):
+    # No Idea What Posted    
+    output = ""
+    output += "<html>"
+    output += '''<head><link rel="icon" href="data:,"></head>'''
+    output += "<body>"
+    output += "<h2>Error: Unrecognized Post Request Type</h2>"
+    output += "<p></p>"
+    output += "Format:    " + "\t" + My_ctype + " <br>"
+    output += "Message:   " + "\t" + My_messagecontent + " <br>"
+    output += "Post Type: " + "\t" + My_Form_Label + " <br>"  
+    output += "<p></p>"
+    output += "</body></html>"
+    self.wfile.write(output)
+    return
+
+
+##---------------------------------------------------------------------------##
+##  Send Back Error -- Invalid Post Format Type
+##---------------------------------------------------------------------------##  
+def ifmt_post_type(My_ctype, My_messagecontent, My_Form_Label):
+    # No Idea What Posted    
+    output = ""
+    output += "<html>"
+    output += '''<head><link rel="icon" href="data:,"></head>'''
+    output += "<body>"
+    output += "<h2>Error: Invalid Post Format Type</h2>"
+    output += "<p></p>"
+    output += "Format:    " + "\t" + My_ctype + " <br>"
+    output += "Message:   " + "\t" + My_messagecontent + " <br>"
+    output += "Post Type: " + "\t" + My_Form_Label + " <br>" 
+    output += "<p></p>"
+    output += "</body></html>"
+    self.wfile.write(output)
+    return
 
 
 ##---------------------------------------------------------------------------##
