@@ -92,7 +92,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             # Depending on which form posted back, create response  
             
             # if str(Form_Label) == "rest_new":
-            if self.path.endswith("rest_new"):
+            if self.path.endswith("newr_post"):
                 output_msg = newr_post_type(messagecontent, Form_Label)
                 self.wfile.write(output_msg)
                 return
@@ -161,7 +161,7 @@ def rest_new_htm():
     new_page += "<body>"
     new_page += "<h2>Make A New Restaurant</h2>"
     new_page += "<p></p>"
-    new_page += '''<form method='POST' name='rest_new' enctype='multipart/form-data' action='new'> \
+    new_page += '''<form method='POST' name='newr_post' enctype='multipart/form-data' action='new'> \
                       <input name='message' type='text'> \
                       <input type='submit' vatue='Create'> \ 
                       <input id='label' name='label' type='hidden' value='rest_new'> \
