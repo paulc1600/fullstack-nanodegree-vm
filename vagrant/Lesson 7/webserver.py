@@ -41,6 +41,8 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 else:
                     if Get_File == 'hello':
                         Get_File_Content = hello_htm()
+                    else:
+                        Get_File_Content = unrec_get(Get_File)
                     
             # Send message first
             self.wfile.write(Get_File_Content)
@@ -150,8 +152,8 @@ def restaurants_htm():
     for RestRec in items:
         restaurant_list += "<tr>"
         restaurant_list += "<td> " + str(RestRec.name) + "</td>"
-        restaurant_list += '''<td><a href="Rest_Edit.htm">Edit</a></td>'''
-        restaurant_list += '''<td><a href="Rest_Delete.htm">Delete</a></td>'''
+        restaurant_list += '<td><a href="restaurants/' + str(RestRec.id) + '/edit">Edit</a></td>'
+        restaurant_list += '<td><a href="restaurants/' + str(RestRec.id) + '/delete">Delete</a></td>'
         restaurant_list += "</tr>"
     Final_HTML = restaurants_page.format(rest_list=restaurant_list)    
     return Final_HTML
@@ -226,7 +228,25 @@ def hello_post_type(My_messagecontent, My_Form_Label):
    
     print My_Form_Label + " form processed. Returning " + str(My_messagecontent)
     return output
-    
+
+
+##---------------------------------------------------------------------------##
+##  Send Back Error -- Unrecognized Resource Request
+##---------------------------------------------------------------------------##  
+def unrec_get(My_getfile):
+    # No Idea What Requested    
+    output = ""
+    output += "<html>"
+    output += '''<head><link rel="icon" href="data:,"></head>'''
+    output += "<body>"
+    output += "<h2>Error: Could not find requested resource.</h2>"
+    output += "<p></p>"
+    output += "Resource:    " + "\t" + My_getfile
+    output += "<p></p>"
+    output += "</body></html>"
+    return output
+
+
 ##---------------------------------------------------------------------------##
 ##  Send Back Error -- Unrecognized Post Type
 ##---------------------------------------------------------------------------##  
