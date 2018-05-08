@@ -90,13 +90,13 @@ class WebServerHandler(BaseHTTPRequestHandler):
             print '1 ' + Form_Label
 
             # Depending on which form posted back, create response    
-            if Form_Label == 'rest_new':
+            if str(Form_Label) == "rest_new':
                 output_msg = newr_post_type(messagecontent, Form_Label)
                 self.wfile.write(output_msg)
                 return
             else:
                 print 'Not rest_new ' + Form_Label
-                if Form_Label == 'hello':
+                if str(Form_Label) == "hello":
                     output_msg = hello_post_type(messagecontent, Form_Label)
                     self.wfile.write(output_msg)
                     return
