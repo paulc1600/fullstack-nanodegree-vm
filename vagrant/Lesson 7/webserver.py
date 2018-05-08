@@ -93,6 +93,12 @@ class WebServerHandler(BaseHTTPRequestHandler):
             
             # if str(Form_Label) == "rest_new":
             if self.path.endswith("newr_post"):
+                # new Restaurant Name updates database
+                myNewRestaurant = Restaurant(name = str(messagecontent))
+                session.add(myNewRestaurant)
+                sesssion.commit()
+    
+                # Back to restaurant list
                 output_msg = newr_post_type(messagecontent, Form_Label)
                 self.wfile.write(output_msg)
                 return
@@ -192,11 +198,6 @@ def hello_htm():
 ##  New Restaurant Post Type -- send back results db update
 ##---------------------------------------------------------------------------##  
 def newr_post_type(My_messagecontent, My_Form_Label):      
-    # Coming in with new Restaurant Name for database
-    myNewRestaurant = Restaurant(name = str(My_messagecontent))
-    session.add(myNewRestaurant)
-    sesssion.commit()
-
     # Rebuild / Sending Restaurant Name Page
     Get_File_Content = restaurants_htm()
     
