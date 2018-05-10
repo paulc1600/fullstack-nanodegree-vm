@@ -46,8 +46,8 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     lupath = len(Get_File)
                     
                     nfs = Get_File[12:lupath].find('/')
-                    R_id = Get_File[12:nfs]
-                    R_fnc = Get_File[nfs+1:lupath]
+                    R_id = Get_File[12:nfs+12]
+                    R_fnc = Get_File[nfs+13:lupath]
                     
                     print "Get_File = " + Get_File
                     print "nfs = " + str(nfs)
