@@ -13,6 +13,7 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 message = ""
+Rest_List = []
 
 class WebServerHandler(BaseHTTPRequestHandler):
 
@@ -41,6 +42,11 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     nfs = Get_File[12:lupath-1].find('/')
                     R_id = Get_File[12:nfs]
                     R_fnc = Get_File[nfs+1:lupath-1]
+                    
+                    print "nfs = " + nfs
+                    print "R_id " + R_id
+                    print "R_fnc" + R_fnc
+                    
                     if R_fnc == "Edit":
                         Get_File_Content = rest_edit_htm(R_id)
                     else:
@@ -169,6 +175,8 @@ def restaurants_htm():
         restaurant_list += '<td><a href="restaurants/' + str(RestRec.id) + '/edit">Edit</a></td>'
         restaurant_list += '<td><a href="restaurants/' + str(RestRec.id) + '/delete">Delete</a></td>'
         restaurant_list += "</tr>"
+        one_rest = [RestRec.id, str(RestRec.name)]
+        Rest_List.append(one_rest)
     Final_HTML = restaurants_page.format(rest_list=restaurant_list)    
     return Final_HTML
 
@@ -191,6 +199,37 @@ def rest_new_htm():
     new_page += "</body></html>"
     return new_page
 
+
+##---------------------------------------------------------------------------##
+##  Create HTML to edit restaurant name
+##---------------------------------------------------------------------------##
+def rest_edit_htm(My_id):
+    old_rest_name = 'Unknown'
+    for one_rest in Rest_List:
+        if one_rest.id == My_id:
+            old_rest_name = str(RestRec.name)     
+        
+    edit_page = ""
+    edit_page += "<html>"
+    edit_page += '''<head><link rel="icon" href="data:,"></head>'''
+    edit_page += "<body>"
+    edit_page += "<h2>Edit Restaurant Information</h2>"
+    edit_page += "<p></p>"
+    edit_page += '''<form method='POST' name='edit' enctype='multipart/form-data' action=str(My_id) + '\'edit'> \
+                      <label for="message">{old_name}</label>
+                      <input name='message' type='text'> \
+                      <input type='submit' value='Rename'> \ 
+                      <input id='label' name='label' type='hidden' value=str(My_id) + '\edit'> \
+                   </form>'''
+    edit_page += "</body></html>"
+    Final_HTML = edit_page.format(old_name=old_rest_name)
+    return Final_HTML
+    
+##---------------------------------------------------------------------------##
+##  Create HTML to delete restaurant
+##---------------------------------------------------------------------------##
+def rest_delete_htm(My_id):
+    
 
 ##---------------------------------------------------------------------------##
 ##  Create HTML for hello code
