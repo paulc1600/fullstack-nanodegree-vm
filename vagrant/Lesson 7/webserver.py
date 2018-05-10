@@ -39,13 +39,14 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 if (lupath == 11):  
                     Get_File_Content = restaurants_htm()
                 else:
-                    nfs = Get_File[12:lupath-1].find('/')
+                    nfs = Get_File[10:lupath].find('/')
                     R_id = Get_File[12:nfs]
-                    R_fnc = Get_File[nfs+1:lupath-1]
+                    R_fnc = Get_File[nfs+1:lupath]
                     
+                    print "Get_File = " + Get_File
                     print "nfs = " + str(nfs)
-                    print "R_id " + R_id
-                    print "R_fnc" + R_fnc
+                    print "R_id = " + R_id
+                    print "R_fnc = " + R_fnc
                     
                     if R_fnc == "Edit":
                         Get_File_Content = rest_edit_htm(R_id)
