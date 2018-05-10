@@ -34,6 +34,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
+            Get_File = str(self.path)
             if ('restaurants' in Get_File) or Get_File == 'index':
                 lupath = len(Get_File)
                 if (lupath == 11):  
