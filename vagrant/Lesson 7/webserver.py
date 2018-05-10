@@ -50,16 +50,18 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     R_id = Get_File[12:nfs+12]
                     R_fnc = Get_File[nfs+13:lupath]
                     
+                    s_R_fnc = str(R_fnc)
+                    
                     print "Get_File = " + Get_File
                     print "nfs = " + str(nfs)
                     print "R_id = " + R_id
                     print "R_fnc = " + R_fnc
                     
-                    if R_fnc == "Edit":
+                    if s_R_fnc == 'edit':
                         Get_File_Content = rest_edit_htm(R_id)
                         Cache_File = 'restaurants_edit.htm'
                     else:
-                        if R_fnc == "Delete":
+                        if s_R_fnc == 'delete':
                             Get_File_Content = rest_delete_htm(R_id)
                             Cache_File = 'restaurants_delete.htm'
                         else:
