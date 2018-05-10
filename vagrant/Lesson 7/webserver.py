@@ -41,7 +41,11 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     Get_File_Content = restaurants_htm()
                 else:
                     Get_File = str(self.path)
-                    nfs = Get_File[10:lupath].find('/')
+                    lupath = len(Get_File)
+                    Get_File = Get_File[1:lupath]
+                    lupath = len(Get_File)
+                    
+                    nfs = Get_File[12:lupath].find('/')
                     R_id = Get_File[12:nfs]
                     R_fnc = Get_File[nfs+1:lupath]
                     
