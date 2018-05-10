@@ -43,7 +43,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     R_id = Get_File[12:nfs]
                     R_fnc = Get_File[nfs+1:lupath-1]
                     
-                    print "nfs = " + nfs
+                    print "nfs = " + str(nfs)
                     print "R_id " + R_id
                     print "R_fnc" + R_fnc
                     
