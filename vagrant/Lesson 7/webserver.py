@@ -33,8 +33,22 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
-            if Get_File == 'restaurants' or Get_File == 'index':
-                Get_File_Content = restaurants_htm()
+            if ('restaurants' in Get_File) or Get_File == 'index':
+                lupath = len(Get_File)
+                if (lupath == 11):  
+                    Get_File_Content = restaurants_htm()
+                else:
+                    nfs = Get_File[12:lupath-1].find('/')
+                    R_id = Get_File[12:nfs]
+                    R_fnc = Get_File[nfs+1:lupath-1]
+                    if R_fnc == "Edit":
+                        Get_File_Content = rest_edit_htm(R_id)
+                    else:
+                        if R_fnc == "Delete":
+                            Get_File_Content = rest_delete_htm(R_id)
+                        else:
+                            Get_File_Content = unrec_get(Get_File)
+                
             else:
                 if Get_File == 'rest_new':
                     Get_File_Content = rest_new_htm()    
