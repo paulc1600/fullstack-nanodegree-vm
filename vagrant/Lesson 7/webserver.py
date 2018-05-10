@@ -34,12 +34,13 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
-            Get_File = str(self.path)
+ 
             if ('restaurants' in Get_File) or Get_File == 'index':
                 lupath = len(Get_File)
-                if (lupath == 11):  
+                if (lupath <= 11):  
                     Get_File_Content = restaurants_htm()
                 else:
+                    Get_File = str(self.path)
                     nfs = Get_File[10:lupath].find('/')
                     R_id = Get_File[12:nfs]
                     R_fnc = Get_File[nfs+1:lupath]
