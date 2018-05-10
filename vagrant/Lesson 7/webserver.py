@@ -39,6 +39,7 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 lupath = len(Get_File)
                 if (lupath <= 11):  
                     Get_File_Content = restaurants_htm()
+                    Cache_File = 'restaurants.htm'
                 else:
                     Get_File = str(self.path)
                     lupath = len(Get_File)
@@ -56,28 +57,32 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     
                     if R_fnc == "Edit":
                         Get_File_Content = rest_edit_htm(R_id)
+                        Cache_File = 'restaurants_edit.htm'
                     else:
                         if R_fnc == "Delete":
                             Get_File_Content = rest_delete_htm(R_id)
+                            Cache_File = 'restaurants_delete.htm'
                         else:
                             Get_File_Content = unrec_get(Get_File)
-                
+                            Cache_File = 'restaurants_unrec.htm'
             else:
                 if Get_File == 'rest_new':
-                    Get_File_Content = rest_new_htm()    
+                    Get_File_Content = rest_new_htm()
+                    Cache_File = 'rest_new.htm'
                 else:
                     if Get_File == 'hello':
                         Get_File_Content = hello_htm()
+                        Cache_File = 'hello.htm'
                     else:
                         Get_File_Content = unrec_get(Get_File)
+                        Cache_File = Get_File + '.htm'
                     
             # Send message first
             self.wfile.write(Get_File_Content)
             print Get_File_Content
             
-            # Create Cache Copy / Debug, etc.
-            Get_File += '.htm'
-            write_file(Get_File, Get_File_Content)
+            # Create Cache Copy / Debug, etc.                
+            write_file(Cache_File, Get_File_Content)
             return   
         else:  # URL contains no path message / not internal resource / treat as simple file request
             os.chdir(My_Path)
