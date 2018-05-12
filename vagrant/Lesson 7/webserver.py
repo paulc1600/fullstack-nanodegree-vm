@@ -205,17 +205,18 @@ def restaurants_htm():
 ##---------------------------------------------------------------------------##
 def rest_new_htm():
     new_page = ""
-    new_page += "<html>"
-    new_page += '''<head><link rel="icon" href="data:,"></head>'''
-    new_page += "<body>"
-    new_page += "<h2>Make A New Restaurant</h2>"
-    new_page += "<p></p>"
-    new_page += '''<form method='POST' name='newr_post' enctype='multipart/form-data' action='newr_post'> \
-                      <input name='message' type='text'> \
-                      <input type='submit' vatue='Create'> \ 
-                      <input id='label' name='label' type='hidden' value='newr_post'> \
-                   </form>'''
-    new_page += "</body></html>"
+    new_page += "<html>\n"
+    new_page += '''<head><link rel="icon" href="data:,"></head>\n'''
+    new_page += "<body>\n"
+    new_page += "<h2>Make A New Restaurant</h2>\n"
+    new_page += "<p></p>\n"
+    new_page += '''<form method='POST' name='newr_post' enctype='multipart/form-data' action='newr_post'>\n \
+                      <input name='message' type='text'>\n \
+                      <input type='submit' vatue='Create'>\n \ 
+                      <input id='label' name='label' type='hidden' value='newr_post'>\n \
+                   </form>\n'''
+    new_page += "</body>\n"
+    new_page += "</html>\n"
     return new_page
 
 
@@ -230,7 +231,7 @@ def rest_edit_htm(My_id):
         if one_id == My_id:
             old_rest_name = one_name     
     
-    Post_Path = 'restaurants/' + str(My_id) + '\edit'
+    Post_Path = 'restaurants/' + str(My_id) + '/edit'
     
     edit_page = ""
     edit_page += "<html>\n"
@@ -238,14 +239,14 @@ def rest_edit_htm(My_id):
     edit_page += "<body>\n"
     edit_page += "<h2>Edit Restaurant Information</h2>\n"
     edit_page += "<p></p>\n"
-    edit_page += '''<form method='POST' name='edit' enctype='multipart/form-data' action={ppath_name}>\n \
+    edit_page += '''<form method='POST' name='edit' enctype='multipart/form-data' action='{action_name}'>\n \
                       <label for="message">{old_name}</label>\n
                       <input name='message' type='text'>\n \
                       <input type='submit' value='Rename'>\n \ 
-                      <input id='label' name='label' type='hidden' value={ppath_name}>\n \
+                      <input id='label' name='label' type='hidden' value='{value_name}'>\n \
                    </form>\n'''
     edit_page += "</body>\n </html>\n"
-    Final_HTML = edit_page.format(ppath_name=Post_Path, old_name=old_rest_name)
+    Final_HTML = edit_page.format(action_name=Post_Path, old_name=old_rest_name, value_name=Post_Path)
     return Final_HTML
     
 ##---------------------------------------------------------------------------##
@@ -259,17 +260,17 @@ def rest_edit_htm(My_id):
 ##---------------------------------------------------------------------------##
 def hello_htm():
     hello_page = ""
-    hello_page += "<html>"
-    hello_page += '''<head><link rel="icon" href="data:,"></head>'''
-    hello_page += "<body>Hello!"
-    hello_page += "<p></p>"
+    hello_page += "<html>\n"
+    hello_page += '''<head><link rel="icon" href="data:,"></head>\n'''
+    hello_page += "<body>Hello!\n"
+    hello_page += "<p></p>\n"
     hello_page += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
-                      action='hello'><h2>What would you like me to say?</h2> \
-                         <input name='message' type='text'> \
-                         <input type='submit' vatue='Submit'> \
-                         <input id='label' name='label' type='hidden' value='hello'> \
+                      action='hello'>\n<h2>What would you like me to say?</h2>\n \
+                         <input name='message' type='text'>\n \
+                         <input type='submit' vatue='Submit'>\n \
+                         <input id='label' name='label' type='hidden' value='hello'>\n \
                      </form>'''
-    hello_page += "</body></html>"
+    hello_page += "</body></html>\n"
     return hello_page
 
 ##---------------------------------------------------------------------------##
@@ -288,19 +289,19 @@ def newr_post_type(My_messagecontent, My_Form_Label):
 def hello_post_type(My_messagecontent, My_Form_Label):        
     # Hello post of what to say    
     output = ""
-    output += "<html>"
-    output += '''<head><link rel="icon" href="data:,"></head>'''
-    output += "<body>"
-    output += "<h2>OK, how about this: </h2>"
-    output += "<h1> %s </h1>" % str(My_messagecontent)
-    output += "<p></p>"
+    output += "<html>\n"
+    output += '''<head><link rel="icon" href="data:,"></head>\n'''
+    output += "<body>\n"
+    output += "<h2>OK, how about this: </h2>\n"
+    output += "<h1> %s </h1>\n" % str(My_messagecontent)
+    output += "<p></p>\n"
     output += '''<form method='POST' name='hello' enctype='multipart/form-data'  \
-                  action='hello'><h2>What would you like me to say?</h2> \
-                    <input name='message' type='text'> \
-                    <input type='submit' value='Submit'> \
-                    <input id='label' name='label' type='hidden' value='hello'> \
-                 </form>'''
-    output += "</body></html>"
+                  action='hello'>\n<h2>What would you like me to say?</h2>\n \
+                    <input name='message' type='text'>\n \
+                    <input type='submit' value='Submit'>\n \
+                    <input id='label' name='label' type='hidden' value='hello'>\n \
+                 </form>\n'''
+    output += "</body></html>\n"
    
     print My_Form_Label + " form processed. Returning " + str(My_messagecontent)
     return output
@@ -312,14 +313,14 @@ def hello_post_type(My_messagecontent, My_Form_Label):
 def unrec_get(My_getfile):
     # No Idea What Requested    
     output = ""
-    output += "<html>"
-    output += '''<head><link rel="icon" href="data:,"></head>'''
-    output += "<body>"
-    output += "<h2>Error: Could not find requested resource.</h2>"
-    output += "<p></p>"
-    output += "Resource:    " + "\t" + My_getfile
-    output += "<p></p>"
-    output += "</body></html>"
+    output += "<html>\n"
+    output += '''<head><link rel="icon" href="data:,"></head>\n'''
+    output += "<body>\n"
+    output += "<h2>Error: Could not find requested resource.</h2>\n"
+    output += "<p></p>\n"
+    output += "Resource:    " + "\t" + My_getfile + "\n"
+    output += "<p></p>\n"
+    output += "</body></html>\n"
     return output
 
 
@@ -329,16 +330,16 @@ def unrec_get(My_getfile):
 def unrec_post_type(My_ctype, My_messagecontent, My_Form_Label):
     # No Idea What Posted    
     output = ""
-    output += "<html>"
-    output += '''<head><link rel="icon" href="data:,"></head>'''
-    output += "<body>"
-    output += "<h2>Error: Unrecognized Post Request Type</h2>"
-    output += "<p></p>"
-    output += "Format:    " + "\t" + My_ctype + " <br>"
-    output += "Message:   " + "\t" + My_messagecontent + " <br>"
-    output += "Post Type: " + "\t" + My_Form_Label + " <br>"  
-    output += "<p></p>"
-    output += "</body></html>"
+    output += "<html>\n"
+    output += '''<head><link rel="icon" href="data:,"></head>\n'''
+    output += "<body>\n"
+    output += "<h2>Error: Unrecognized Post Request Type</h2>\n"
+    output += "<p></p>\n"
+    output += "Format:    " + "\t" + My_ctype + " <br>\n"
+    output += "Message:   " + "\t" + My_messagecontent + " <br>\n"
+    output += "Post Type: " + "\t" + My_Form_Label + " <br>\n"  
+    output += "<p></p>\n"
+    output += "</body></html>\n"
     return output
 
 
@@ -348,16 +349,16 @@ def unrec_post_type(My_ctype, My_messagecontent, My_Form_Label):
 def ifmt_post_type(My_ctype, My_messagecontent, My_Form_Label):
     # No Idea What Posted    
     output = ""
-    output += "<html>"
-    output += '''<head><link rel="icon" href="data:,"></head>'''
-    output += "<body>"
-    output += "<h2>Error: Invalid Post Format Type</h2>"
-    output += "<p></p>"
-    output += "Format:    " + "\t" + My_ctype + " <br>"
-    output += "Message:   " + "\t" + My_messagecontent + " <br>"
-    output += "Post Type: " + "\t" + My_Form_Label + " <br>" 
-    output += "<p></p>"
-    output += "</body></html>"
+    output += "<html>\n"
+    output += '''<head><link rel="icon" href="data:,"></head>\n'''
+    output += "<body>\n"
+    output += "<h2>Error: Invalid Post Format Type</h2>\n"
+    output += "<p></p>\n"
+    output += "Format:    " + "\t" + My_ctype + " <br>\n"
+    output += "Message:   " + "\t" + My_messagecontent + " <br>\n"
+    output += "Post Type: " + "\t" + My_Form_Label + " <br>\n" 
+    output += "<p></p>\n"
+    output += "</body></html>\n"
     return output
 
 
