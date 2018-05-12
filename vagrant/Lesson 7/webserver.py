@@ -133,28 +133,67 @@ class WebServerHandler(BaseHTTPRequestHandler):
             # Depending on which form posted back, create response  
             
             # if str(Form_Label) == "rest_new":
-            if self.path.endswith("newr_post"):
-                # new Restaurant Name updates database
-                myNewRestaurant = Restaurant(name = str(messagecontent))
-                session.add(myNewRestaurant)
-                session.commit()
-    
-                # Back to restaurant list
-                output_msg = newr_post_type(messagecontent, Form_Label)
-                self.wfile.write(output_msg)
-                return
-            else:
-                print 'Not rest_new ' + Form_Label
-                # if str(Form_Label) == "hello":
-                if self.path.endswith("hello"):
-                    output_msg = hello_post_type(messagecontent, Form_Label)
+            Post_File = str(self.path)
+            pflen = len(Post_File)
+            Post_File = Post_File[1:pflen]
+            pflen = len(Post_File)            
+            
+            if ('restaurants' in Post_File):
+                nfs = Post_File[12:pflen].find('/')
+                R_id = Post_File[12:nfs+12]
+                R_fnc = Post_File[nfs+13:pflen]
+                
+                lu_id = int(R_id)
+                s_R_fnc = str(R_fnc)
+
+                print "Post_File = " + Post_File
+                print "nfs = " + str(nfs)
+                print "R_id = " + R_id
+                print "R_fnc = " + R_fnc
+
+                if s_R_fnc == 'edit':
+                    NewRestName = session.query(Restaurant).filter_by(id=lu_id).one()
+                    NewRestName.name = messagecontent
+                    session.add(NewRestName)
+                    session.commit() 
+
+                    output_msg = restaurants_htm()
                     self.wfile.write(output_msg)
                     return
                 else:
-                    print 'Not hello ' + Form_Label    
-                    output_msg = unrec_post_type(ctype, messagecontent, Form_Label)
+                    if s_R_fnc == 'delete':
+                        output_msg = post_delete_htm(R_id)
+                        self.wfile.write(output_msg)
+                        return
+                    else:
+                        print 'Not edit or del = ' + s_R_fnc    
+                        output_msg = unrec_post_type(ctype, messagecontent, s_R_fnc)
+                        self.wfile.write(output_msg)
+                        return
+                
+            else:
+                if self.path.endswith("newr_post"):
+                    # new Restaurant Name updates database
+                    myNewRestaurant = Restaurant(name = str(messagecontent))
+                    session.add(myNewRestaurant)
+                    session.commit()
+
+                    # Back to restaurant list
+                    output_msg = newr_post_type(messagecontent, Form_Label)
                     self.wfile.write(output_msg)
                     return
+                else:
+                    print 'Not rest_new ' + Form_Label
+                    # if str(Form_Label) == "hello":
+                    if self.path.endswith("hello"):
+                        output_msg = hello_post_type(messagecontent, Form_Label)
+                        self.wfile.write(output_msg)
+                        return
+                    else:
+                        print 'Not hello ' + Form_Label    
+                        output_msg = unrec_post_type(ctype, messagecontent, Form_Label)
+                        self.wfile.write(output_msg)
+                        return
         else:        
             # No Idea What Posted    
             output_msg = ifmt_post_type(ctype, messagecontent, Form_Label)
@@ -253,8 +292,8 @@ def rest_edit_htm(My_id):
 ##  Create HTML to delete restaurant
 ##---------------------------------------------------------------------------##
 ## def rest_delete_htm(My_id):
-    
 
+    
 ##---------------------------------------------------------------------------##
 ##  Create HTML for hello code
 ##---------------------------------------------------------------------------##
