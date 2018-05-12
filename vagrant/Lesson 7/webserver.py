@@ -229,21 +229,23 @@ def rest_edit_htm(My_id):
         one_name = one_rest[1]
         if one_id == My_id:
             old_rest_name = one_name     
-        
+    
+    Post_Path = 'restaurants/' + str(My_id) + '\edit'
+    
     edit_page = ""
-    edit_page += "<html>"
-    edit_page += '''<head><link rel="icon" href="data:,"></head>'''
-    edit_page += "<body>"
-    edit_page += "<h2>Edit Restaurant Information</h2>"
-    edit_page += "<p></p>"
-    edit_page += '''<form method='POST' name='edit' enctype='multipart/form-data' action=str(My_id) + '\'edit'> \
-                      <label for="message">{old_name}</label>
-                      <input name='message' type='text'> \
-                      <input type='submit' value='Rename'> \ 
-                      <input id='label' name='label' type='hidden' value=str(My_id) + '\edit'> \
-                   </form>'''
-    edit_page += "</body></html>"
-    Final_HTML = edit_page.format(old_name=old_rest_name)
+    edit_page += "<html>\n"
+    edit_page += '''<head><link rel="icon" href="data:,"></head>\n'''
+    edit_page += "<body>\n"
+    edit_page += "<h2>Edit Restaurant Information</h2>\n"
+    edit_page += "<p></p>\n"
+    edit_page += '''<form method='POST' name='edit' enctype='multipart/form-data' action={ppath_name}>\n \
+                      <label for="message">{old_name}</label>\n
+                      <input name='message' type='text'>\n \
+                      <input type='submit' value='Rename'>\n \ 
+                      <input id='label' name='label' type='hidden' value={ppath_name}>\n \
+                   </form>\n'''
+    edit_page += "</body>\n </html>\n"
+    Final_HTML = edit_page.format(ppath_name=Post_Path, old_name=old_rest_name)
     return Final_HTML
     
 ##---------------------------------------------------------------------------##
