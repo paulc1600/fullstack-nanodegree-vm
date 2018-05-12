@@ -287,7 +287,7 @@ def rest_edit_htm(My_id):
                       <input id='label' name='label' type='hidden' value='{value_name}'>\n \
                    </form>\n'''
     edit_page += "</body>\n </html>\n"
-    Final_HTML = edit_page.format(action_name=Post_Path, old_name=old_rest_name, value_name=Post_Path)
+    Final_HTML = edit_page.format(action_name='restauants', old_name=old_rest_name, value_name=Post_Path)
     return Final_HTML
     
 ##---------------------------------------------------------------------------##
