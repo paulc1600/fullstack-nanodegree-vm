@@ -267,10 +267,12 @@ def rest_edit_htm(My_id):
     for one_rest in Rest_List:
         one_id = one_rest[0]
         one_name = one_rest[1]
+        Print "one_id = " + one_id
+        Print "one_name = " + one_name
         if one_id == My_id:
             old_rest_name = one_name     
     
-    Post_Path = 'restaurants/' + str(My_id) + '/edit'
+    Post_Path = '/restaurants/' + str(My_id) + '/edit'
     
     edit_page = ""
     edit_page += "<html>\n"
