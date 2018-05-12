@@ -267,8 +267,8 @@ def rest_edit_htm(My_id):
     for one_rest in Rest_List:
         one_id = one_rest[0]
         one_name = one_rest[1]
-        Print "one_id = " + one_id
-        Print "one_name = " + one_name
+        print "one_id = " + str(one_id)
+        print "one_name = " + str(one_name)
         if one_id == My_id:
             old_rest_name = one_name     
     
