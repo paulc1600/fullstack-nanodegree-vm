@@ -77,14 +77,19 @@ class WebServerHandler(BaseHTTPRequestHandler):
                         Cache_File = 'hello.htm'
                     else:
                         Get_File_Content = unrec_get(Get_File)
-                        Cache_File = Get_File + '.htm'
+                        Cache_File = 'cache/' + Get_File + '.htm'
                     
             # Send message first
             self.wfile.write(Get_File_Content)
             print Get_File_Content
             
-            # Create Cache Copy / Debug, etc.                
-            write_file(Cache_File, Get_File_Content)
+            # Create Cache Copy / Debug, etc. 
+            Cache_Path = os.path.join(os.getcwd(), 'cache')
+            if not os.path.exists(Cache_Path):
+                os.makedirs(Cache_Path)
+            
+            Cache_Location = os.path.join(Cache_Path, Cache_File)
+            write_file(Cache_Location, Get_File_Content)
             return   
         else:  # URL contains no path message / not internal resource / treat as simple file request
             os.chdir(My_Path)
@@ -220,8 +225,10 @@ def rest_new_htm():
 def rest_edit_htm(My_id):
     old_rest_name = 'Unknown'
     for one_rest in Rest_List:
-        if one_rest.id == My_id:
-            old_rest_name = str(RestRec.name)     
+        one_id = one_rest[0]
+        one_name = one_rest[1]
+        if one_id == My_id:
+            old_rest_name = one_name     
         
     edit_page = ""
     edit_page += "<html>"
