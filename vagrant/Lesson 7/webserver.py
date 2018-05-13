@@ -135,13 +135,13 @@ class WebServerHandler(BaseHTTPRequestHandler):
             # if str(Form_Label) == "rest_new":
             Post_File = str(self.path)
             pflen = len(Post_File)
-            Post_File = Post_File[1:pflen]
-            pflen = len(Post_File)            
+            # Post_File = Post_File[1:pflen]
+            # pflen = len(Post_File)            
             
             if ('restaurants' in Post_File):
-                nfs = Post_File[12:pflen].find('/')
-                R_id = Post_File[12:nfs+12]
-                R_fnc = Post_File[nfs+13:pflen]
+                nfs = Post_File[11:pflen].find('/')
+                R_id = Post_File[11:nfs+11]
+                R_fnc = Post_File[nfs+12:pflen]
                 
                 lu_id = int(R_id)
                 s_R_fnc = str(R_fnc)
@@ -267,12 +267,13 @@ def rest_edit_htm(My_id):
     for one_rest in Rest_List:
         one_id = one_rest[0]
         one_name = one_rest[1]
+        lu_id = int(one_id)
         print "one_id = " + str(one_id)
         print "one_name = " + str(one_name)
-        if one_id == My_id:
+        if lu_id == My_id:
             old_rest_name = one_name     
     
-    Post_Path = '/restaurants/' + str(My_id) + '/edit'
+    Post_Path = 'restaurants/' + str(My_id) + '/edit'
     
     edit_page = ""
     edit_page += "<html>\n"
@@ -281,13 +282,14 @@ def rest_edit_htm(My_id):
     edit_page += "<h2>Edit Restaurant Information</h2>\n"
     edit_page += "<p></p>\n"
     edit_page += '''<form method='POST' name='edit' enctype='multipart/form-data' action='{action_name}'>\n \
-                      <label for="message">{old_name}</label>\n
+                      <label for="message">{old_name}</label>\n \
                       <input name='message' type='text'>\n \
                       <input type='submit' value='Rename'>\n \ 
                       <input id='label' name='label' type='hidden' value='{value_name}'>\n \
                    </form>\n'''
-    edit_page += "</body>\n </html>\n"
-    Final_HTML = edit_page.format(action_name='restauants', old_name=old_rest_name, value_name=Post_Path)
+    edit_page += "</body>\n"
+    edit_page += "</html>\n"
+    Final_HTML = edit_page.format(action_name=Post_Path, old_name=old_rest_name, value_name=Post_Path)
     return Final_HTML
     
 ##---------------------------------------------------------------------------##
