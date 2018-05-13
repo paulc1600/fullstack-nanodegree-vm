@@ -139,15 +139,16 @@ class WebServerHandler(BaseHTTPRequestHandler):
             # pflen = len(Post_File)            
             
             if ('restaurants' in Post_File):
-                nfs = Post_File[12:pflen].find('/')
-                R_id = Post_File[12:nfs+12]
-                R_fnc = Post_File[nfs+13:pflen]
+                path_list = []
+                path_list = string.split(Post_File, '/')
+
+                R_id = path_list(1)
+                R_fnc = path_list(2)
                 
                 lu_id = int(R_id)
                 s_R_fnc = str(R_fnc)
 
                 print "Post_File = " + Post_File
-                print "nfs = " + str(nfs)
                 print "R_id = " + R_id
                 print "R_fnc = " + R_fnc
 
