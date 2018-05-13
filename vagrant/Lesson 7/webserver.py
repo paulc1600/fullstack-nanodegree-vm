@@ -143,8 +143,8 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 path_list = []
                 path_list = string.split(Post_File, '/')
 
-                R_id = path_list(1)
-                R_fnc = path_list(2)
+                R_id = path_list[1]
+                R_fnc = path_list[2]
                 
                 lu_id = int(R_id)
                 s_R_fnc = str(R_fnc)
