@@ -143,15 +143,15 @@ class WebServerHandler(BaseHTTPRequestHandler):
                 path_list = []
                 path_list = string.split(Post_File, '/')
 
-                R_id = path_list[1]
-                R_fnc = path_list[2]
-                
-                lu_id = int(R_id)
-                s_R_fnc = str(R_fnc)
-
+                R_id = path_list[2]
+                R_fnc = path_list[3]
+ 
                 print "Post_File = " + Post_File
                 print "R_id = " + R_id
                 print "R_fnc = " + R_fnc
+
+                lu_id = int(R_id)
+                s_R_fnc = str(R_fnc)
 
                 if s_R_fnc == 'edit':
                     NewRestName = session.query(Restaurant).filter_by(id=lu_id).one()
