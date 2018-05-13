@@ -134,19 +134,14 @@ class WebServerHandler(BaseHTTPRequestHandler):
             # Depending on which form posted back, create response  
             
             # if str(Form_Label) == "rest_new":
-            Post_File = str(self.path)
-            pflen = len(Post_File)
-            # Post_File = Post_File[1:pflen]
-            # pflen = len(Post_File)            
-            
-            if ('restaurants' in Post_File):
+            if ('restaurants' in Form_Label):
                 path_list = []
-                path_list = string.split(Post_File, '/')
+                path_list = string.split(Form_Label, '/')
 
-                R_id = path_list[2]
-                R_fnc = path_list[3]
+                R_id = path_list[1]
+                R_fnc = path_list[2]
  
-                print "Post_File = " + Post_File
+                print "Post_File = " + Form_Label
                 print "R_id = " + R_id
                 print "R_fnc = " + R_fnc
 
