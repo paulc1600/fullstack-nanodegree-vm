@@ -139,9 +139,9 @@ class WebServerHandler(BaseHTTPRequestHandler):
             # pflen = len(Post_File)            
             
             if ('restaurants' in Post_File):
-                nfs = Post_File[11:pflen].find('/')
-                R_id = Post_File[11:nfs+11]
-                R_fnc = Post_File[nfs+12:pflen]
+                nfs = Post_File[12:pflen].find('/')
+                R_id = Post_File[12:nfs+12]
+                R_fnc = Post_File[nfs+13:pflen]
                 
                 lu_id = int(R_id)
                 s_R_fnc = str(R_fnc)
