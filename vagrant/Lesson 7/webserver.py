@@ -268,9 +268,11 @@ def rest_edit_htm(My_id):
         one_id = one_rest[0]
         one_name = one_rest[1]
         lu_id = int(one_id)
-        print "one_id = " + str(one_id)
+        trg_id = int(My_id)
+        print "My_id = " + str(trg_id)
+        print "one_id = " + str(lu_id)
         print "one_name = " + str(one_name)
-        if lu_id == My_id:
+        if lu_id == trg_id:
             old_rest_name = one_name     
     
     Post_Path = 'restaurants/' + str(My_id) + '/edit'
