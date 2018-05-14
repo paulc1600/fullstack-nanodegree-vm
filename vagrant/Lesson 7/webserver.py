@@ -270,6 +270,7 @@ def rest_edit_htm(My_id):
             old_rest_name = one_name     
     
     Post_Path = 'restaurants/' + str(My_id) + '/edit'
+    aPost_Path = '/restaurants/' + str(My_id) + '/edit'
     
     edit_page = ""
     edit_page += "<html>\n"
@@ -285,7 +286,7 @@ def rest_edit_htm(My_id):
                    </form>\n'''
     edit_page += "</body>\n"
     edit_page += "</html>\n"
-    Final_HTML = edit_page.format(action_name=Post_Path, old_name=old_rest_name, value_name=Post_Path)
+    Final_HTML = edit_page.format(action_name=aPost_Path, old_name=old_rest_name, value_name=Post_Path)
     return Final_HTML
     
 ##---------------------------------------------------------------------------##
