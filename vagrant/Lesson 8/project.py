@@ -12,4 +12,4 @@ if __name__ == '__main__':
     My_IP = urlopen('http://ip.42.pl/raw').read()
     print My_IP
     app.debug = True
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host=My_IP, port=5000)
