@@ -1,5 +1,5 @@
 from flask import Flask
-import socket
+from urllib2 import urlopen
 
 app = Flask(__name__)
 
@@ -9,10 +9,7 @@ def HelloWorld():
     return "Hello World"
 
 if __name__ == '__main__':
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    My_IP = s.getsockname()[0]
-    s.close()
+    My_IP = urlopen('http://ip.42.pl/raw').read()
     print My_IP
     app.debug = True
     app.run(host='0.0.0.0', port=5000)
