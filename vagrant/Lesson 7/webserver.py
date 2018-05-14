@@ -136,10 +136,10 @@ class WebServerHandler(BaseHTTPRequestHandler):
             # if str(Form_Label) == "rest_new":
             if ('restaurants' in Form_Label):
                 path_list = []
-                path_list = string.split(Form_Label, '/')
+                path_list = string.split(Form_Label, "/")
 
-                R_id = path_list[1]
-                R_fnc = path_list[2]
+                R_id = str(path_list[1]).replace("'", "")
+                R_fnc = str(path_list[2]).replace("'", "")
  
                 print "Post_File = " + Form_Label
                 print "R_id = " + R_id
