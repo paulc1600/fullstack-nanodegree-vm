@@ -6,7 +6,13 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/hello')
 def HelloWorld():
-    return "Hello World"
+    hello_page = ""
+    hello_page += "<html>\n"
+    hello_page += '''<head><link rel="icon" href="data:,"></head>\n'''
+    hello_page += "<body>Hello World!\n"
+    hello_page += "<p></p>\n"
+    hello_page += "</body></html>\n"
+    return hello_page
 
 if __name__ == '__main__':
     My_IP = urlopen('http://ip.42.pl/raw').read()
