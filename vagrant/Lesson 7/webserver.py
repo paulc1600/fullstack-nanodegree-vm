@@ -159,7 +159,11 @@ class WebServerHandler(BaseHTTPRequestHandler):
                     return
                 else:
                     if s_R_fnc == 'delete':
-                        output_msg = post_delete_htm(R_id)
+                        rest_to_go = session.query(Restaurant).filter_by(id=lu_id).one()
+                        session.delete(rest_to_go)
+                        session.commit() 
+
+                        output_msg = restaurants_htm()
                         self.wfile.write(output_msg)
                         return
                     else:
@@ -292,8 +296,34 @@ def rest_edit_htm(My_id):
 ##---------------------------------------------------------------------------##
 ##  Create HTML to delete restaurant
 ##---------------------------------------------------------------------------##
-## def rest_delete_htm(My_id):
-
+def rest_delete_htm(My_id):
+    old_rest_name = 'Unknown'
+    for one_rest in Rest_List:
+        one_id = one_rest[0]
+        one_name = one_rest[1]
+        lu_id = int(one_id)
+        trg_id = int(My_id)
+        if lu_id == trg_id:
+            old_rest_name = one_name     
+    
+    Value_Path = 'restaurants/' + str(My_id) + '/delete'
+    Post_Path = '/restaurants'
+    
+    edit_page = ""
+    edit_page += "<html>\n"
+    edit_page += '''<head><link rel="icon" href="data:,"></head>\n'''
+    edit_page += "<body>\n"
+    edit_page += "<h2>Are you sure you want to delete this Restaurant Information?</h2>\n"
+    edit_page += "<p></p>\n"
+    edit_page += '''<form method='POST' name='delete' enctype='multipart/form-data' action='{action_name}'>\n \
+                      <label for="delete">{old_name}</label>\n \
+                      <input type='submit' name='delete' value='Delete'>\n \ 
+                      <input id='label' name='label' type='hidden' value='{value_name}'>\n \
+                   </form>\n'''
+    edit_page += "</body>\n"
+    edit_page += "</html>\n"
+    Final_HTML = edit_page.format(action_name=Post_Path, old_name=old_rest_name, value_name=Value_Path)
+    return Final_HTML
     
 ##---------------------------------------------------------------------------##
 ##  Create HTML for hello code
