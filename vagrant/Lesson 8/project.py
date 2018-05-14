@@ -1,6 +1,9 @@
 from flask import Flask
-app = Flask(__name__)
+import socket
 
+app = Flask(__name__)
+My_IP = socket.gethostbyname(socket.gethostname())
+print My_IP
 
 @app.route('/')
 @app.route('/hello')
