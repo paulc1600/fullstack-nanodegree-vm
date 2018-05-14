@@ -1,0 +1,69 @@
+<html>
+<head>
+<link rel='stylesheet' href='ftp.css'>
+<link rel='stylesheet' href='ftp_left.css'>
+<script language='javascript'>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+<script language='javascript' src='ftp.js'></script>
+<title>Easy FTP 1.0</title>
+</head>
+
+<body bgcolor='#ffffff'>
+    <br><font class='title'><b>Easy FTP 1.0</b></font><hr>
+    After connecting, you can drag'n drop files among the windows. 
+    Left window is your local folder, right window is the remote folder.
+    <p><table border='0' cellpadding='0' cellspacing='1' 
+
+              align='center' width='98%'><form name=login>
+        <tr><td class='brgtcell' align='right'>&nbsp;Username&nbsp;</td>
+        <td class='darkcell'>&nbsp;<input type='text' 
+
+          name='username' value='anonymous' size='20' 
+
+          maxlength='20'>&nbsp;&nbsp;</td></tr>
+        <tr><td class='brgtcell' align='right'>&nbsp;Password&nbsp;</td>
+        <td class='darkcell'>&nbsp;<input type='text' 
+
+          name='password' value='microsoft' size='20' 
+
+          maxlength='20'>&nbsp;&nbsp;</td></tr>
+        <tr><td class='brgtcell' align='right'>&nbsp;Server&nbsp;</td>
+        <td class='darkcell'>&nbsp;<input type='text' 
+
+          name='server' value='104.210.60.234:8080' size='60' 
+
+          maxlength='120'>&nbsp;&nbsp;</td></tr>
+        <tr><td class='brgtcell' align='right'>&nbsp;Local&nbsp;</td>
+        <td class='darkcell'>&nbsp;<input 
+
+          type='text' name='local' value='C:\Users\pcarreiro\Dropbox\PW-Aspire\Software Development\Web Development' size='60' 
+
+          maxlength='200'>&nbsp;&nbsp;</td></tr>
+    </table>
+    <hr><table border='0' cellpadding='0' cellspacing='0' width='100%'><tr>
+    <td align='right'><input style='color:#000000' 
+
+      type='button' value='Connect' onClick='Login(this.form)'></td>
+    </tr></form></table> 
+    
+    <div class="resp-container">
+        <form class="resp-iframe">
+          <input type="file" id="files" name="files[]" multiple />
+          <p></p>
+          <output id="list"></output>
+        </form>
+    </div>
+</body></html>
