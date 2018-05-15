@@ -1,21 +1,28 @@
 from flask import Flask
-from urllib2 import urlopen
-
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from database_setup import Base, Restaurant, MenuItem
 app = Flask(__name__)
+
+
+engine = create_engine('sqlite:///restaurantmenu.db')
+Base.metadata.bind = engine
+
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+
 
 @app.route('/')
 @app.route('/hello')
 def HelloWorld():
-    hello_page = ""
-    hello_page += "<html>\n"
-    hello_page += '''<head><link rel="icon" href="data:,"></head>\n'''
-    hello_page += "<body>Hello World!\n"
-    hello_page += "<p></p>\n"
-    hello_page += "</body></html>\n"
-    return hello_page
+    restaurant = session.query(Restaurant).first()
+    items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
+    output = ''
+    for i in items:
+        output += i.name
+        output += '</br>'
+    return output
 
 if __name__ == '__main__':
-    My_IP = urlopen('http://ip.42.pl/raw').read()
-    print My_IP
     app.debug = True
     app.run(host='0.0.0.0', port=5000)
