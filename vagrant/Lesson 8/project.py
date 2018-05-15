@@ -12,7 +12,7 @@ def HelloWorld():
     hello_page += "<body>Hello World!\n"
     hello_page += "<p></p>\n"
     hello_page += "</body></html>\n"
-    return hello_page
+    return Hello World
 
 if __name__ == '__main__':
     My_IP = urlopen('http://ip.42.pl/raw').read()
