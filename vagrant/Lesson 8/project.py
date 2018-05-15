@@ -17,4 +17,5 @@ def HelloWorld():
 if __name__ == '__main__':
     My_IP = urlopen('http://ip.42.pl/raw').read()
     print My_IP
-    app.run(host='104.42.215.195', port=5000)
+    app.debug = True
+    app.run(host='0.0.0.0', port=5000)
