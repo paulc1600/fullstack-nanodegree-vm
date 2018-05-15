@@ -17,10 +17,12 @@ session = DBSession()
 def HelloWorld():
     restaurant = session.query(Restaurant).first()
     items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
+    print items
     output = ''
     for i in items:
         output += i.name
         output += '</br>'
+    print output
     return output
 
 if __name__ == '__main__':
