@@ -18,7 +18,7 @@ def HelloWorld():
     hw_restaurant = session.query(Restaurant).all()
     rlist = ''
     for r in hw_restaurant:
-        rlist += r.id
+        rlist += str(r.id)
         rlist += '</br>'
         print r.id                    # Not printing database values, printing local object attribute?
         rlist += r.name
@@ -51,6 +51,9 @@ def HelloWorld():
 	
     print items
     output = ''
+    output += rlist
+    output += '\n'
+    output += '\n'
     for i in items:
         output += i.name
         output += '</br>'
