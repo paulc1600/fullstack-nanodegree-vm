@@ -22,7 +22,7 @@ def HelloWorld():
     print filter_id1
     print filter_id
     print restaurant.name
-    items = session.query(MenuItem).filter_by(restaurant_id = filter_id)
+    items = session.query(MenuItem).filter_by(restaurant_id = '1')
     print items
     output = ''
     for i in items:
