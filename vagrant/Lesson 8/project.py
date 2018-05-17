@@ -15,9 +15,16 @@ session = DBSession()
 @app.route('/')
 @app.route('/hello')
 def HelloWorld():
-    hw_restaurant = session.query(Restaurant).first()
-    print hw_restaurant.id                    # Not printing database values, printing local object attribute? 
-    print hw_restaurant.name                  # Not printing database values, printing local object attribute?
+    hw_restaurant = session.query(Restaurant).all()
+    rlist = ''
+    for r in hw_restaurant:
+        rlist += r.id
+        rlist += '</br>'
+        print r.id                    # Not printing database values, printing local object attribute?
+        rlist += r.name
+        rlist += '</br>'
+        print r.name                  # Not printing database values, printing local object attribute?
+    
 	# ------------------------------------------------------- attempt A
     # items = session.query(MenuItem).filter_by(restaurant_id = Restaurant.id) = get ALL menu items???
 	# ------------------------------------------------------- attempt B
@@ -34,7 +41,13 @@ def HelloWorld():
     # items = session.query(MenuItem).filter_by(restaurant_id = restaurant.id).all() = Creates syntax error
     # NameError: global name 'restaurant' is not defined
 	# ------------------------------------------------------- attempt E (fullstack solution v2)
-    items = session.query(MenuItem).filter_by(restaurant_id = hw_restaurant.id).all()
+    items = session.query(MenuItem).filter_by(restaurant_id = r.id).all()
+    # 1
+    # Pizza Palace
+    # []
+    # 
+    # 50.204.76.254 - - [17/May/2018 14:24:40] "GET /hello HTTP/1.1" 200 -
+	
 	
     print items
     output = ''
