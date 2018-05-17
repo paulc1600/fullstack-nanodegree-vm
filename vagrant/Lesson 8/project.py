@@ -22,6 +22,8 @@
 # - - [17/May/2018 14:24:40] "GET /hello HTTP/1.1" 200 -
 # ------------------------------------------------------- attempt F (fullstack solution v3)
 # items = session.query(MenuItem).filter_by(restaurant_id = r.id).first() = returns nothing in items
+# ------------------------------------------------------- attempt G (fullstack solution v3)
+# items = session.query(MenuItem).filter(restaurant_id == r.id).first() = 'restaurant_id' not global name???
 	
 from flask import Flask
 from sqlalchemy import create_engine
@@ -44,7 +46,7 @@ def HelloWorld():
     for r in hw_restaurant:
         rlist += '<h3> ' + str(r.id) + '\t' + r.name + ' <\h3></br>' 
         print str(r.id) + '\t' + r.name   # Not printing database values, printing local object attribute?
-        items = session.query(MenuItem).filter(restaurant_id == r.id).first()
+        items = session.query(MenuItem).filter(MenuItem.restaurant_id == r.id).first()
 		
         for i in items:
             rlist += i.name
