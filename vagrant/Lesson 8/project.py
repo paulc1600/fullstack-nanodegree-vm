@@ -15,11 +15,12 @@ session = DBSession()
 @app.route('/')
 @app.route('/hello')
 def HelloWorld():
-    restaurant = session.query(Restaurant).first()
-    print Restaurant.id
-    print Restaurant.name
-    items = session.query(MenuItem).filter_by(restaurant_id = Restaurant.id)
-
+    hw_restaurant = session.query(Restaurant).first()
+    print hw_restaurant.id                    # Not printing database values, printing local object attribute? 
+    print hw_restaurant.name                  # Not printing database values, printing local object attribute?
+    # items = session.query(MenuItem).filter_by(restaurant_id = Restaurant.id) = get ALL menu items???
+    items = session.query(MenuItem).filter_by(restaurant_id = hw_restaurant.id)
+	
     print items
     output = ''
     for i in items:
