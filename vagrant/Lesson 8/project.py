@@ -31,8 +31,11 @@ def HelloWorld():
     # items = session.query(MenuItem).filter_by(restaurant_id = '1') = breaks 2nd query
 	# Console output same as attempt B
 	# ------------------------------------------------------- attempt D (fullstack solution)
-    items = session.query(MenuItem).filter_by(restaurant_id = restaurant.id).all()
-    
+    # items = session.query(MenuItem).filter_by(restaurant_id = restaurant.id).all() = Creates syntax error
+    # NameError: global name 'restaurant' is not defined
+	# ------------------------------------------------------- attempt E (fullstack solution v2)
+	items = session.query(MenuItem).filter_by(restaurant_id = hw_restaurant.id).all()
+	
     print items
     output = ''
     for i in items:
