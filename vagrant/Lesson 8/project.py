@@ -28,8 +28,11 @@ def HelloWorld():
 	# FROM menu_item
 	# WHERE menu_item.restaurant_id = ?
     # ------------------------------------------------------- attempt C
-    items = session.query(MenuItem).filter_by(restaurant_id = '1') 
-	
+    # items = session.query(MenuItem).filter_by(restaurant_id = '1') = breaks 2nd query
+	# Console output same as attempt B
+	# ------------------------------------------------------- attempt D (fullstack solution)
+    items = session.query(MenuItem).filter_by(restaurant_id = restaurant.id).all()
+    
     print items
     output = ''
     for i in items:
