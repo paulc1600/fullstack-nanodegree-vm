@@ -29,6 +29,7 @@ from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
+
 app = Flask(__name__)
 
 engine = create_engine('sqlite:///restaurantmenu.db')
@@ -41,20 +42,18 @@ session = DBSession()
 @app.route('/')
 @app.route('/hello')
 def HelloWorld():
-    hw_restaurant = session.query(Restaurant).all()
-    rlist = ''
-    for r in hw_restaurant:
-        rlist += '<h3> ' + str(r.id) + '\t' + r.name + ' <\h3></br>' 
-        print str(r.id) + '\t' + r.name   # Not printing database values, printing local object attribute?
-        items = session.query(MenuItem).filter_by(restaurant_id = Restaurant.id).first()
-		
-        for i in items:
-            rlist += i.name
-            rlist += '</br>'
-        rlist += '</br></br>'
-		
-    print rlist
-    return rlist
+    restaurant = session.query(Restaurant).first()
+    items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
+    output = ''
+    for i in items:
+        output += i.name
+        output += '</br>'
+        output += i.price
+        output += '</br>'
+        output += i.description
+        output += '</br>'
+        output += '</br>'
+    return output
 
 if __name__ == '__main__':
     app.debug = True
