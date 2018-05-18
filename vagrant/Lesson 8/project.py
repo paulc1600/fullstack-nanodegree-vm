@@ -46,7 +46,7 @@ def HelloWorld():
     for r in hw_restaurant:
         rlist += '<h3> ' + str(r.id) + '\t' + r.name + ' <\h3></br>' 
         print str(r.id) + '\t' + r.name   # Not printing database values, printing local object attribute?
-        items = session.query(MenuItem).filter_by(MenuItem.restaurant_id = Restaurant.id).first()
+        items = session.query(MenuItem).filter_by(restaurant_id = Restaurant.id).first()
 		
         for i in items:
             rlist += i.name
