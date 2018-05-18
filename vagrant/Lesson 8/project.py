@@ -52,8 +52,9 @@ def HelloWorld():
 	
     items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
     dbg_items = ''
-    dbg_items = str(items[0])
+    dbg_items = str(items)
     print "One item = " + dbg_items
+    print "Outside the loop ..."
 	
     output = ''
     for i in items:
