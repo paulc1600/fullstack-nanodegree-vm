@@ -43,9 +43,21 @@ session = DBSession()
 @app.route('/hello')
 def HelloWorld():
     restaurant = session.query(Restaurant).first()
+    rid = ''
+    rname = ''
+    rid = str(Restaurant.id)
+    rname = str(Restaurant.name)
+    print "Rest ID = " + rid
+    print "Rest Name = " + rname	
+	
     items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
+    dbg_items = ''
+    dbg_items = str(items[0])
+    print "One item = " + dbg_items
+	
     output = ''
     for i in items:
+	    print "Made it inside the loop ..."   
         output += i.name
         output += '</br>'
         output += i.price
