@@ -45,15 +45,15 @@ def HelloWorld():
     restaurant = session.query(Restaurant).first()
     rid = ''
     rname = ''
-    rid = Restaurant.id
-    rname = Restaurant.name
-    print "Rest ID = " + rid
-    print "Rest Name = " + rname	
+    rid = restaurant.id
+    rname = restaurant.name
+    print rid
+    print rname	
 	
     items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
     dbg_items = ''
     dbg_items = items
-    print "One item = " + dbg_items
+    print dbg_items
     print "Outside the loop ..."
 	
     output = ''
