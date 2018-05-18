@@ -57,7 +57,7 @@ def HelloWorld():
 	
     output = ''
     for i in items:
-	    print "Made it inside the loop ..."   
+        print "Made it inside the loop ..."   
         output += i.name
         output += '</br>'
         output += i.price
