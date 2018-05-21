@@ -49,7 +49,7 @@ def restaurantMenu(restaurant_id):
     rid = ''
     rname = ''
     rid = restaurant_id
-    rname = restaurant.name
+    rname = restaurants.name
     print(rid)
     print(rname)	
 	
