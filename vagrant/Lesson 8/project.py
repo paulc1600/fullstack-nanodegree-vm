@@ -44,7 +44,7 @@ session = DBSession()
 def restaurantMenu(restaurant_id):
     qs = 'id = ' + str(restaurant_id)
     print(qs)
-    restaurants = session.query(Restaurant).filter(qs)
+    restaurants = session.query(Restaurant).filter(text(qs))
     print(restaurants)        
     # rid = ''
     # rname = ''
