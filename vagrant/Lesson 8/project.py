@@ -45,25 +45,22 @@ def restaurantMenu(restaurant_id):
     qs1 = 'id = ' + str(restaurant_id)
     print(qs1)
     restaurants = session.query(Restaurant).filter(qs1).one()
-    print(restaurants.id)
-    print(restaurants.name)	
-    # rid = restaurant_id
-    # rname = restaurants.name	
-	
+    # print(restaurants.id)
+    # print(restaurants.name)	
+		
     qs2 = 'restaurant_id = ' + str(restaurant_id)
     items = session.query(MenuItem).filter(qs2).all()
-    print("Outside the loop ...")
 	
-    output = 'Just Testing'
-    #for i in items:
-    #    print("Made it inside the loop ...")   
-    #    output += i.name
-    #    output += '</br>'
-    #    output += i.price
-    #    output += '</br>'
-    #    output += i.description
-    #    output += '</br>'
-    #    output += '</br>'
+    output = '<h3>Menu For ' + str(restaurants.name) + '</h3>' 
+    for i in items:
+        print("Made it inside the loop ...")   
+        output += i.name
+        output += '</br>'
+        output += i.price
+        output += '</br>'
+        output += i.description
+        output += '</br>'
+        output += '</br>'
     return output
 
 if __name__ == '__main__':
