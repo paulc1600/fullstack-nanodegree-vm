@@ -42,22 +42,17 @@ session = DBSession()
 @app.route('/')
 @app.route('/restaurants/<int:restaurant_id>/')
 def restaurantMenu(restaurant_id):
-    qs = 'id = ' + str(restaurant_id)
-    print(qs)
-    restaurants = session.query(Restaurant).filter(qs).one()
-    print(restaurants)        
-    # rid = ''
-    # rname = ''
+    qs1 = 'id = ' + str(restaurant_id)
+    print(qs1)
+    restaurants = session.query(Restaurant).filter(qs1).one()
+    print(restaurants.id)
+    print(restaurants.name)	
     # rid = restaurant_id
-    # rname = restaurants.name
-    # print(rid)
-    # print(rname)	
+    # rname = restaurants.name	
 	
-    # items = session.query(MenuItem).filter_by("restaurant_id =", restaurant_id)
-    # dbg_items = []
-    # dbg_items = items
-    # print(dbg_items)
-    # print("Outside the loop ...")
+	qs2 = 'restaurant_id = ' + str(restaurant_id)
+    items = session.query(MenuItem).filter_by(qs2).all()
+    print("Outside the loop ...")
 	
     output = 'Just Testing'
     #for i in items:
