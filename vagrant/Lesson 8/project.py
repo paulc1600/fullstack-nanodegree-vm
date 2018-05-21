@@ -45,18 +45,18 @@ def restaurantMenu(restaurant_id):
     restaurants = [] 
     restaurants = session.query(Restaurant).all()
     restaurant = restaurants.filter("id =", restaurant_id)
-    print restaurant        
+    print(restaurant)        
     rid = ''
     rname = ''
     rid = restaurant_id
     rname = restaurant.name
-    print rid
-    print rname	
+    print(rid)
+    print(rname)	
 	
     items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id)
     dbg_items = []
     dbg_items = items
-    print dbg_items
+    print(dbg_items)
     print "Outside the loop ..."
 	
     output = ''
