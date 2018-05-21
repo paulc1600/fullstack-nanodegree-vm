@@ -53,7 +53,7 @@ def restaurantMenu(restaurant_id):
     print(rid)
     print(rname)	
 	
-    items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id)
+    items = session.query(MenuItem).filter_by("restaurant_id =", restaurant_id)
     dbg_items = []
     dbg_items = items
     print(dbg_items)
