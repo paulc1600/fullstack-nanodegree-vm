@@ -53,22 +53,22 @@ def restaurantMenu(restaurant_id):
     print(rid)
     print(rname)	
 	
-    items = session.query(MenuItem).filter_by("restaurant_id =", restaurant_id)
-    dbg_items = []
-    dbg_items = items
-    print(dbg_items)
-    print("Outside the loop ...")
+    #items = session.query(MenuItem).filter_by("restaurant_id =", restaurant_id)
+    #dbg_items = []
+    #dbg_items = items
+    #print(dbg_items)
+    #print("Outside the loop ...")
 	
-    output = ''
-    for i in items:
-        print("Made it inside the loop ...")   
-        output += i.name
-        output += '</br>'
-        output += i.price
-        output += '</br>'
-        output += i.description
-        output += '</br>'
-        output += '</br>'
+    output = 'Just Testing'
+    #for i in items:
+    #    print("Made it inside the loop ...")   
+    #    output += i.name
+    #    output += '</br>'
+    #    output += i.price
+    #    output += '</br>'
+    #    output += i.description
+    #    output += '</br>'
+    #    output += '</br>'
     return output
 
 if __name__ == '__main__':
