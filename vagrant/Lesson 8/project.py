@@ -40,7 +40,7 @@ session = DBSession()
 
 
 @app.route('/')
-@app.route('/restaurants/<int:restaurants_id>/')
+@app.route('/restaurants/<int:restaurant_id>/')
 def restaurantMenu(restaurant_id):
     restaurants = [] 
     restaurants = session.query(Restaurant).all()
