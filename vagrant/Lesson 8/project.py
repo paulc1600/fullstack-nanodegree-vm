@@ -50,7 +50,7 @@ def restaurantMenu(restaurant_id):
     # rid = restaurant_id
     # rname = restaurants.name	
 	
-	qs2 = 'restaurant_id = ' + str(restaurant_id)
+    qs2 = 'restaurant_id = ' + str(restaurant_id)
     items = session.query(MenuItem).filter_by(qs2).all()
     print("Outside the loop ...")
 	
