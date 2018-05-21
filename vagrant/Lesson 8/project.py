@@ -42,8 +42,9 @@ session = DBSession()
 @app.route('/')
 @app.route('/restaurants/<int:restaurant_id>/')
 def restaurantMenu(restaurant_id):
-    restaurants = [] 
-    restaurants = session.query(Restaurant).filter("id =", restaurant_id)
+    qs = 'id = ' + str(restaurant_id)
+    print(qs)
+    restaurants = session.query(Restaurant).filter(qs)
     print(restaurants)        
     rid = ''
     rname = ''
