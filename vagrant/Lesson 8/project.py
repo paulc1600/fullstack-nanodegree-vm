@@ -57,11 +57,11 @@ def restaurantMenu(restaurant_id):
     dbg_items = []
     dbg_items = items
     print(dbg_items)
-    print "Outside the loop ..."
+    print("Outside the loop ...")
 	
     output = ''
     for i in items:
-        print "Made it inside the loop ..."   
+        print("Made it inside the loop ...")   
         output += i.name
         output += '</br>'
         output += i.price
