@@ -11,6 +11,8 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+G_restaurants = None
+G_items = None
 
 @app.route('/')
 @app.route('/restaurants/<int:restaurant_id>/')
@@ -20,6 +22,8 @@ def restaurantMenu(restaurant_id):
     restaurants = session.query(Restaurant).filter(qs1).one()
     qs2 = 'restaurant_id = ' + str(restaurant_id)
     items = session.query(MenuItem).filter(qs2).all()
+	G_restaurants = restaurants
+	G_items = items
     return render_template('menu.html', restaurant=restaurants, items = items)
 
 	
@@ -32,7 +36,7 @@ def newMenuItem(restaurant_id):
         session.commit()
         return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
     else:
-        return render_template('newmenuitem.html', restaurant=restaurants, restaurant_id=restaurant_id)
+        return render_template('newmenuitem.html', restaurant=G_restaurants, restaurant_id=restaurant_id)
 
 
 	
