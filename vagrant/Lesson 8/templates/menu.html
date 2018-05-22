@@ -13,6 +13,9 @@
 <body>
 
 <h2 class="page-title">Menu for {{restaurant.name}}</h2>
+<p>
+<h3><a href = '{{url_for('newMenuItem', restaurant_id = restaurant.id) }}'>Create New Item</a></h3>
+</p>
 <div>
 <table class="table-top">
 <tr class="table-header">
