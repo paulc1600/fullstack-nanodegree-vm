@@ -48,8 +48,10 @@ p {
 .table-top {
   width: 80%;
   border-collapse: collapse;
-  border: 1px solid #ddd;
+  border: 1px solid rgb(229, 232, 234);
   padding: 15px;
+  text-align: left;
+  vertical-align: top;
 }
 
 .table-col1h,
@@ -63,17 +65,8 @@ p {
   font-size: 14px;
   font-style: normal;
   font-variant: normal;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 15.4px;
-	
-  border-top-width: 1px;
-  border-right-width: 1px;
-  border-left-width: 1px;
-  border-bottom-width: 1px;
-  margin-top: 5%;
-  margin-right: 5%;
-  margin-left: 5%;
-  margin-bottom: 5%;
 }
 
 .table-col1 {
