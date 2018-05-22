@@ -2,23 +2,28 @@
 
 <body>
 
-<h3>{{restaurant.name}}</h3>
-
-
-{% for i in items %}
-
+<h3>Menu for {{restaurant.name}}</h3>
 <div>
-
-<p>{{i.name}}</p>
-
-<p>{{i.description}}</p>
-
-<p> {{i.price}} </p>
-
-</div>
-
-
+<table style="width:90%">
+<tr>
+    <th>Item Name</th>
+    <th>Description</th> 
+    <th>Page</th>
+	<th>Edit</th>
+	<th>Delete</th>
+</tr>
+{% for i in items %}
+<tr>
+<td>{{i.name}}</td>
+<td>{{i.description}}</td>
+<td>{{i.price}}</td>
+<td><a href=url_for('editMenuItem')>Edit</a></td>
+<td><a href=url_for('deleteMenuItem')>Delete</a></td>
+</tr>
 {% endfor %}
+
+</table>
+</div>
 </body>
 
 </html>
