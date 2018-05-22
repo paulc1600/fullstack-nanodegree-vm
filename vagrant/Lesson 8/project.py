@@ -15,7 +15,6 @@ session = DBSession()
 @app.route('/restaurants/<int:restaurant_id>/')
 def restaurantMenu(restaurant_id):
     qs1 = 'id = ' + str(restaurant_id)
-    print(qs1)
     restaurants = session.query(Restaurant).filter(qs1).one()
     qs2 = 'restaurant_id = ' + str(restaurant_id)
     items = session.query(MenuItem).filter(qs2).all()
@@ -33,7 +32,9 @@ def newMenuItem(restaurant_id):
         session.commit()
         return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
     else:
-        return render_template('newmenuitem.html', restaurant_name=G_restaurants.name, restaurant_id=restaurant_id)
+        qs1 = 'id = ' + str(restaurant_id)
+        restaurants = session.query(Restaurant).filter(qs1).one()
+        return render_template('newmenuitem.html', restaurant=restaurants, restaurant_id=restaurant_id)
 
 
 	
