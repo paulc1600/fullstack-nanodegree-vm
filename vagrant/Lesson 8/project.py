@@ -22,8 +22,8 @@ def restaurantMenu(restaurant_id):
     restaurants = session.query(Restaurant).filter(qs1).one()
     qs2 = 'restaurant_id = ' + str(restaurant_id)
     items = session.query(MenuItem).filter(qs2).all()
-	G_restaurants = restaurants
-	G_items = items
+    G_restaurants = restaurants
+    G_items = items
     return render_template('menu.html', restaurant=restaurants, items = items)
 
 	
