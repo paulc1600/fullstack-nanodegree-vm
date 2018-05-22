@@ -10,18 +10,18 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>
   </head>
-<body>
+<body class="body-newitem">
 
-<h2 class="page-title">New Menu Item for {{restaurant_name}}</h2>
+<h2 class="page-title">New Menu Item for {{restaurant.name}}</h2>
 <p>
 <div>
 <form action="{{url_for('newMenuItem', restaurant_id=restaurant_id )}}" method = 'POST'>
 <p>Name:</p>
-<input type='text' size='30' name='name'>
+<input class="form-field" type='text' size='30' name='name'>
 <input type='submit' value='Create'>
 </form>
 
 </div>
 </body>
 
-</html>
+</html> 

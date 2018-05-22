@@ -32,7 +32,7 @@ def newMenuItem(restaurant_id):
         session.commit()
         return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
     else:
-        return render_template('newmenuitem.html', restaurant_id=restaurant_id)
+        return render_template('newmenuitem.html', restaurant=restaurants, restaurant_id=restaurant_id)
 
 
 	
