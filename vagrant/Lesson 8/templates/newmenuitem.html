@@ -15,12 +15,21 @@
 <h2 class="form-field">New Menu Item for {{restaurant.name}}</h2>
 <p>
 <div>
-<form class="form-field" action="{{url_for('newMenuItem', restaurant_id=restaurant_id )}}" method = 'POST'>
-<p class="form-field">Name:</p>
-<input class="form-field" type='text' size='30' name='name'>
-<input type='submit' value='Create'>
-</form>
-
+<form class="form-field" action="{{url_for('newMenuItem', restaurant_id=restaurant_id )}}" method = 'POST' id="NewItemForm"></form>
+<table class="table-top">
+<tr class="table-header">
+    <td class="table-col1h">Item Name</td>
+    <td class="table-col2h">Description</td> 
+    <td class="table-col3h">Price</td>
+	<td class="table-col4h">Action</td>
+</tr>
+<tr class="table-row">
+<td class="table-col1"><input class="form-field" type='text' size='15' name='name' form="NewItemForm"></td>
+<td class="table-col2"><input class="form-field" type='text' size='15' name='description' form="NewItemForm"></td>
+<td class="table-col3"><input class="form-field" type='text' size='15' name='price' form="NewItemForm"></td>
+<td class="table-col4"><input type='submit' value='Create' form="NewItemForm"></td>
+</tr>
+</table>
 </div>
 </body>
 
