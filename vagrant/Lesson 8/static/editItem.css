@@ -22,6 +22,9 @@ h2 {
 	font-variant: normal;
 	font-weight: bold;
 	line-height: 20px;
+	margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
 }
 
 h3 {
@@ -58,16 +61,11 @@ table, tr, td {
 .table-col1h {
   text-align: left;
   vertical-align: top;
-  padding: 15px;
-	
   font-size: 14px;
   font-style: normal;
   font-variant: normal;
   font-weight: bold;
   line-height: 15.4px;
-  
-  border-collapse: collapse;
-  border: 1px solid rgb(229, 232, 234);
 }
 
 .table-col1 {
@@ -77,6 +75,12 @@ table, tr, td {
   padding: 15px;
 }
 
+.border {
+  border-collapse: collapse;
+  border: 1px solid rgb(229, 232, 234);
+}
+
 .form-field {
-  padding: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
 }

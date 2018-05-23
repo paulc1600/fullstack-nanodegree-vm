@@ -14,25 +14,25 @@
 
 <h2>Edit Menu Item for {{name.name}}</h2>
 <p>
-<div class="form-field">
+<div>
 	<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=menu_id, item=item)}}" method = 'POST'></form>
-		<div style="float:left;margin-right:20px;">
-			<label class="table-col1h" class="form-field" for="item">Item Name</label><br>
+		<div class = "border" class="form-field" style="float:left;margin-right:20px;">
+			<label class="table-col1h" for="item">Item Name</label><br><p>
 			<input class="form-field" id="item" type='text' size='15' value='{{item.name}}' name='name'>
 		</div>
 		
-		<div style="float:left;margin-right:20px;">
-			<label class="table-col1h" for="desc">Description</label><br>
+		<div class = "border" class="form-field" style="float:left;margin-right:20px;">
+			<label class="table-col1h" for="desc">Description</label><br><p>
 			<input class="form-field" id="desc" type='text' size='30' value='{{item.description}}' name='description'>
 		</div>
 		
-		<div style="float:left;margin-right:20px;">
-			<label class="table-col1h"  for="price">Price</label><br>
+		<div class = "border" class="form-field" style="float:left;margin-right:20px;">
+			<label class="table-col1h"  for="price">Price</label><br><p>
 			<input class="form-field" id="price" type='text' size='10' value='{{item.price}}' name='price'>
 		</div>
 		
-		<div style="float:left;">
-			<label class="table-col1h"  for="button">Action</label><br>
+		<div class = "border" class="form-field" style="float:left;">
+			<label class="table-col1h"  for="button">Action</label><br><p>
 			<button type="submit" value="Edit">Edit</button>
 		</div>
 
