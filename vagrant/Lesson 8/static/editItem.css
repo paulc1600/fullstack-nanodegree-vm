@@ -1,3 +1,9 @@
+/*
+ *
+ * Edit Menu Item Page Content 
+ *
+ */
+
 body,
 html {
   margin: 0;
@@ -7,7 +13,7 @@ html {
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   font-size: 12px;
   color: black;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(222, 255, 219);
 }
 
 h2 {
@@ -40,12 +46,6 @@ table, tr, td {
     margin-bottom: 5%;
 }
 
-/*
- *
- * Main Page Content 
- *
- */
-
 .table-top {
   width: 80%;
   border-collapse: collapse;
@@ -55,11 +55,7 @@ table, tr, td {
   vertical-align: top;
 }
 
-.table-col1h,
-.table-col2h,
-.table-col3h,
-.table-col4h,
-.table-col5h {
+.table-col1h {
   text-align: left;
   vertical-align: top;
   padding: 15px;
@@ -77,53 +73,8 @@ table, tr, td {
 .table-col1 {
   text-align: left;
   vertical-align: top;
-  width: 20%;
-  padding: 15px;
-}
-
-.table-col2 {
-  text-align: left;
-  vertical-align: top;
-  width: 45%;
-  padding: 15px;
-}
-
-.table-col3 {
-  text-align: left;
-  vertical-align: top;
-  width: 15%;
-  padding: 15px;
-}
-
-.table-col4 {
-  text-align: left;
-  vertical-align: top;
-  width: 10%;
-  padding: 15px;
-}
-
-.table-col5 {
-  text-align: left;
-  vertical-align: top;
-  width: 10%;
-  padding: 15px;
-}
-
-/*
- *
- * New Menu Item Page Content 
- *
- */
- 
-.body-newitem {
-  margin: 0;
-  padding: 0;
   width: 100%;
-  height: 100%;
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-  font-size: 12px;
-  color: black;
-  background-color: rgb(214, 255, 251);
+  padding: 15px;
 }
 
 .form-field {
