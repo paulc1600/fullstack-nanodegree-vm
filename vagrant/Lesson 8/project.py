@@ -39,7 +39,7 @@ def newMenuItem(restaurant_id):
 
 	
 # Create route for editMenuItem function
-@app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/editMenuItem/', methods=['GET', 'POST']))
+@app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/editMenuItem/', methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
     qs1 = 'id = ' + str(menu_id)
     editedItem = session.query(MenuItem).filter_by(qs1).one()
