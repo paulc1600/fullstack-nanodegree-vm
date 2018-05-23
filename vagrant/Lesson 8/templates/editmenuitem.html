@@ -16,24 +16,24 @@
 <p>
 <div class="pad-horizontal">
 	<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=menu_id, item=item)}}" method = 'POST'></form>
-		<div class = "border" class="pad-horizontal" size='25' style="float:left;margin-right:20px;">
-			<label class="makebold" for="item">Item Name</label><br><p>
-			<input id="item" type='text' value='{{item.name}}' name='name'>
+		<div class="border" class="pad-horizontal" size='25' style="float:left;margin-right:20px;">
+			<label class="pad-box" for="item"><b>Item Name</b></label><br><p>
+			<input class="pad-box" id="item" type='text' value='{{item.name}}' name='name'>
 		</div>
 		
-		<div class = "border" class="pad-horizontal" size='45' style="float:left;margin-right:20px;">
-			<label class="makebold" for="desc">Description</label><br><p>
-			<input id="desc" type='text' value='{{item.description}}' name='description'>
+		<div class="border" class="pad-horizontal" size='45' style="float:left;margin-right:20px;">
+			<label class="pad-box" for="desc"><b>Description</b></label><br><p>
+			<input class="pad-box" id="desc" type='text' value='{{item.description}}' name='description'>
 		</div>
 		
-		<div class = "border" class="pad-horizontal" size='15' style="float:left;margin-right:20px;">
-			<label class="makebold"  for="price">Price</label><br><p>
-			<input id="price" type='text' value='{{item.price}}' name='price'>
+		<div class="border" class="pad-horizontal" size='15' style="float:left;margin-right:20px;">
+			<label class="pad-box" for="price"><b>Price</b></label><br><p>
+			<input class="pad-box" id="price" type='text' value='{{item.price}}' name='price'>
 		</div>
 		
-		<div class = "border" class="pad-horizontal" size='15' style="float:left;">
-			<label class="makebold"  for="button">Action</label><br><p>
-			<button type="submit" value="Edit">Edit</button>
+		<div class="border" class="pad-horizontal" size='15' style="float:left;">
+			<label class="pad-box" for="button"><b>Action</b></label><br><p>
+			<button class="pad-box" type="submit" value="Edit">Edit</button>
 		</div>
 
 		<br style="clear:both;" />

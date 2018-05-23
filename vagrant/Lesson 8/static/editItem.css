@@ -80,7 +80,14 @@ table, tr, td {
   border: 1px solid rgb(229, 232, 234);
 }
 
+.pad-box {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .pad-horizontal {
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
