@@ -43,6 +43,8 @@ def newMenuItem(restaurant_id):
 def editMenuItem(restaurant_id, menu_id):
     qs1 = 'id = ' + str(menu_id)
     editedItem = session.query(MenuItem).filter(qs1).one()
+    qs2 = 'id = ' + str(restaurant_id)
+    restaurants = session.query(Restaurant).filter(qs1).one()
 	
     if request.method == 'POST':
         if request.form['name']:
@@ -55,7 +57,7 @@ def editMenuItem(restaurant_id, menu_id):
     else:
         # USE THE RENDER_TEMPLATE FUNCTION BELOW TO SEE THE VARIABLES YOU
         # SHOULD USE IN YOUR EDITMENUITEM TEMPLATE
-        return render_template('editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem)
+        return render_template('editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem, name=restaurants)
 
 
 # Task 3: Create a route for deleteMenuItem function here
