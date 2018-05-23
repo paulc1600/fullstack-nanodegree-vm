@@ -68,7 +68,7 @@ def deleteMenuItem(restaurant_id, menu_id):
         session.delete(DelItem)
         session.commit()     
         return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
-	else:
+    else:
         return render_template('deletemenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=DelItem)
 
 
