@@ -15,19 +15,17 @@
 <h2 class="form-field">Edit Menu Item for {{name.name}}</h2>
 <p>
 <div>
-<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=menu_id, item=item)}}" method = 'POST' id="EdiItemForm"></form>
 <table class="table-top">
 <tr class="table-header">
-    <td class="table-col1h">Item Name</td>
-    <td class="table-col2h">Description</td> 
-    <td class="table-col3h">Price</td>
-	<td class="table-col4h">Action</td>
+    <td class="table-col1h">Item Name &emsp; Description &emsp; Price &emsp; Action</td>
 </tr>
 <tr class="table-row">
-<td class="table-col1"><input class="form-field" type='text' size='15' value='{{item.name}}' name='name' form="EditItemForm"></td>
-<td class="table-col2"><input class="form-field" type='text' size='30' value='{{item.description}}' name='description' form="EditItemForm"></td>
-<td class="table-col3"><input class="form-field" type='text' size='10' value='{{item.price}}' name='price' form="EditItemForm"></td>
-<td class="table-col4"><input type='submit' value='Edit' form="EditItemForm"></td>
+<td class="table-col1">
+    <form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=menu_id, item=item)}}" method = 'POST' id="EdiItemForm"></form>
+    <input class="form-field" type='text' size='15' value='{{item.name}}' name='name' form="EditItemForm">
+    &emsp; <input class="form-field" type='text' size='30' value='{{item.description}}' name='description' form="EditItemForm">
+    &emsp; <input class="form-field" type='text' size='10' value='{{item.price}}' name='price' form="EditItemForm">
+    &emsp; <input type='submit' value='Edit' form="EditItemForm"></td>
 </tr>
 </table>
 </div>
