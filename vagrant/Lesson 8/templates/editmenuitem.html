@@ -31,15 +31,17 @@
 			<input class="pad-box" id="price" size='10' type='text' value='{{item.price}}' name='price' form="erecord">
 		</div>
 		
-		<div class="border" min-width='15%' style="float:left;">
+		<div class="border" min-width='15%' style="float:left;margin-right:20px;">
 			<label class="pad-box" for="button" form="erecord"><b>Action</b></label><br><p></p>
 			<button class="pad-box" type="submit" value="Edit" form="erecord">Edit</button>
 		</div>
 
+		<div min-width='15%' style="float:left;">
+			<label class="pad-box" for="button" form="erecord"><b></b></label><br><p></p>
+			<h3><a href={{url_for('restaurantMenu', restaurant_id = name.id)}}>Cancel this Edit</a></h3>
+		</div>
 		<br style="clear:both;" />
 	</form>
-	<p></P>
-	<h2><a href={{url_for('restaurantMenu', restaurant_id = name.id)}}>Cancel this Edit</a></h2>
 </div>
 </body>
 </html> 
