@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href={{url_for('static', filename='editItem.css')}}>
   </head>
-<body class="body-edititem">
+<body>
 
 <h2>Edit Menu Item for {{name.name}}</h2>
 <p>
-<div>
+<div class="form-field">
 	<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=menu_id, item=item)}}" method = 'POST'></form>
 		<div style="float:left;margin-right:20px;">
-			<label for="item">Item Name</label>
+			<label class="form-field" for="item">Item Name</label>
 			<input class="form-field" id="item" type='text' size='15' value='{{item.name}}' name='name'>
 		</div>
 		
@@ -33,7 +33,7 @@
 		
 		<div style="float:left;">
 			<label for="button">Action</label>
-			<input id="button='submit' value='Edit'>
+			<input id="button" action='submit' value='Edit'>
 		</div>
 
 		<br style="clear:both;" />
