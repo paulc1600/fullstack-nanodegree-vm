@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Udacity Lesson 8: Project Code">
+    <meta name="keywords" content="HTML,CSS">
+    <meta name="author" content="Paul Carreiro">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delete Restaurant Menu Item</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href={{url_for('static', filename='deleteItem.css')}}>
+  </head>
+<body>
+
+<h2>Are you sure you want to delete {{item.name}}?</h2>
+<p>
+<div class="pad-horizontal">
+	<form action="{{ url_for('deleteMenuItem', restaurant_id=item.restaurant_id, menu_id=item.id)}}" method = 'POST' id="erecord"></form>
+		<div class="border" min-width='20%' style="float:left;margin-right:20px;">
+			<label class="pad-box" for="button" form="erecord"><b>Action</b></label><br><p></p>
+			<button class="pad-box" type="submit" value="Delete" form="erecord">Delete</button>
+		</div>
+
+		<div min-width='20%' style="float:left;">
+			<label class="pad-box" for="button" form="erecord"><b></b></label><br><p></p>
+			<h3><a href={{url_for('restaurantMenu', restaurant_id = name.id)}}>Cancel this Delete</a></h3>
+		</div>
+		<br style="clear:both;" />
+	</form>
+</div>
+</body>
+</html> 
