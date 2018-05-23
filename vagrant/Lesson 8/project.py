@@ -55,15 +55,21 @@ def editMenuItem(restaurant_id, menu_id):
         session.commit()
         return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
     else:
-        # USE THE RENDER_TEMPLATE FUNCTION BELOW TO SEE THE VARIABLES YOU
-        # SHOULD USE IN YOUR EDITMENUITEM TEMPLATE
         return render_template('editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem, name=restaurants)
 
 
 # Task 3: Create a route for deleteMenuItem function here
 @app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/deleteMenuItem/')
 def deleteMenuItem(restaurant_id, menu_id):
-    return "page to delete a menu item. Task 3 complete!"
+    qs1 = 'id = ' + str(menu_id)
+    DelItem = session.query(MenuItem).filter(qs1).one()
+	
+    if request.method == 'POST':
+        session.delete(DelItem)
+        session.commit()     
+        return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
+	else:
+        return render_template('deletemenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=DelItem)
 
 
 if __name__ == '__main__':
