@@ -16,6 +16,17 @@
 <p>
 <h3><a href = '{{url_for('newMenuItem', restaurant_id = restaurant.id) }}'>Create New Item</a></h3>
 </p>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <p>
+	<ul>
+	    {% for message in messages %}
+		<li><b>{{ message }}</b></li>
+		{% endfor %}
+	</ul>
+    </p>
+	{% endif %}
+{% endwith %}
 <div>
 <table class="table-top">
 <tr class="table-header">
