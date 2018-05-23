@@ -44,7 +44,7 @@ def editMenuItem(restaurant_id, menu_id):
     qs1 = 'id = ' + str(menu_id)
     editedItem = session.query(MenuItem).filter(qs1).one()
     qs2 = 'id = ' + str(restaurant_id)
-    restaurants = session.query(Restaurant).filter(qs1).one()
+    restaurants = session.query(Restaurant).filter(qs2).one()
 	
     if request.method == 'POST':
         if request.form['name']:
