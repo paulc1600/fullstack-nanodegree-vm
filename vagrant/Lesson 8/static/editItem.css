@@ -58,7 +58,7 @@ table, tr, td {
   vertical-align: top;
 }
 
-.table-col1h {
+.makebold {
   text-align: left;
   vertical-align: top;
   font-size: 14px;
@@ -80,7 +80,7 @@ table, tr, td {
   border: 1px solid rgb(229, 232, 234);
 }
 
-.form-field {
-  padding-left: 5%;
-  padding-right: 5%;
+.pad-horizontal {
+  padding-left: 10%;
+  padding-right: 10%;
 }
