@@ -17,23 +17,23 @@
 <div class="form-field">
 	<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=menu_id, item=item)}}" method = 'POST'></form>
 		<div style="float:left;margin-right:20px;">
-			<label class="form-field" for="item">Item Name</label>
+			<label class="table-col1h" class="form-field" for="item">Item Name</label><br>
 			<input class="form-field" id="item" type='text' size='15' value='{{item.name}}' name='name'>
 		</div>
 		
 		<div style="float:left;margin-right:20px;">
-			<label for="desc">Description</label>
+			<label class="table-col1h" for="desc">Description</label><br>
 			<input class="form-field" id="desc" type='text' size='30' value='{{item.description}}' name='description'>
 		</div>
 		
 		<div style="float:left;margin-right:20px;">
-			<label for="price">Price</label>
+			<label class="table-col1h"  for="price">Price</label><br>
 			<input class="form-field" id="price" type='text' size='10' value='{{item.price}}' name='price'>
 		</div>
 		
 		<div style="float:left;">
-			<label for="button">Action</label>
-			<input id="button" action='submit' value='Edit'>
+			<label class="table-col1h"  for="button">Action</label><br>
+			<button type="submit" value="Edit">Edit</button>
 		</div>
 
 		<br style="clear:both;" />
