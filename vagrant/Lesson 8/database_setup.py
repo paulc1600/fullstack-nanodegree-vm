@@ -27,16 +27,16 @@ class MenuItem(Base):
 
 # We added this serialize function to be able to send JSON objects in a
 # serializable format
-    @property
-    def serialize(self):
+@property
+def serialize(self):
 
-        return {
-            'name': self.name,
-            'description': self.description,
-            'id': self.id,
-            'price': self.price,
-            'course': self.course,
-        }
+	return {
+		'name': self.name,
+		'description': self.description,
+		'id': self.id,
+		'price': self.price,
+		'course': self.course,
+	}
   
 ### End of File Setting ###
 engine = create_engine('sqlite:///restaurantmenu.db')
