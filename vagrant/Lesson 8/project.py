@@ -14,8 +14,10 @@ session = DBSession()
 # Return JSON version of menu if requested through this URL
 @app.route('/restaurants/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
-    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    items = session.query(MenuItem).filter_by(restaurant_id=restaurant_id).all()
+    qs1 = 'id = ' + str(restaurant_id)
+    restaurants = session.query(Restaurant).filter(qs1).one()
+    qs2 = 'restaurant_id = ' + str(restaurant_id)
+    items = session.query(MenuItem).filter(qs2).all()
     return jsonify(MenuItems=[i.serialize for i in items])
 
 @app.route('/')
