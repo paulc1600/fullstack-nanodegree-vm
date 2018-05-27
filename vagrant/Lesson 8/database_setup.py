@@ -40,7 +40,7 @@ class MenuItem(Base):
 		    'description': self.description,
 		    'id': self.id,
 		    'price': self.price,
-		    'course': self.course
+		    'course': self.course,
 	    }
   
 ### End of File Setting ###
