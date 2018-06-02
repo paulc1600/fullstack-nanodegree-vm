@@ -1,0 +1,496 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 12px;
+  background-color: white;
+  color: white;
+}
+
+h1 {
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+
+h3 {
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+
+p {
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+header, section, article, div {
+  box-sizing: border-box;
+
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+ *
+ * Main Page Content -- Defines Super Grid
+ *
+ */
+
+main {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  color: black;
+}
+
+/*
+ *
+ * Left Aside Panel -- No Purpose Colored Boxes
+ *
+ */
+
+aside {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 8;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.colorbox-top {
+  height: 8vmin;
+  width: 8vmin;
+  align-content:right;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+  margin-top: 2vmin;
+  margin-right: 20%;
+  margin-left: 40%;
+  margin-bottom: 2vmin;
+  border-color: black;
+}
+
+.colorbox-bottom {
+  min-height: 1vmin;
+  align-content:right;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+  margin-top: 0;
+  margin-right: 26%;
+  margin-left: 29%;
+  margin-bottom: 2vmin;
+  border-color: black;
+}
+.colorit_white {
+  background-color: white;
+}
+
+.colorbox-photo {
+  height: 7vmin;
+  width: 7vmin;
+}
+
+.font-colorbox {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 14px;
+  vertical-align: top;
+  text-align: left;
+  transform: none;
+  color: #212121;
+}
+
+/*
+ *
+ * Header Format -- Logo & Portfolio Owner @ Top of Web Page
+ *
+ */
+
+.header-grid {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 16% 42% 42%;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 55px;
+}
+
+.header-corner {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: white;
+}
+
+.header-logo {
+  vertical-align: top;
+  max-height: 60px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin-top: 20px;
+  margin-bottom: 0;
+  margin-left: 8px;
+  margin-right: 0;
+  border-top-width: 5px;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: white;
+
+}
+
+.header-powner {
+  vertical-align: top;
+  height: 34px;
+  max-width: 100%;
+  white-space: nowrap;      /* Kill Wrap or wreck text */
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin-top: 20px;
+  margin-bottom: 1px;
+  margin-left: 0;
+  margin-right: 8px;
+  border-top-width: 5px;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: white;
+  background-color: white;
+}
+
+.header-pdesc {
+  height: 24px;
+  max-width: 100%;
+  white-space: nowrap;      /* Kill Wrap or wreck text */
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 8px;
+  background-color: white;
+}
+
+.header-ruler {
+  background-color: black;
+  height: 2px;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 8px;
+  margin-right: 8px;
+  border-top-width: 0;
+  border-right-width: 5px;
+  border-bottom-width: 0;
+  border-left-width: 5px;
+  border-color: white;
+}
+
+.font-powner {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 30px;
+  line-height: 30px;
+  vertical-align: top;
+  text-align: right;
+  color: #212121;
+}
+
+.font-pdesc {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 22px;
+  vertical-align: top;
+  text-align: right;
+  color: #212121;
+}
+
+/*
+ *
+ * Photo Grid Array - with portfolio project details
+ *
+ */
+
+.photo-grid {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 16% 42% 42%;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 55px;
+}
+.hero-photo {
+  height: 40vmin;
+  width: 100%;
+}
+
+.one-photo {
+  height: 28vmin;
+  width: auto;
+  max-width: 100%;
+}
+
+.box11 {
+  /* padding: 5px; */
+  margin: 8px;
+  border: 5px;
+  border-color: white;
+}
+
+.gHero {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.gFW {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+/* Article 1 - row 1 data */
+.gA1r1 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: white;
+}
+.gA2r1 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: white;
+}
+/* Article 3 - row 1 data */
+/* Now under article 1    */
+.gA3r1 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 8;
+  grid-row-end: 9;
+  background-color: white;
+}
+/* Article 1 - row 2 data */
+.gA1r2 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  background-color: white;
+}
+.gA2r2 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  background-color: white;
+}
+/* Article 3 - row 2 data */
+/* Now under article 1    */
+.gA3r2 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 9;
+  grid-row-end: 10;
+  background-color: white;
+}
+/* Article 1 - row 3 data */
+.gA1r3 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color: white;
+}
+.gA2r3 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  background-color: white;
+}
+/* Article 3 - row 3data */
+/* Now under article 1    */
+.gA3r3 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 10;
+  grid-row-end: 11;
+  background-color: white;
+}
+/* Article 1 - row 4 data */
+.gA1r4 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 6;
+  grid-row-end: 7;
+  background-color: white;
+}
+.gA2r4 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 6;
+  grid-row-end: 7;
+  background-color: white;
+}
+/* Article 3 - row 4 data */
+/* Now under article 1    */
+.gA3r4 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 11;
+  grid-row-end: 12;
+  background-color: white;
+}
+/* Article 1 - row 5 data */
+.gA1r5 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 7;
+  grid-row-end: 8;
+}
+.gA2r5 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 7;
+  grid-row-end: 8;
+}
+/* Article 3 - row 5 data */
+/* Now under article 1    */
+.gA3r5 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 12;
+  grid-row-end: 13;
+}
+
+.font-section-title {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 22px;
+  vertical-align: top;
+  text-align: left;
+  color: #7d97ad;
+}
+
+.font-proj-title {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 22px;
+	font-style: normal;
+	font-variant:normal;
+	font-weight: 500;
+	line-height: 24px;
+  vertical-align: top;
+  text-transform: uppercase;
+  text-align:center;
+  color: #2d3c49;
+}
+
+.font-proj-link {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	font-variant:normal;
+	font-weight: 500;
+	line-height: 12px;
+  vertical-align: top;
+  text-align:center;
+  color: #2d3c49;
+}
+
+/* This code is by CHRIS COYIER and appears on site:                  */
+/* https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/  */
+/* Not part of code to be evaluated. Not written by me. --- Paul   */
+.dont-break-out {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* This code designed and written by Thierry Koblentz and presented on A List Apart in 2009 */
+/* See also  https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php      */
+/* Not part of code to be evaluated. Not written by me. --- Paul                            */
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

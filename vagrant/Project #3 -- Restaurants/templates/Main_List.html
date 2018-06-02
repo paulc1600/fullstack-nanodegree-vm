@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- 3rd Udacity Submission - Restaurant App -->
+<html lang="en">
+<head>  
+    <meta charset="utf-8">     
+    <meta name="viewport" content="width=device-width,initial-scale=1">  
+    <meta name="description" content="Udacity Project 3: The Gourmet's Friend">  
+    <meta name="keywords" content="HTML,CSS">  
+    <meta name="author" content="Paul Carreiro">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <title>The Gourmet's Friend</title> 
+    <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>  
+    <link rel="stylesheet" media="screen and (min-width:500px)" href={{url_for('static', filename='project.css')}}>
+</head>  
+
+<body>
+	<header class="header-simple">
+		<section class="sect-grid-top">
+			<img class="header-logo" src={{url_for('static', filename='Main_Banner.jpg')}} alt="Gourmets Friend Page">
+			<div class="division-box"><p></p></div>
+		</section>
+	</header>
+
+    <main role="main">
+		<section class="sect-grid-body">
+			  <article class="one_rest_rec">
+				<div class="rrgrid11">Restaurant Name</div>
+				<div class="rrgrid21">1234 Food Court</div>
+				<div class="rrgrid31">Some City, CA 90000</div>
+				<div class="rrgrid41"></div>
+				<div class="rrgrid51">Call for Reservations</div>
+				<div class="rrgrid61">(408) 555-1212</div>
+				<div class="rrgrid71"></div>
+				
+				<div class="rrgrid12">Hours Mon: 11:00AM - 11:00PM</div>
+				<div class="rrgrid22">Hours Tue: 11:00AM - 11:00PM</div>
+				<div class="rrgrid32">Hours Wed: 11:00AM - 11:00PM</div>
+				<div class="rrgrid42">Hours Thu: 11:00AM - 11:00PM</div>
+				<div class="rrgrid52">Hours Fri: 11:00AM - 11:00PM</div>
+				<div class="rrgrid62">Hours Sat: Closed</div>
+				<div class="rrgrid72">Hours Sun: Closed</div>
+				
+				<div class="rrgrid13"><img class="one-button" src={{url_for('static', filename='Image_Stars.jpg')}} alt="Review Stars"></div>
+				<div class="rrgrid23"></div>
+				<div class="rrgrid31"></div>
+				<div class="rrgrid41"><img class="one-button" src={{url_for('static', filename='Button_ER.jpg')}} alt="Edit Restaurant"></div>
+				<div class="rrgrid51"></div>
+				<div class="rrgrid61"><img class="one-button" src={{url_for('static', filename='Button_DR.jpg')}} alt="Delete Restaurant"></div>
+				<div class="rrgrid71"></div>
+			  </article>
+		</section>
+    </main>
+
+	<section class="button-bar">
+		<img class="one-button" src={{url_for('static', filename='Button_ANR.jpg')}} alt="Add New Restaurant">
+	</section>
+	
+	<footer class="sect-grid-footer">
+	    <div class="footer-s1">Social Media Links</div>
+	    <div class="footer-s2">The Gourmet's Friend<br>1234 Some Avenue<br>San Jose, CA 90000</div>
+	    <div class="footer-s3">Site Map | Contact Us | Reviews</div>
+    </footer>
+</body>
+</html>

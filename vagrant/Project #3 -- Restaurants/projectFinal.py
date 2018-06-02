@@ -20,7 +20,7 @@ session = DBSession()
 @app.route('/restaurant/')
 @app.route('/restaurant/list/')
 def showRestaurants():
-	return 'This page shows a list of all restaurants.'
+	return render_template('Main_List.html')
 
 # ------------------------------------------------------------#
 #  Create A New Restaurant Record                             #
