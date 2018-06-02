@@ -43,7 +43,7 @@ def editRestaurant(restaurant_id):
 #   Template: Rest_Del.html                                   #
 # ------------------------------------------------------------#	
 @app.route('/restaurant/<int:restaurant_id>/delete/')
-def newRestaurant(restaurant_id):
+def deleteRestaurant(restaurant_id):
 	return 'This page deletes restaurant record ' + str(restaurant_id) + '.'
 
 # ------------------------------------------------------------#
