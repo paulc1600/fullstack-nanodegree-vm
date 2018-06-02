@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Udacity Lesson 8: Project Code">
+    <meta name="keywords" content="HTML,CSS">
+    <meta name="author" content="Paul Carreiro">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Restaurant Menus Database</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>
+  </head>
+<body>
+
+<h2 class="page-title">Menu for {{restaurant.name}}</h2>
+<p>
+<h3><a href = '{{url_for('newMenuItem', restaurant_id = restaurant.id) }}'>Create New Item</a></h3>
+</p>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <p>
+	<ul>
+	    {% for message in messages %}
+		<li><b>{{ message }}</b></li>
+		{% endfor %}
+	</ul>
+    </p>
+	{% endif %}
+{% endwith %}
+<div>
+<table class="table-top">
+<tr class="table-header">
+    <td class="table-col1h">Item Name</td>
+    <td class="table-col2h">Description</td> 
+    <td class="table-col3h">Price</td>
+	<td class="table-col4h">Edit</td>
+	<td class="table-col5h">Delete</td>
+</tr>
+{% for i in items %}
+<tr class="table-row">
+<td class="table-col1">{{i.name}}</td>
+<td class="table-col2">{{i.description}}<p></p></td>
+<td class="table-col3">{{i.price}}</td>
+<td class="table-col4"><a href={{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}>Edit</a></td>
+<td class="table-col5"><a href={{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}>Delete</a></td>
+</tr>
+{% endfor %}
+
+</table>
+</div>
+</body>
+
+</html>
