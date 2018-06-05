@@ -11,23 +11,23 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-# Return JSON version of menu if requested through this URL
-@app.route('/restaurants/<int:restaurant_id>/menu/JSON')
-def restaurantMenuJSON(restaurant_id):
-    qs1 = 'id = ' + str(restaurant_id)
-    restaurants = session.query(Restaurant).filter(qs1).one()
-    qs2 = 'restaurant_id = ' + str(restaurant_id)
-    items = session.query(MenuItem).filter(qs2).all()
-    return jsonify(MenuItems=[i.serialize for i in items])
 
-# Return JSON version of single menu item if requested through this URL
-@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
-def restaurantMenuItemJSON(restaurant_id, menu_id):
-    qs1 = 'id = ' + str(menu_id)
-    jsonItem = session.query(MenuItem).filter(qs1).one()
-    return jsonify(MenuItems=jsonItem.serialize)
-	
+# ------------------------------------------------------------#
+#  *******    The Gourmet's Friend Index Page    ********     #
+# ------------------------------------------------------------#	
 @app.route('/')
+@app.route('/restaurant/')
+@app.route('/restaurant/list')
+def showRestaurants():
+	return 'This page shows a list of all restaurants.'
+
+# ------------------------------------------------------------#
+#  Create A New Restaurant Record                             #
+# ------------------------------------------------------------#	
+@app.route('/restaurant/new')
+def newRestaurants():
+	return 'This page creates a new restaurant record.'
+	
 @app.route('/restaurants/<int:restaurant_id>/')
 def restaurantMenu(restaurant_id):
     qs1 = 'id = ' + str(restaurant_id)
@@ -91,6 +91,28 @@ def deleteMenuItem(restaurant_id, menu_id):
         return render_template('deletemenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=DelItem)
 
 
+# ------------------------------------------------------------#
+#  External API Section                                       #
+# ------------------------------------------------------------#
+# Return JSON version of menu if requested through this URL
+@app.route('/restaurants/<int:restaurant_id>/menu/JSON')
+def restaurantMenuJSON(restaurant_id):
+    qs1 = 'id = ' + str(restaurant_id)
+    restaurants = session.query(Restaurant).filter(qs1).one()
+    qs2 = 'restaurant_id = ' + str(restaurant_id)
+    items = session.query(MenuItem).filter(qs2).all()
+    return jsonify(MenuItems=[i.serialize for i in items])
+
+# Return JSON version of single menu item if requested through this URL
+@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+def restaurantMenuItemJSON(restaurant_id, menu_id):
+    qs1 = 'id = ' + str(menu_id)
+    jsonItem = session.query(MenuItem).filter(qs1).one()
+    return jsonify(MenuItems=jsonItem.serialize)		
+		
+# ------------------------------------------------------------#
+#  Main Section                                               #
+# ------------------------------------------------------------#		
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'   # Dev only!!! Normally like password. 
     app.debug = True
