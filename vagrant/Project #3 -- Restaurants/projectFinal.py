@@ -3,6 +3,20 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
 
+# ------------------------------------------------------------#
+#  (Phase 2) Temp Fake Restaurants -- until database arrives  #
+# ------------------------------------------------------------#
+restaurant = {'name': 'The CRUDdy Crab', 'id': '1'}
+
+restaurants = [{'name': 'The CRUDdy Crab', 'id': '1'}, {'name':'Blue Burgers', 'id':'2'},{'name':'Taco Hut', 'id':'3'}]
+
+#Fake Menu Items
+items = [ {'name':'Cheese Pizza', 'description':'made with fresh cheese', 'price':'$5.99','course' :'Entree', 'id':'1'}, {'name':'Chocolate Cake','description':'made with Dutch Chocolate', 'price':'$3.99', 'course':'Dessert','id':'2'},{'name':'Caesar Salad', 'description':'with fresh organic vegetables','price':'$5.99', 'course':'Entree','id':'3'},{'name':'Iced Tea', 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},{'name':'Spinach Dip', 'description':'creamy dip with fresh spinach','price':'$1.99', 'course':'Appetizer','id':'5'} ]
+item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$5.99','course' :'Entree'}
+# ------------------------------------------------------------#
+#  (Phase 2) End Temp Code                                    #
+# ------------------------------------------------------------#
+
 app = Flask(__name__)
 
 engine = create_engine('sqlite:///restaurantmenu.db')
@@ -20,7 +34,7 @@ session = DBSession()
 @app.route('/restaurant/')
 @app.route('/restaurant/list/')
 def showRestaurants():
-	return render_template('Main_List.html')
+	return render_template('Main_List.html', restaurants=restaurants)
 
 # ------------------------------------------------------------#
 #  Create A New Restaurant Record                             #
