@@ -1,0 +1,291 @@
+/*
+ *
+ * Left Aside Panel -- No Purpose Colored Boxes
+ *
+ */
+
+aside {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 8;
+}
+
+.colorbox-top {
+  height: 3.2%;
+  width: 3.2%;
+  margin-top: 2%;
+  margin-right: 20%;
+  margin-left: 40%;
+  margin-bottom: 1%;
+  border-color: black;
+}
+
+.colorbox-bottom {
+  min-height: 20px;
+  margin-top: 5%;
+  margin-right: 26%;
+  margin-left: 28%;
+  margin-bottom: 5%;
+  border-color: black;
+}
+
+.colorbox-photo {
+  height: 7vmin;
+  width: 7vmin;
+}
+
+.font-colorbox {
+  transform: none;
+  color: #212121;
+}
+
+/*
+ *
+ * Header Format -- Logo & Portfolio Owner @ Top of Web Page
+ *
+ */
+
+.header-grid {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 16% 42% 42%;
+  margin-right: 55px;
+}
+
+.header-logo {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin-left: 8px;
+}
+
+.header-powner {
+  white-space: nowrap;      /* Kill Wrap or wreck text */
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin-top: 20px;
+  margin-bottom: 1px;
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+.header-pdesc {
+  white-space: nowrap;      /* Kill Wrap or wreck text */
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+.header-ruler {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.font-powner {
+  font-size: 30px;
+  line-height: 30px;
+  text-align: right;
+  color: #212121;
+}
+
+.font-pdesc {
+	font-size: 20px;
+	line-height: 22px;
+  text-align: right;
+  color: #212121;
+}
+
+/*
+ *
+ * Photo Grid Array - with portfolio project details
+ *
+ */
+
+.photo-grid {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 16% 42% 42%;
+  margin-right: 55px;
+}
+
+.one-photo {
+  max-width: 100%;
+  height: auto;
+}
+
+.box11 {
+  margin: 8px;
+  border: 5px;
+  border-color: white;
+}
+
+.gHero {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.gFW {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+/* Article 1 - row 1 data */
+.gA1r1 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: white;
+}
+
+.gA2r1 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: white;
+}
+
+/* Article 3 - row 1 data */
+/* Now under article 1    */
+.gA3r1 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 8;
+  grid-row-end: 9;
+  background-color: white;
+}
+
+/* Article 1 - row 2 data */
+.gA1r2 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  background-color: white;
+}
+
+.gA2r2 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+/* Article 3 - row 2 data */
+/* Now under article 1    */
+.gA3r2 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 9;
+  grid-row-end: 10;
+}
+
+/* Article 1 - row 3 data */
+.gA1r3 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.gA2r3 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+/* Article 3 - row 3data */
+/* Now under article 1    */
+.gA3r3 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 10;
+  grid-row-end: 11;
+}
+
+/* Article 1 - row 4 data */
+.gA1r4 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
+
+.gA2r4 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
+
+/* Article 3 - row 4 data */
+/* Now under article 1    */
+.gA3r4 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 11;
+  grid-row-end: 12;
+}
+
+/* Article 1 - row 5 data */
+.gA1r5 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 7;
+  grid-row-end: 8;
+}
+
+.gA2r5 {
+  grid-column: 3;
+  grid-column-end: 4;
+  grid-row-start: 7;
+  grid-row-end: 8;
+}
+
+/* Article 3 - row 5 data */
+/* Now under article 1    */
+.gA3r5 {
+  grid-column: 2;
+  grid-column-end: 3;
+  grid-row-start: 12;
+  grid-row-end: 13;
+}
+
+.font-section-title {
+	font-size: 28px;
+	line-height: 30px;
+  vertical-align: top;
+  text-align: left;
+  color: #7d97ad;
+}
+
+.font-proj-title {
+	font-size: 22px;
+	line-height: 24px;
+  text-align:center;
+  color: #2d3c49;
+}
+
+.font-proj-link {
+  text-align:center;
+}
