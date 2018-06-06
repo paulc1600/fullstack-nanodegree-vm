@@ -28,28 +28,98 @@
 
     <main role="main">
 		<section class="sect-grid-body">
-			<article class="one_rest_rec">
-				<div class="rrgrid11">Restaurant Name</div>
-				<div class="rrgrid21">1234 Food Court</div>
-				<div class="rrgrid31">Some City, CA 90000</div>
-				<div class="rrgrid41"></div>
-				<div class="rrgrid51">Call for Reservations</div>
-				<div class="rrgrid61">(408) 555-1212</div>
-				<div class="rrgrid71"></div>
-				
-				<div class="rrgrid12">Hours Mon: 11:00AM - 11:00PM</div>
-				<div class="rrgrid22">Hours Tue: 11:00AM - 11:00PM</div>
-				<div class="rrgrid32">Hours Wed: 11:00AM - 11:00PM</div>
-				<div class="rrgrid42">Hours Thu: 11:00AM - 11:00PM</div>
-				<div class="rrgrid52">Hours Fri: 11:00AM - 11:00PM</div>
-				<div class="rrgrid62">Hours Sat: Closed</div>
-				<div class="rrgrid72">Hours Sun: Closed</div>
+			<article class="one_rest_rec">	
+                <!-- Rest Rec Form -- Returns user Field Values for a new Restaurant record -->			
+				<form action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=menu_id, item=item)}}" method = 'POST' id="arrecord"></form>
+                    <!-- Column 1: Name, Address, and Description -->
+    				<div class="rrgrid11" class="pad-horizontal">
+						<label class="pad-box" for="name" form="arrecord"><b>Restaurant Name</b></label><br><p></p>
+						<input class="pad-box" id="name" size='20' type='text' value='' name='name' form="arrecord">
+					</div>
+					
+					<div class="rrgrid21">
+						<label class="pad-box" for="street" form="arrecord"><b>Address Street</b></label><br><p></p>
+						<input class="pad-box" id="street" size='30' type='text' value='' name='street' form="arrecord">
+					</div>
+					
+					<div class="rrgrid31">
+						<label class="pad-box" for="city" form="arrecord"><b>Address City</b></label><br><p></p>
+						<input class="pad-box" id="city" size='10' type='text' value='' name='city' form="arrecord">
+					</div>
+
+					<div class="rrgrid41">
+						<label class="pad-box" for="state" form="arrecord"><b>Address State</b></label><br><p></p>
+						<input class="pad-box" id="state" size='10' type='text' value='' name='state' form="arrecord">
+					</div>
+
+					<div class="rrgrid51">
+						<label class="pad-box" for="zip" form="arrecord"><b>Address Zip</b></label><br><p></p>
+						<input class="pad-box" id="zip" size='10' type='text' value='' name='zip' form="arrecord">
+					</div>
+
+					<div class="rrgrid61">
+						<label class="pad-box" for="phone" form="arrecord"><b>Phone</b></label><br><p></p>
+						<input class="pad-box" id="phone" size='10' type='text' value='' name='phone' form="arrecord">
+					</div>
+
+					<div class="rrgrid71"></div>
+
+					<div class="rrgrid81">
+						<label class="pad-box" for="description" form="arrecord"><b>Description</b></label><br><p></p>
+						<input class="pad-box" id="description" size='10' type='text' value='' name='description' form="arrecord">
+					</div>
+					<!-- Column 2: Restaurant opening and closing hours -->
+    				<div class="rrgrid12" class="pad-horizontal">
+						<label class="pad-box" for="openMON" form="arrecord"><b>Mon</b></label><br><p></p>
+						<input class="pad-box" id="openMON" size='10' type='text' value='' name='openMON' form="arrecord">
+						<input class="pad-box" id="closeMON" size='10' type='text' value='' name='closeMON' form="arrecord">
+					</div>
+					
+					<div class="rrgrid22">
+						<label class="pad-box" for="openTUE" form="arrecord"><b>Tue</b></label><br><p></p>
+						<input class="pad-box" id="openTUE" size='10' type='text' value='' name='openTUE' form="arrecord">
+						<input class="pad-box" id="closeTUE" size='10' type='text' value='' name='closeTUE' form="arrecord">
+					</div>
+					
+					<div class="rrgrid32">
+						<label class="pad-box" for="openWED" form="arrecord"><b>Wed</b></label><br><p></p>
+						<input class="pad-box" id="openWED" size='10' type='text' value='' name='openWED' form="arrecord">
+						<input class="pad-box" id="closeWED" size='10' type='text' value='' name='closeWED' form="arrecord">
+					</div>
+
+					<div class="rrgrid42">
+						<label class="pad-box" for="openTHR" form="arrecord"><b>Thr</b></label><br><p></p>
+						<input class="pad-box" id="openTHR" size='10' type='text' value='' name='openTHR' form="arrecord">
+						<input class="pad-box" id="closeTHR" size='10' type='text' value='' name='closeTHR' form="arrecord">
+					</div>
+
+					<div class="rrgrid52">
+						<label class="pad-box" for="openFRI" form="arrecord"><b>Fri</b></label><br><p></p>
+						<input class="pad-box" id="openFRI" size='10' type='text' value='' name='openFRI' form="arrecord">
+						<input class="pad-box" id="closeFRI" size='10' type='text' value='' name='closeFRI' form="arrecord">
+					</div>
+
+					<div class="rrgrid62">
+						<label class="pad-box" for="openSAT" form="arrecord"><b>Sat</b></label><br><p></p>
+						<input class="pad-box" id="openSAT" size='10' type='text' value='' name='openSAT' form="arrecord">
+						<input class="pad-box" id="closeSAT" size='10' type='text' value='' name='closeSAT' form="arrecord">
+					</div>
+
+					<div class="rrgrid72">
+						<label class="pad-box" for="openSUN" form="arrecord"><b>Sun</b></label><br><p></p>
+						<input class="pad-box" id="openSUN" size='10' type='text' value='' name='openSUN' form="arrecord">
+						<input class="pad-box" id="closeSUN" size='10' type='text' value='' name='closeSUN' form="arrecord">
+					</div>
+					
+					<div class="rrgrid82">
+						<button class="add-button" type="submit" value="Add" form="arrecord">Add</button>
+					</div>
+				</form>			
 			</article>
 		</section>
     </main>
 
-	<section class="button-bar2">
-		<a href={{url_for('newRestaurant')}}><img class="add-button" src={{url_for('static', filename='Button_AR.jpg')}} alt="Add New Restaurant"></a>
+	<section class="button-bar1">
 		<a href={{url_for('showRestaurants')}}><img class="cancel-button" src={{url_for('static', filename='Button_CN.jpg')}} alt="Cancel"></a>
 	</section>
 	
