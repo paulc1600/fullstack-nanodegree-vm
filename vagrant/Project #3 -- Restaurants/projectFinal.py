@@ -42,7 +42,7 @@ def showRestaurants():
 # ------------------------------------------------------------#	
 @app.route('/restaurant/new/')
 def newRestaurant():
-	return 'This page creates a new restaurant record.'
+    return render_template('Rest_New.html')
 
 # ------------------------------------------------------------#
 #  Edit A Restaurant Record                                   #
