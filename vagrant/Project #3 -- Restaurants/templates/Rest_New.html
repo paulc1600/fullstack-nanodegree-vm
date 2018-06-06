@@ -49,8 +49,8 @@
     </main>
 
 	<section class="button-bar2">
-		<img class="add-button" src={{url_for('static', filename='Button_AR.jpg')}} alt="Add New Restaurant">
-		<img class="cancel-button" src={{url_for('static', filename='Button_CN.jpg')}} alt="Cancel">
+		<a href={{url_for('newRestaurant')}}><img class="add-button" src={{url_for('static', filename='Button_AR.jpg')}} alt="Add New Restaurant"></a>
+		<a href={{url_for('showRestaurants')}}><img class="cancel-button" src={{url_for('static', filename='Button_CN.jpg')}} alt="Cancel"></a>
 	</section>
 	
 	<footer class="sect-grid-footer">
