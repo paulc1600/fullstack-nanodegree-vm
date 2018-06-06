@@ -40,7 +40,7 @@ def showRestaurants():
 #  Create A New Restaurant Record                             #
 #   Template: Rest_New.html                                   #
 # ------------------------------------------------------------#	
-@app.route('/restaurant/new/')
+@app.route('/restaurant/new/', methods=['GET', 'POST'])
 def newRestaurant():
     return render_template('Rest_New.html')
 
