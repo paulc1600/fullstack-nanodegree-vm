@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- 3rd Udacity Submission - Restaurant App -->
+<html lang="en">
+<head>  
+    <meta charset="utf-8">     
+    <meta name="viewport" content="width=device-width,initial-scale=1">  
+    <meta name="description" content="Udacity Project 3: The Gourmet's Friend -- Show One Menu">  
+    <meta name="keywords" content="HTML,CSS">  
+    <meta name="author" content="Paul Carreiro">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <title>Display Restaurant Menu</title> 
+    <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>  
+    <link rel="stylesheet" media="screen and (min-width:500px)" href={{url_for('static', filename='project.css')}}>
+</head>  
+
+<body>
+	<header class="header-simple">
+		<section class="sect-grid-top">
+		    <div class="hgrid11"><p></p></div>
+			<div class="hgrid21"><img class="menu-decor" src={{url_for('static', filename='Menu_Decor_1.jpg')}} alt="Fancy Doodle"></div>
+			<div class="hgrid31"><p></p></div>
+
+		    <div class="hgrid12">{{restaurant.name}}</div>
+			<div class="hgrid22">Menu</div>
+			<div class="hgrid32"><p></p></div>	
+			
+		    <div class="hgrid13"><p></p></div>
+			<div class="hgrid23"><img class="menu-decor" src={{url_for('static', filename='Menu_Decor_1.jpg')}} alt="Fancy Doodle"></div>
+			<div class="hgrid33"><p></p></div>			
+		</section>
+	</header>
+	
+    <main role="main">
+		<section class="sect-grid-body">
+            {% for i in items %}
+				<article class="one_menu_rec">
+					<div class="mrgrid11">{{i.course}}</div>
+					<div class="mrgrid21">{{i.name}}</div>
+					
+					<div class="mrgrid12">{{i.description}}</div>
+					<div class="mrgrid22"><p></p></div>
+
+					<div class="mrgrid13">{{i.price}}</div>
+					<div class="mrgrid23"><p></p></div>
+
+					<div class="mrgrid14"><a href={{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}><img class="one-button" src={{url_for('static', filename='Button_ER.jpg')}} alt="Edit Menu Item"></a></div>
+					<div class="mrgrid24"><a href={{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}><img class="one-button" src={{url_for('static', filename='Button_DR.jpg')}} alt="Delete Menu Item"></a></div>
+				</article>
+            {% endfor %}
+		</section>
+    </main>
+
+	<section class="button-bar">
+		<a href ='{{url_for('newMenuItem', restaurant_id = restaurant.id)}}'><img class="one-button" src={{url_for('static', filename='Button_ANMI.jpg')}} alt="Add New Menu Item"></a>
+	</section>
+	
+	<footer class="sect-grid-footer">
+	    <div class="footer-s1">
+		    <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_fb.jpg')}} alt="facebook"></a>
+            <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_tw.jpg')}} alt="twitter"></a>
+            <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_ig.jpg')}} alt="instagram"></a> 			
+		</div>
+	    <div class="footer-s2">The Gourmet's Friend<br>1234 Some Avenue<br>San Jose, CA 90000</div>
+	    <div class="footer-s3">Site Map | <a href='https://www.linkedin.com/in/paulcarreirofsp/'>Contact Us</a> | <a href='https://www.linkedin.com/in/paulcarreirofsp/'>Reviews</a></div>
+    </footer>
+</body>
+</html>
