@@ -67,12 +67,12 @@ def deleteRestaurant(restaurant_id):
 @app.route('/restaurant/<int:restaurant_id>/')
 @app.route('/restaurant/<int:restaurant_id>/menu/')
 def showMenu(restaurant_id):
-    qs1 = 'id = ' + str(restaurant_id)
-    restaurants = session.query(Restaurant).filter(qs1).one()
-    qs2 = 'restaurant_id = ' + str(restaurant_id)
-    items = session.query(MenuItem).filter(qs2).all()
-    G_restaurants = restaurants
-    G_items = items
+    # qs1 = 'id = ' + str(restaurant_id)
+    # restaurants = session.query(Restaurant).filter(qs1).one()
+    # qs2 = 'restaurant_id = ' + str(restaurant_id)
+    # items = session.query(MenuItem).filter(qs2).all()
+    # G_restaurants = restaurants
+    # G_items = items
     return 'This page displays the full menu of restaurant ' + str(restaurant_id) + '.'
     # return render_template('menu.html', restaurant=restaurants, items = items)
 
