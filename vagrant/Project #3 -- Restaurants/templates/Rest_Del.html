@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- 3rd Udacity Submission - Restaurant App -- Edit Restaurant Record -->
+<!-- 3rd Udacity Submission - Restaurant App -- Delete Restaurant Record -->
 <html lang="en">
 <head>  
     <meta charset="utf-8">     
@@ -8,7 +8,7 @@
     <meta name="keywords" content="HTML,CSS">  
     <meta name="author" content="Paul Carreiro">  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-    <title>Edit Restaurant Record</title> 
+    <title>Delete Restaurant Record</title> 
     <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>  
     <link rel="stylesheet" media="screen and (min-width:500px)" href={{url_for('static', filename='project.css')}}>
 </head>  
@@ -19,7 +19,7 @@
 			<div class="ilgrid11"><p></p></div>
 			<div class="ilgrid21">{{restaurant.name}}</div>
 			<div class="ilgrid31"><p></p></div>
-			<div class="ilgrid41">Edit Restaurant Information</div>
+			<div class="ilgrid41">Delete this record?</div>
 		</section>
 		<section class="sect-grid-right">
 			<div class="box-right"><img src={{url_for('static', filename='FD9_Restaurant.jpg')}} alt="Rest Picture"></div>
@@ -30,7 +30,7 @@
 		<section class="sect-grid-body">
 			<article class="one_rest_rec">	
                 <!-- Rest Rec Form -- Returns user Field Values for a new Restaurant record -->			
-				<form action="{{url_for('editRestaurant', restaurant_id=restaurant_id)}}" method = 'POST' id="arrecord"></form>
+				<form action="{{url_for('deleteRestaurant', restaurant_id=restaurant_id)}}" method = 'POST' id="arrecord"></form>
                     <!-- Column 1: Name, Address, and Description -->
     				<div class="rrgrid11" class="pad-horizontal">
 						<label class="pad-box" for="name" form="arrecord"><b>Restaurant Name</b></label><br><p></p>
