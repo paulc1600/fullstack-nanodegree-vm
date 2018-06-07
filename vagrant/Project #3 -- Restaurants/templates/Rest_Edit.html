@@ -22,7 +22,7 @@
 			<div class="ilgrid41">Edit Restaurant Information</div>
 		</section>
 		<section class="sect-grid-right">
-			<div class="box-right"><img src={{url_for('static', filename='No_Image.jpg')}} alt="No Image"></div>
+			<div class="box-right"><img src={{url_for('static', filename='FD9_Restaurant.jpg')}} alt="Rest Picture"></div>
 		</section>
 	</header>
 
@@ -30,11 +30,11 @@
 		<section class="sect-grid-body">
 			<article class="one_rest_rec">	
                 <!-- Rest Rec Form -- Returns user Field Values for a new Restaurant record -->			
-				<form action="{{url_for('newRestaurant')}}" method = 'POST' id="arrecord"></form>
+				<form action="{{url_for('editRestaurant')}}" method = 'POST' id="arrecord"></form>
                     <!-- Column 1: Name, Address, and Description -->
     				<div class="rrgrid11" class="pad-horizontal">
 						<label class="pad-box" for="name" form="arrecord"><b>Restaurant Name</b></label><br><p></p>
-						<input class="pad-box" id="name" size='20' type='text' value='' name='name' form="arrecord">
+						<input class="pad-box" id="name" size='20' type='text' value='{{restaurant.name}}' name='name' form="arrecord">
 					</div>
 					
 					<div class="rrgrid21">
@@ -112,7 +112,7 @@
 					</div>
 					
 					<div class="rrgrid82">
-						<button class="edit-button" type="submit" value="Edit" form="arrecord">Edit</button>
+						<button class="save-button" type="submit" value="Save" form="arrecord">Save</button>
 					</div>
 				</form>			
 			</article>
