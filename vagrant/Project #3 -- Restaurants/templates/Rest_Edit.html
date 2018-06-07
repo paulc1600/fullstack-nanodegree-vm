@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- 3rd Udacity Submission - Restaurant App -- Add A New Restaurant -->
+<!-- 3rd Udacity Submission - Restaurant App -- Edit Restaurant Record -->
 <html lang="en">
 <head>  
     <meta charset="utf-8">     
@@ -8,7 +8,7 @@
     <meta name="keywords" content="HTML,CSS">  
     <meta name="author" content="Paul Carreiro">  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-    <title>Add A New Restaurant</title> 
+    <title>Edit Restaurant Record</title> 
     <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>  
     <link rel="stylesheet" media="screen and (min-width:500px)" href={{url_for('static', filename='project.css')}}>
 </head>  
@@ -17,9 +17,9 @@
 	<header class="header-simple">
 		<section class="sect-grid-left">
 			<div class="ilgrid11"><p></p></div>
-			<div class="ilgrid21"><p></p></div>
+			<div class="ilgrid21">Restaurant Name</div>
 			<div class="ilgrid31"><p></p></div>
-			<div class="ilgrid41">Add New Restaurant</div>
+			<div class="ilgrid41">Edit Restaurant Information</div>
 		</section>
 		<section class="sect-grid-right">
 			<div class="box-right"><img src={{url_for('static', filename='No_Image.jpg')}} alt="No Image"></div>
@@ -112,7 +112,7 @@
 					</div>
 					
 					<div class="rrgrid82">
-						<button class="add-button" type="submit" value="Add" form="arrecord">Add</button>
+						<button class="edit-button" type="submit" value="Edit" form="arrecord">Edit</button>
 					</div>
 				</form>			
 			</article>
