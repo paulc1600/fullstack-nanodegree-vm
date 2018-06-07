@@ -30,7 +30,7 @@
 		<section class="sect-grid-body">
 			<article class="one_rest_rec">	
                 <!-- Rest Rec Form -- Returns user Field Values for a new Restaurant record -->			
-				<form action="{{url_for('editRestaurant')}}" method = 'POST' id="arrecord"></form>
+				<form action="{{url_for('editRestaurant', restaurant_id=restaurant_id)}}" method = 'POST' id="arrecord"></form>
                     <!-- Column 1: Name, Address, and Description -->
     				<div class="rrgrid11" class="pad-horizontal">
 						<label class="pad-box" for="name" form="arrecord"><b>Restaurant Name</b></label><br><p></p>
