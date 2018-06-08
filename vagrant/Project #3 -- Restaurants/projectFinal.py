@@ -100,24 +100,22 @@ def newMenuItem(restaurant_id):
 # ------------------------------------------------------------#	
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit/', methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
-    qs1 = 'id = ' + str(menu_id)
-    editedItem = session.query(MenuItem).filter(qs1).one()
-    qs2 = 'id = ' + str(restaurant_id)
-    restaurants = session.query(Restaurant).filter(qs2).one()
+    # qs1 = 'id = ' + str(menu_id)
+    # editedItem = session.query(MenuItem).filter(qs1).one()
+    # qs2 = 'id = ' + str(restaurant_id)
+    # restaurants = session.query(Restaurant).filter(qs2).one()
 	
     if request.method == 'POST':
-        if request.form['name']:
-            editedItem.name = request.form['name']
-            editedItem.description = request.form['description']
-            editedItem.price = request.form['price']
-        session.add(editedItem)
-        session.commit()
-        flash("Menu item modified!")
-        # return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
-        return 'This page edits menu item ' + str(menu_id) + ' of restaurant ' + str(restaurant_id) + '.'
+        # if request.form['name']:
+        #    editedItem.name = request.form['name']
+        #    editedItem.description = request.form['description']
+        #    editedItem.price = request.form['price']
+        # session.add(editedItem)
+        # session.commit()
+        # flash("Menu item modified!")
+        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
-        # return render_template('editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem, name=restaurants)
-        return 'This page edits menu item ' + str(menu_id) + ' of restaurant ' + str(restaurant_id) + '.'
+        return render_template('Menu_Rest_Edit.html', restaurant_id=restaurant_id, menu_id=menu_id, item=item, restaurant=restaurant)
 
 		
 # ------------------------------------------------------------#
