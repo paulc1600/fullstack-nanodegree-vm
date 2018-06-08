@@ -106,4 +106,4 @@ session.add(RestProperty1)
 session.commit()
 
 
-print "added restaurant properties!"
+print("added restaurant properties!")
