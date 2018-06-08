@@ -1,0 +1,131 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 12px;
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
+
+h2 {
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+h3 {
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+	margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+table, tr, td {
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+	margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+/*
+ *
+ * Main Page Content 
+ *
+ */
+
+.table-top {
+  width: 80%;
+  border-collapse: collapse;
+  border: 1px solid rgb(229, 232, 234);
+  padding: 15px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table-col1h,
+.table-col2h,
+.table-col3h,
+.table-col4h,
+.table-col5h {
+  text-align: left;
+  vertical-align: top;
+  padding: 15px;
+	
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+  line-height: 15.4px;
+  
+  border-collapse: collapse;
+  border: 1px solid rgb(229, 232, 234);
+}
+
+.table-col1 {
+  text-align: left;
+  vertical-align: top;
+  width: 20%;
+  padding: 15px;
+}
+
+.table-col2 {
+  text-align: left;
+  vertical-align: top;
+  width: 45%;
+  padding: 15px;
+}
+
+.table-col3 {
+  text-align: left;
+  vertical-align: top;
+  width: 15%;
+  padding: 15px;
+}
+
+.table-col4 {
+  text-align: left;
+  vertical-align: top;
+  width: 10%;
+  padding: 15px;
+}
+
+.table-col5 {
+  text-align: left;
+  vertical-align: top;
+  width: 10%;
+  padding: 15px;
+}
+
+/*
+ *
+ * New Menu Item Page Content 
+ *
+ */
+ 
+.body-newitem {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 12px;
+  color: black;
+  background-color: rgb(214, 255, 251);
+}
+
+.form-field {
+  padding: 5%;
+}

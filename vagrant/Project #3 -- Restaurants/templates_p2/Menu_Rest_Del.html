@@ -1,0 +1,82 @@
+<!doctype html>
+<!-- 3rd Udacity Submission - Restaurant App -- Delete A Menu Item -->
+<html lang="en">
+<head>  
+    <meta charset="utf-8">     
+    <meta name="viewport" content="width=device-width,initial-scale=1">  
+    <meta name="description" content="Udacity Project 3: The Gourmet's Friend -- Delete A Menu Item">  
+    <meta name="keywords" content="HTML,CSS">  
+    <meta name="author" content="Paul Carreiro">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <title>Delete A Menu Item</title> 
+    <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>  
+    <link rel="stylesheet" media="screen and (min-width:500px)" href={{url_for('static', filename='project.css')}}>
+</head>  
+
+<body>
+	<header class="header-white">
+		<section class="sect-grid-left">
+			<div class="ilgrid11"><img class="menu-decor" src={{url_for('static', filename='Menu_Decor_2.jpg')}} alt="Fancy Doodle"></div>
+			<div class="ilgrid21">{{restaurant.name}}></div>
+			<div class="ilgrid31">Menu</div>
+			<div class="ilgrid41">Delete this Menu Item?</div>
+		</section>
+		<section class="sect-grid-right">
+			<div class="box-right"><img src={{url_for('static', filename='FD1_Rest_MI_1.jpg')}} alt="Menu Item Image"></div>
+		</section>
+	</header>
+
+    <main role="main">
+		<section class="sect-grid-body">
+			<article class="one_menu_item">	
+                <!-- Menu Item Form -- Displays menu item about to be deleted -->			
+				<form action="{{url_for('deleteMenuItem', restaurant_id=restaurant_id, menu_id=menu_id)}}" method = 'POST' id="dmirecord"></form>
+                    <!-- Column 1: course, item name, price and Description -->
+    				<div class="rrgrid11" class="pad-horizontal">
+						<label class="pad-box" for="Course" form="dmirecord"><b>Course</b></label><br><p></p>
+						<input class="pad-box" id="Course" size='20' type='text' value='{{item.course}}' name='Course' form="dmirecord">
+					</div>
+					
+					<div class="rrgrid21">
+						<label class="pad-box" for="Item Name" form="dmirecord"><b>Item Name</b></label><br><p></p>
+						<input class="pad-box" id="Item Name" size='30' type='text' value='{{item.name}}' name='Item Name' form="dmirecord">
+					</div>
+					
+					<div class="rrgrid31">
+						<label class="pad-box" for="price" form="dmirecord"><b>Price</b></label><br><p></p>
+						<input class="pad-box" id="price" size='10' type='text' value='{{item.price}}' name='price' form="dmirecord">
+					</div>
+
+					<div class="rrgrid41"></div>
+					<div class="rrgrid51"></div>
+					<div class="rrgrid61"></div>
+					<div class="rrgrid71"></div>
+
+					<div class="rrgrid81">
+						<label class="pad-box" for="description" form="dmirecord"><b>Description</b></label><br><p></p>
+						<input class="pad-box" id="description" size='50' type='text' value='{{item.description}}' name='description' form="dmirecord">
+					</div>
+					
+					<div class="rrgrid82">
+						<button class="delete-button" type="submit" value="Delete" form="dmirecord">Delete</button>
+					</div>
+				</form>			
+			</article>
+		</section>
+    </main>
+	
+	<section class="button-bar1">
+		<a href={{url_for('showMenu', restaurant_id=restaurant_id)}}><img class="cancel-button" src={{url_for('static', filename='Button_CN.jpg')}} alt="Cancel"></a>
+	</section>
+	
+	<footer class="sect-grid-footer">
+	    <div class="footer-s1">
+		    <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_fb.jpg')}} alt="facebook"></a>
+            <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_tw.jpg')}} alt="twitter"></a>
+            <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_ig.jpg')}} alt="instagram"></a> 			
+		</div>
+	    <div class="footer-s2">The Gourmet's Friend<br>1234 Some Avenue<br>San Jose, CA 90000</div>
+	    <div class="footer-s3">Site Map | <a href='https://www.linkedin.com/in/paulcarreirofsp/'>Contact Us</a> | <a href='https://www.linkedin.com/in/paulcarreirofsp/'>Reviews</a></div>
+    </footer>
+</body>
+</html>
