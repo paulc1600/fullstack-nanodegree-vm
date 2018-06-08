@@ -21,33 +21,6 @@ class Restaurant(Base):
 		    'id': self.id,
 	    }
 
-class RestProperties(Base):
-    __tablename__ = 'rest_properties'
-    id = Column(Integer, primary_key = True)
-    street = Column(String(80))
-    city = Column(String(80))
-    state = Column(String(8))
-    zip = Column(String(16))
-    phone = Column(String(20), nullable = False)
-    description = Column(String(250))
-    open_Mon = Column(String(16))
-    close_Mon = Column(String(16))
-    open_Tue = Column(String(16))
-    close_Tue = Column(String(16))
-    open_Wed = Column(String(16))
-    close_Wed = Column(String(16))
-    open_Thu = Column(String(16))
-    close_Thu = Column(String(16))
-    open_Fri = Column(String(16))
-    close_Fri = Column(String(16))
-    open_Sat = Column(String(16))
-    close_Sat = Column(String(16))
-    open_Sun = Column(String(16))
-    close_Sun = Column(String(16))
-    review_rating = Column(String(8))
-    rest_photo_file = Column(String(80))
-    restaurant_id = Column(Integer, ForeignKey('restaurant.id'))
-    restaurant = relationship(Restaurant)
 		
 class MenuItem(Base):
     __tablename__ = 'menu_item'
