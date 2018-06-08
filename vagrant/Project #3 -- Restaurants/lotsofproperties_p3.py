@@ -19,7 +19,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 qs1 = 'name = "Urban Burger"'
-restaurant1 = session.query(Restaurant).filter(qs1).one()
+restaurant1 = session.query(Restaurant).filter(name = "Urban Burger").one()
 RestProperty1 = RestProperties(street="1777 Pike Street", city="San Diego", state="CA", zip="92126", phone="619-809-0123", review_rating="3.5", rest_photo_file="FD1_Restaurant.jpg", 
                                open_Mon="9:30 AM", close_Mon="2:00 PM", open_Tue="9:30 AM", close_Tue="2:00 PM", open_Wed="9:30 AM", close_Wed="10:30 PM", 
                                open_Thu="9:30 AM", close_Thu="10:30 PM", open_Fri="9:30 AM", close_Fri="10:30 PM", open_Sat="11:00 AM", close_Sat="10:30 PM", 
