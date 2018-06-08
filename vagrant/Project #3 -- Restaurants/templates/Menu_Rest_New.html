@@ -30,7 +30,7 @@
 		<section class="sect-grid-body">
 			<article class="one_menu_item">	
                 <!-- Menu Item Form -- Returns user Field Values for a new menu item -->			
-				<form action="{{url_for('newMenuItem')}}" method = 'POST' id="amirecord"></form>
+				<form action="{{url_for('newMenuItem', restaurant_id=restaurant_id)}}" method = 'POST' id="amirecord"></form>
                     <!-- Column 1: Name, Address, and Description -->
     				<div class="rrgrid11" class="pad-horizontal">
 						<label class="pad-box" for="Course" form="amirecord"><b>Course</b></label><br><p></p>
