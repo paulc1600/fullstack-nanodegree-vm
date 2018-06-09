@@ -22,7 +22,7 @@
 			<div class="ilgrid41">Edit Restaurant Information</div>
 		</section>
 		<section class="sect-grid-right">
-			<div class="box-right"><img src={{url_for('static', filename='{{properties.rest_photo_file}}')}} alt="Rest Picture"></div>
+			<div class="box-right"><img src={{url_for('static', filename={{properties.rest_photo_file}})}} alt="Rest Picture"></div>
 		</section>
 	</header>
 
@@ -70,27 +70,27 @@
 					</div>
 					<!-- Column 2: Restaurant open_ing and closing hours -->
     				<div class="rrgrid12" class="pad-horizontal">
-						<label class="pad-box" for="open_MON" form="errecord"><b>Mon</b></label><br><p></p>
-						<input class="pad-box" id="open_MON" size='10' type='text' value='{{properties.open_MON}}' name='open_MON' form="errecord">
-						<input class="pad-box" id="close_MON" size='10' type='text' value='{{properties.close_MON}}' name='close_MON' form="errecord">
+						<label class="pad-box" for="open_Mon" form="errecord"><b>Mon</b></label><br><p></p>
+						<input class="pad-box" id="open_Mon" size='10' type='text' value='{{properties.open_Mon}}' name='open_Mon' form="errecord">
+						<input class="pad-box" id="close_Mon" size='10' type='text' value='{{properties.close_Mon}}' name='close_Mon' form="errecord">
 					</div>
 					
 					<div class="rrgrid22">
-						<label class="pad-box" for="open_TUE" form="errecord"><b>Tue</b></label><br><p></p>
-						<input class="pad-box" id="open_TUE" size='10' type='text' value='{{properties.open_TUE}}' name='open_TUE' form="errecord">
-						<input class="pad-box" id="close_TUE" size='10' type='text' value='{{properties.close_TUE}}' name='close_TUE' form="errecord">
+						<label class="pad-box" for="open_Tue" form="errecord"><b>Tue</b></label><br><p></p>
+						<input class="pad-box" id="open_Tue" size='10' type='text' value='{{properties.open_Tue}}' name='open_Tue' form="errecord">
+						<input class="pad-box" id="close_Tue" size='10' type='text' value='{{properties.close_Tue}}' name='close_Tue' form="errecord">
 					</div>
 					
 					<div class="rrgrid32">
-						<label class="pad-box" for="open_WED" form="errecord"><b>Wed</b></label><br><p></p>
-						<input class="pad-box" id="open_WED" size='10' type='text' value='{{properties.open_WED}}' name='open_WED' form="errecord">
-						<input class="pad-box" id="close_WED" size='10' type='text' value='{{properties.close_WED}}' name='close_WED' form="errecord">
+						<label class="pad-box" for="open_Wed" form="errecord"><b>Wed</b></label><br><p></p>
+						<input class="pad-box" id="open_Wed" size='10' type='text' value='{{properties.open_Wed}}' name='open_Wed' form="errecord">
+						<input class="pad-box" id="close_Wed" size='10' type='text' value='{{properties.close_Wed}}' name='close_Wed' form="errecord">
 					</div>
 
 					<div class="rrgrid42">
-						<label class="pad-box" for="open_THR" form="errecord"><b>Thr</b></label><br><p></p>
-						<input class="pad-box" id="open_THR" size='10' type='text' value='{{properties.open_THR}}' name='open_THR' form="errecord">
-						<input class="pad-box" id="close_THR" size='10' type='text' value='{{properties.close_THR}}' name='close_THR' form="errecord">
+						<label class="pad-box" for="open_Thr" form="errecord"><b>Thr</b></label><br><p></p>
+						<input class="pad-box" id="open_Thr" size='10' type='text' value='{{properties.open_Thr}}' name='open_Thr' form="errecord">
+						<input class="pad-box" id="close_Thr" size='10' type='text' value='{{properties.close_Thr}}' name='close_Thr' form="errecord">
 					</div>
 
 					<div class="rrgrid52">
@@ -100,15 +100,15 @@
 					</div>
 					
 					<div class="rrgrid62">
-						<label class="pad-box" for="open_SAT" form="errecord"><b>Sat</b></label><br><p></p>
-						<input class="pad-box" id="open_SAT" size='10' type='text' value='{{properties.open_SAT}}' name='open_SAT' form="errecord">
-						<input class="pad-box" id="close_SAT" size='10' type='text' value='{{properties.close_SAT}}' name='close_SAT' form="errecord">
+						<label class="pad-box" for="open_Sat" form="errecord"><b>Sat</b></label><br><p></p>
+						<input class="pad-box" id="open_Sat" size='10' type='text' value='{{properties.open_Sat}}' name='open_Sat' form="errecord">
+						<input class="pad-box" id="close_Sat" size='10' type='text' value='{{properties.close_Sat}}' name='close_Sat' form="errecord">
 					</div>
 
 					<div class="rrgrid72">
-						<label class="pad-box" for="open_SUN" form="errecord"><b>Sun</b></label><br><p></p>
-						<input class="pad-box" id="open_SUN" size='10' type='text' value='{{properties.open_SUN}}' name='open_SUN' form="errecord">
-						<input class="pad-box" id="close_SUN" size='10' type='text' value='{{properties.close_SUN}}' name='close_SUN' form="errecord">
+						<label class="pad-box" for="open_Sun" form="errecord"><b>Sun</b></label><br><p></p>
+						<input class="pad-box" id="open_Sun" size='10' type='text' value='{{properties.open_Sun}}' name='open_Sun' form="errecord">
+						<input class="pad-box" id="close_Sun" size='10' type='text' value='{{properties.close_Sun}}' name='close_Sun' form="errecord">
 					</div>
 					
 					<div class="rrgrid82">
