@@ -45,17 +45,28 @@ def newRestaurant():
 #  Edit A Restaurant Record                                   #
 #   Template: Rest_Edit.html                                  #
 # ------------------------------------------------------------#	
-@app.route('/restaurant/<int:restaurant_id>/edit/')
+@app.route('/restaurant/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
 def editRestaurant(restaurant_id):
     qs1 = 'id = ' + str(restaurant_id)
     restaurant_2edit = session.query(Restaurant).filter(qs1).one()
-    return render_template('Rest_Edit.html', restaurant_id=restaurant_id, restaurant=restaurant_2edit)
+
+    if request.method == 'POST':
+        if request.form['name']:
+        #    editedItem.name = request.form['name']
+        #    editedItem.description = request.form['description']
+        #    editedItem.price = request.form['price']
+        # session.add(editedItem)
+        # session.commit()
+        flash("Restaurant record modified!")
+        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+    else:
+        return render_template('Rest_Edit.html', restaurant_id=restaurant_id, restaurant=restaurant_2edit)
 
 # ------------------------------------------------------------#
 #  Delete Selected Restaurant Record                          #
 #   Template: Rest_Del.html                                   #
 # ------------------------------------------------------------#	
-@app.route('/restaurant/<int:restaurant_id>/delete/')
+@app.route('/restaurant/<int:restaurant_id>/delete/', methods=['GET', 'POST'])
 def deleteRestaurant(restaurant_id):
     qs1 = 'id = ' + str(restaurant_id)
     restaurant_2del = session.query(Restaurant).filter(qs1).one()
