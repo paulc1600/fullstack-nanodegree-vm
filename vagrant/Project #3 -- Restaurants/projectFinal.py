@@ -88,7 +88,7 @@ def editRestaurant(restaurant_id):
             flash("Restaurant record not modified.")
         return redirect(url_for('showRestaurants'))
     else:
-	    photo_file = "'" + &str(deletedProperties.rest_photo_file) + "'"
+	    photo_file = "'" + str(deletedProperties.rest_photo_file) + "'"
         photo_path = url_for('static', filename = photo_file)
 		print(photo_path)
         return render_template('Rest_Edit.html', restaurant_id=restaurant_id, restaurant=restaurant_2edit, properties=properties_2edit)
