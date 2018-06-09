@@ -6,8 +6,6 @@ from database_setup import Base, Restaurant, MenuItem
 # ------------------------------------------------------------#
 #  (Phase 2) Temp Fake Restaurants -- until database arrives  #
 # ------------------------------------------------------------#
-restaurant = {'name': 'The CRUDdy Crab', 'id': '1'}
-
 #Fake Menu Items
 items = [ {'name':'Cheese Pizza', 'description':'made with fresh cheese', 'price':'$5.99','course' :'Entree', 'id':'1'}, {'name':'Chocolate Cake','description':'made with Dutch Chocolate', 'price':'$3.99', 'course':'Dessert','id':'2'},{'name':'Caesar Salad', 'description':'with fresh organic vegetables','price':'$5.99', 'course':'Entree','id':'3'},{'name':'Iced Tea', 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},{'name':'Spinach Dip', 'description':'creamy dip with fresh spinach','price':'$1.99', 'course':'Appetizer','id':'5'} ]
 item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$5.99','course' :'Entree'}
@@ -49,7 +47,9 @@ def newRestaurant():
 # ------------------------------------------------------------#	
 @app.route('/restaurant/<int:restaurant_id>/edit/')
 def editRestaurant(restaurant_id):
-    return render_template('Rest_Edit.html', restaurant_id=restaurant_id, restaurant=restaurant)
+    qs1 = 'id = ' + str(restaurant_id)
+    restaurant_2edit = session.query(Restaurant).filter(qs1).one()
+    return render_template('Rest_Edit.html', restaurant_id=restaurant_id, restaurant=restaurant_2edit)
 
 # ------------------------------------------------------------#
 #  Delete Selected Restaurant Record                          #
@@ -57,7 +57,9 @@ def editRestaurant(restaurant_id):
 # ------------------------------------------------------------#	
 @app.route('/restaurant/<int:restaurant_id>/delete/')
 def deleteRestaurant(restaurant_id):
-	return render_template('Rest_Del.html', restaurant_id=restaurant_id, restaurant=restaurant)
+    qs1 = 'id = ' + str(restaurant_id)
+    restaurant_2del = session.query(Restaurant).filter(qs1).one()
+    return render_template('Rest_Del.html', restaurant_id=restaurant_id, restaurant=restaurant_2del)
 
 # ------------------------------------------------------------#
 #  Display Selected Restaurant Menu Page                      #
