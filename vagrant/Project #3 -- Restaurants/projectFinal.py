@@ -53,35 +53,35 @@ def editRestaurant(restaurant_id):
                         'open_Mon':'9:30 AM','close_Mon':'2:00 PM','open_Tue':'9:30 AM','close_Tue':'2:00 PM','open_Wed':'9:30 AM','close_Wed':'10:30 PM',
                         'open_Thu':'9:30 AM','close_Thu':'10:30 PM','open_Fri':'9:30 AM','close_Fri':'10:30 PM','open_Sat':'11:00 AM','close_Sat':'10:30 PM',
                         'open_Sun':'11:00 AM','close_Sun':'10:30 PM'}
-    photo_file = "'" + str(deletedProperties.rest_photo_file) + "'"
+    photo_file = "'" + str(properties_2edit.rest_photo_file) + "'"
     photo_path = url_for('static', filename = photo_file)
     print(photo_path)
 	
     if request.method == 'POST':
         if request.form['name']:
             editedRest.name = request.form['name']
-            # deletedProperties.street = request.form['street']
-            # deletedProperties.city = request.form['city']
-            # deletedProperties.state = request.form['state']
-            # deletedProperties.zip = request.form['zip']
-            # deletedProperties.phone = request.form['phone']
-            # deletedProperties.description = request.form['description']
-            # deletedProperties.review_rating = request.form['review_rating']
-            # deletedProperties.rest_photo_file = request.form['rest_photo_file']
-            # deletedProperties.open_Mon = request.form['open_Mon']
-            # deletedProperties.close_Mon = request.form['close_Mon']
-            # deletedProperties.open_Tue = request.form['open_Tue']
-            # deletedProperties.close_Tue = request.form['close_Tue']
-            # deletedProperties.open_Wed = request.form['open_Wed']
-            # deletedProperties.close_Wed = request.form['close_Wed']
-            # deletedProperties.open_Thu = request.form['open_Thu']
-            # deletedProperties.close_Thu = request.form['close_Thu']
-            # deletedProperties.open_Fri = request.form['open_Fri']
-            # deletedProperties.close_Fri = request.form['close_Fri']
-            # deletedProperties.open_Sat = request.form['open_Sat']
-            # deletedProperties.close_Sat = request.form['close_Sat']
-            # deletedProperties.open_Sun = request.form['open_Sun']
-            # deletedProperties.close_Sun = request.form['close_Sun']
+            # editedProperties.street = request.form['street']
+            # editedProperties.city = request.form['city']
+            # editedProperties.state = request.form['state']
+            # editedProperties.zip = request.form['zip']
+            # editedProperties.phone = request.form['phone']
+            # editedProperties.description = request.form['description']
+            # editedProperties.review_rating = request.form['review_rating']
+            # editedProperties.rest_photo_file = request.form['rest_photo_file']
+            # editedProperties.open_Mon = request.form['open_Mon']
+            # editedProperties.close_Mon = request.form['close_Mon']
+            # editedProperties.open_Tue = request.form['open_Tue']
+            # editedProperties.close_Tue = request.form['close_Tue']
+            # editedProperties.open_Wed = request.form['open_Wed']
+            # editedProperties.close_Wed = request.form['close_Wed']
+            # editedProperties.open_Thu = request.form['open_Thu']
+            # editedProperties.close_Thu = request.form['close_Thu']
+            # editedProperties.open_Fri = request.form['open_Fri']
+            # editedProperties.close_Fri = request.form['close_Fri']
+            # editedProperties.open_Sat = request.form['open_Sat']
+            # editedProperties.close_Sat = request.form['close_Sat']
+            # editedProperties.open_Sun = request.form['open_Sun']
+            # editedProperties.close_Sun = request.form['close_Sun']
 		
             session.add(editedRest)
             session.commit()
@@ -103,11 +103,11 @@ def editRestaurant(restaurant_id):
 def deleteRestaurant(restaurant_id):
     qs1 = 'id = ' + str(restaurant_id)
     restaurant_2del = session.query(Restaurant).filter(qs1).one()
-    properties_2del = {'street':'1777 Pike Street','city':'San Diego','state':'CA','zip':'92126','phone':'619-809-0123','review_rating':'3.5','rest_photo_file':'FD1_Restaurant.jpg',
+    properties_2del = {'street':'1777 Pike Street','city':'San Diego','state':'CA','zip':'92126','phone':'619-809-0123','review_rating':'3.5','rest_photo_file':'FD2_Restaurant.jpg',
                         'open_Mon':'9:30 AM','close_Mon':'2:00 PM','open_Tue':'9:30 AM','close_Tue':'2:00 PM','open_Wed':'9:30 AM','close_Wed':'10:30 PM',
                         'open_Thu':'9:30 AM','close_Thu':'10:30 PM','open_Fri':'9:30 AM','close_Fri':'10:30 PM','open_Sat':'11:00 AM','close_Sat':'10:30 PM',
                         'open_Sun':'11:00 AM','close_Sun':'10:30 PM'}
-    photo_file = "'" + str(deletedProperties.rest_photo_file) + "'"
+    photo_file = "'" + str(properties_2del.rest_photo_file) + "'"
     photo_path = url_for('static', filename = photo_file)
     print(photo_path)
 	
