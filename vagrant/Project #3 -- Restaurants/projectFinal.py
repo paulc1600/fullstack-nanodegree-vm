@@ -53,7 +53,7 @@ def editRestaurant(restaurant_id):
                         'open_Mon':'9:30 AM','close_Mon':'2:00 PM','open_Tue':'9:30 AM','close_Tue':'2:00 PM','open_Wed':'9:30 AM','close_Wed':'10:30 PM',
                         'open_Thu':'9:30 AM','close_Thu':'10:30 PM','open_Fri':'9:30 AM','close_Fri':'10:30 PM','open_Sat':'11:00 AM','close_Sat':'10:30 PM',
                         'open_Sun':'11:00 AM','close_Sun':'10:30 PM'}
-    photo_file = "'" + str(properties_2edit.rest_photo_file) + "'"
+    photo_file = "'" + str(properties_2edit['rest_photo_file']) + "'"
     photo_path = url_for('static', filename = photo_file)
     print(photo_path)
 	
@@ -107,7 +107,7 @@ def deleteRestaurant(restaurant_id):
                         'open_Mon':'9:30 AM','close_Mon':'2:00 PM','open_Tue':'9:30 AM','close_Tue':'2:00 PM','open_Wed':'9:30 AM','close_Wed':'10:30 PM',
                         'open_Thu':'9:30 AM','close_Thu':'10:30 PM','open_Fri':'9:30 AM','close_Fri':'10:30 PM','open_Sat':'11:00 AM','close_Sat':'10:30 PM',
                         'open_Sun':'11:00 AM','close_Sun':'10:30 PM'}
-    photo_file = "'" + str(properties_2del.rest_photo_file) + "'"
+    photo_file = "'" + str(properties_2del['rest_photo_file']) + "'"
     photo_path = url_for('static', filename = photo_file)
     print(photo_path)
 	
