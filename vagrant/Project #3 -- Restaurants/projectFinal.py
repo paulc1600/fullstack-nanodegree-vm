@@ -92,7 +92,7 @@ def editRestaurant(restaurant_id):
             flash("Restaurant record not modified.")
         return redirect(url_for('showRestaurants'))
     else:
-        return render_template('Rest_Edit.html', restaurant_id=restaurant_id, photo_path, 
+        return render_template('Rest_Edit.html', restaurant_id=restaurant_id, photo_path = photo_path2edit, 
                                 restaurant=restaurant_2edit, properties=properties_2edit)
 
 # ------------------------------------------------------------#
@@ -146,7 +146,7 @@ def deleteRestaurant(restaurant_id):
             flash("Restaurant record not deleted.")
         return redirect(url_for('showRestaurants'))
     else:						
-        return render_template('Rest_Del.html', restaurant_id=restaurant_id, photo_path, 
+        return render_template('Rest_Del.html', restaurant_id=restaurant_id, photo_path = photo_path2del, 
                                 restaurant=restaurant_2del, properties=properties_2del)
 
 # ------------------------------------------------------------#
