@@ -53,6 +53,10 @@ def editRestaurant(restaurant_id):
                         'open_Mon':'9:30 AM','close_Mon':'2:00 PM','open_Tue':'9:30 AM','close_Tue':'2:00 PM','open_Wed':'9:30 AM','close_Wed':'10:30 PM',
                         'open_Thu':'9:30 AM','close_Thu':'10:30 PM','open_Fri':'9:30 AM','close_Fri':'10:30 PM','open_Sat':'11:00 AM','close_Sat':'10:30 PM',
                         'open_Sun':'11:00 AM','close_Sun':'10:30 PM'}
+	photo_file = "'" + str(deletedProperties.rest_photo_file) + "'"
+	photo_path = url_for('static', filename = photo_file)
+	print(photo_path)
+	
     if request.method == 'POST':
         if request.form['name']:
             editedRest.name = request.form['name']
@@ -88,10 +92,8 @@ def editRestaurant(restaurant_id):
             flash("Restaurant record not modified.")
         return redirect(url_for('showRestaurants'))
     else:
-        photo_file = "'" + str(deletedProperties.rest_photo_file) + "'"
-        photo_path = url_for('static', filename = photo_file)
-        print(photo_path)
-        return render_template('Rest_Edit.html', restaurant_id=restaurant_id, restaurant=restaurant_2edit, properties=properties_2edit)
+        return render_template('Rest_Edit.html', restaurant_id=restaurant_id, photo_path, 
+                                restaurant=restaurant_2edit, properties=properties_2edit)
 
 # ------------------------------------------------------------#
 #  Delete Selected Restaurant Record                          #
@@ -105,7 +107,10 @@ def deleteRestaurant(restaurant_id):
                         'open_Mon':'9:30 AM','close_Mon':'2:00 PM','open_Tue':'9:30 AM','close_Tue':'2:00 PM','open_Wed':'9:30 AM','close_Wed':'10:30 PM',
                         'open_Thu':'9:30 AM','close_Thu':'10:30 PM','open_Fri':'9:30 AM','close_Fri':'10:30 PM','open_Sat':'11:00 AM','close_Sat':'10:30 PM',
                         'open_Sun':'11:00 AM','close_Sun':'10:30 PM'}
-						
+	photo_file = "'" + str(deletedProperties.rest_photo_file) + "'"
+	photo_path = url_for('static', filename = photo_file)
+	print(photo_path)
+	
     if request.method == 'POST':
         if request.form['name']:
             deletedRest.name = request.form['name']
@@ -141,7 +146,8 @@ def deleteRestaurant(restaurant_id):
             flash("Restaurant record not deleted.")
         return redirect(url_for('showRestaurants'))
     else:						
-        return render_template('Rest_Del.html', restaurant_id=restaurant_id, restaurant=restaurant_2del, properties=properties_2del)
+        return render_template('Rest_Del.html', restaurant_id=restaurant_id, photo_path, 
+                                restaurant=restaurant_2del, properties=properties_2del)
 
 # ------------------------------------------------------------#
 #  Display Selected Restaurant Menu Page                      #
