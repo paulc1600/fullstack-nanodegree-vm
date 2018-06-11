@@ -24,9 +24,9 @@
     <main role="main">
 		<section class="sect-grid-body">
             {% for r in restaurants %}
-                {{% restaurant_id = r.id %}}
-                {{% qs1 = 'restaurant_id = ' + str(restaurant_id) %}}
-				{{% properties_this_rest = session.query(RestProperties).filter(qs1).one() %}}    
+                {% restaurant_id = r.id %}
+                {% qs1 = 'restaurant_id = ' + str(restaurant_id) %}
+				{% properties_this_rest = session.query(RestProperties).filter(qs1).one() %}    
 				<article class="one_rest_rec">
 					<div class="rrgrid11">{{r.name}}</div>
 					<div class="rrgrid21">{{properties_this_rest.street}}</div>
