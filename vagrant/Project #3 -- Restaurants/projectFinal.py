@@ -30,7 +30,7 @@ session = DBSession()
 @app.route('/restaurant/list/')
 def showRestaurants():
     restaurant_list = session.query(Restaurant).all()
-	properties_list = session.query(RestProperties).all()
+    properties_list = session.query(RestProperties).all()
     return render_template('Main_List.html', restaurants=restaurant_list, properties=properties_list)
 
 # ------------------------------------------------------------#
