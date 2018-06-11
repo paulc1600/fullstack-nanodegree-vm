@@ -19,7 +19,8 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Pizza Palace")
+qs1 = "name = " + str("Pizza Palace")
+print(qs1)
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty1 = RestProperties(street="1777 Pike Street", city="San Diego", state="CA", zip="92126", phone="619-809-0123", review_rating="3.5", rest_photo_file="FD1_Restaurant.jpg",
                                description="All delicious pies made from scratch with their famous hand-rolled dough, and topped off with a wide variety of fresh natural ingredients.",   
@@ -31,7 +32,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Urban Burger")
+qs1 = "name = " + str("Urban Burger")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty2 = RestProperties(street="2254 Perine Street", city="Alexandria", state="VA", zip="22370", phone="703-806-8377", review_rating="4.0", rest_photo_file="FD2_Restaurant.jpg",
                                description="Two all beef patties, lettuce, cheese, pickles, and onions on a sesame seed bun. Special sauce is extra or on the side.", 
@@ -43,7 +44,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Super Stir Fry")
+qs1 = "name = " + str("Super Stir Fry")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty2 = RestProperties(street="2254 Perine Street", city="Alexandria", state="VA", zip="22370", phone="703-806-8377", review_rating="4.0", rest_photo_file="FD2_Restaurant.jpg",
                                description="Like an old friend, Alexandria's Super Stir Fry has been delighting guests and visitors with it's blend of spicy mandarin cuisine and southern hospitality.", 
@@ -55,7 +56,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Panda Garden")
+qs1 = "name = " + str("Panda Garden")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty1 = RestProperties(street="909 Yorkshire Circle", city="Alexandria", state="MN", zip="56308", phone="252-327-5503", review_rating="3.5", rest_photo_file="FD3_Restaurant.jpg",
                                description="Beautiful garden courtyard dining experience made memorable through a variety of delicious chicken, fish, beef, and vegetable dishes. Rice noodles are a house specialty.", 
@@ -67,7 +68,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Thyme for That Vegetarian Cuisine")
+qs1 = "name = " + str("Thyme for That Vegetarian Cuisine")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty2 = RestProperties(street="3110 Doctors Drive", city="Los Angeles", state="CA", zip="90017", phone="310-341-3892", review_rating="4.0", rest_photo_file="FD4_Restaurant.jpg",
                                description="Perfectly blended and spiced vegetarian and vegan favorites. All made from fresh, organic, locally grown ingredients.", 
@@ -79,7 +80,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Tony\'s Bistro")
+qs1 = "name = " + str("Tony\'s Bistro")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty1 = RestProperties(street="3079 Joyce Street", city="Gulf Shores", state="AL", zip="36542", phone="251-968-2181", review_rating="3.0", rest_photo_file="FD4_Restaurant.jpg",
                                description="Tony himself still greets guests at the door with a hearty handshake. Casual patio dining is available, and all dishes can be complemented with an excellent wine selection.", 
@@ -91,7 +92,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Uncle Joe\'s Diner")
+qs1 = "name = " + str("Uncle Joe\'s Diner")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty1 = RestProperties(street="3418 Counts Lane", city="West Hartford", state="CT", zip="06105", phone="860-231-3576", review_rating="2.0", rest_photo_file="FD6_Restaurant.jpg",
                                description="Not exactly fine dining, but if you want it fast and cheap, Joe has got it covered. They serve comfort food in large portions, but don't annoy the waitresses.", 
@@ -103,7 +104,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Pelican Bay Oyster House")
+qs1 = "name = " + str("Pelican Bay Oyster House")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty2 = RestProperties(street="3155 Sampson Street", city="Aurora", state="CO", zip="80014", phone="303-568-6185", review_rating="4.0", rest_photo_file="FD5_Restaurant.jpg",
                                description="Pelican Bay is a secret gem. They serve a wide variety of delicious seafood favorites in a cozy relaxing atmosphere. Friday seafood buffet should not be missed.",  
@@ -115,7 +116,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Bill\'s House of Gator")
+qs1 = "name = " + str("Bill\'s House of Gator")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty1 = RestProperties(street="3418 Counts Lane", city="West Hartford", state="CT", zip="06105", phone="860-231-3576", review_rating="4.0", rest_photo_file="FD6_Restaurant.jpg",
                                description="Originally a hunting lodge, House of Gator serves wild and exotic game entrées. It's not for everyone, but you have not lived until you have tried the Beefalo steak.", 
@@ -127,7 +128,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Ming Wang Wok Palace")
+qs1 = "name = " + str("Ming Wang Wok Palace")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty2 = RestProperties(street="3200 Bailey Drive", city="Iowa City", state="IA", zip="52240", phone="319-337-8002", review_rating="4.0", rest_photo_file="FD7_Restaurant.jpg",
                                description="Ming has been delighting guests with Mandarin and Cantonese house specialties for many years. Generous portions and sophisticated surroundings round out the experience.", 
@@ -139,7 +140,7 @@ session.commit()
 
 
 # --------------------------------------------------------------------------------
-qs1 = 'name = ' + str("Boca Do Papa")
+qs1 = "name = " + str("Boca Do Papa")
 restaurant1 = session.query(Restaurant).filter(qs1).first()
 RestProperty1 = RestProperties(street="3706 Wescam Court", city="Fallon", state="NV", zip="89406", phone="775-867-4121", review_rating="4.0", rest_photo_file="FD8_Restaurant.jpg",
                                description="Family style dining in a delightful Italian setting. Pasta dishes must be tried with an appropriate wine from their well-stocked cellar.", 
