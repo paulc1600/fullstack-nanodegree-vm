@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Restaurant, MenuItem
+from database_setup import Base, Restaurant, RestProperties, MenuItem
 
 # ------------------------------------------------------------#
 #  (Phase 2) Temp Fake Restaurants -- until database arrives  #
 # ------------------------------------------------------------#
-#Fake Menu Items
+#Fake Menu Items for right now
 items = [ {'name':'Cheese Pizza', 'description':'made with fresh cheese', 'price':'$5.99','course' :'Entree', 'id':'1'}, {'name':'Chocolate Cake','description':'made with Dutch Chocolate', 'price':'$3.99', 'course':'Dessert','id':'2'},{'name':'Caesar Salad', 'description':'with fresh organic vegetables','price':'$5.99', 'course':'Entree','id':'3'},{'name':'Iced Tea', 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},{'name':'Spinach Dip', 'description':'creamy dip with fresh spinach','price':'$1.99', 'course':'Appetizer','id':'5'} ]
 item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$5.99','course' :'Entree'}
 # ------------------------------------------------------------#
@@ -20,7 +20,6 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-
 
 # ------------------------------------------------------------#
 #  *******    The Gourmet's Friend Index Page    ********     #
@@ -53,9 +52,8 @@ def editRestaurant(restaurant_id):
                         'open_Mon':'9:30 AM','close_Mon':'2:00 PM','open_Tue':'9:30 AM','close_Tue':'2:00 PM','open_Wed':'9:30 AM','close_Wed':'10:30 PM',
                         'open_Thu':'9:30 AM','close_Thu':'10:30 PM','open_Fri':'9:30 AM','close_Fri':'10:30 PM','open_Sat':'11:00 AM','close_Sat':'10:30 PM',
                         'open_Sun':'11:00 AM','close_Sun':'10:30 PM'}
-    photo_file = "'" + str(properties_2edit['rest_photo_file']) + "'"
+    photo_file = str(properties_2edit['rest_photo_file'])
     photo_path2edit = url_for('static', filename = photo_file)
-    print(photo_path2edit)
 	
     if request.method == 'POST':
         if request.form['name']:
@@ -107,9 +105,8 @@ def deleteRestaurant(restaurant_id):
                         'open_Mon':'9:30 AM','close_Mon':'2:00 PM','open_Tue':'9:30 AM','close_Tue':'2:00 PM','open_Wed':'9:30 AM','close_Wed':'10:30 PM',
                         'open_Thu':'9:30 AM','close_Thu':'10:30 PM','open_Fri':'9:30 AM','close_Fri':'10:30 PM','open_Sat':'11:00 AM','close_Sat':'10:30 PM',
                         'open_Sun':'11:00 AM','close_Sun':'10:30 PM'}
-    photo_file = "'" + str(properties_2del['rest_photo_file']) + "'"
+    photo_file = str(properties_2del['rest_photo_file'])
     photo_path2del = url_for('static', filename = photo_file)
-    print(photo_path2del)
 	
     if request.method == 'POST':
         if request.form['name']:
