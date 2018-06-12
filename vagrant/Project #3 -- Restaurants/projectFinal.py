@@ -29,9 +29,25 @@ session = DBSession()
 @app.route('/restaurant/')
 @app.route('/restaurant/list/')
 def showRestaurants():
-    # restaurant_list = session.query(Restaurant).all()
-    # properties_list = session.query(RestProperties).all()
-    restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
+    restaurant_list = session.query(Restaurant).all()
+    restaurant_dict = dict((row[0], list(row[1:])) for row in restaurant_list)
+    nbr_rest = len(set(open(restaurant_dict).read().split()))
+    
+	properties_list = session.query(RestProperties).all()
+	properties_dict = dict((row[0], list(row[1:])) for row in properties_list)
+    
+	print(str(restaurant_dict))
+	print(str(properties_dict))
+	# for rec in range(1, nbr_rest+1):
+	
+	# for restaurant_id, value in restaurant_dict:
+	#	if restaurant_id in properties_dict:
+    #        
+    #		restaurant_dict[restaurant_id].extend(value)
+	#	else:
+	#		restaurant_dict[key] = value
+	#
+    # restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
     return render_template('Main_List.html', restaurants=restaurant_list)
 
 # ------------------------------------------------------------#
