@@ -24,24 +24,22 @@
     <main role="main">
 		<section class="sect-grid-body">
             {% for r in restaurants %}
-				<article class="one_rest_rec">
-                    {% qs1 = 'restaurant_id = ' + str(r.id) %}
-                    {% properties_this_rest = session.query(RestProperties).filter(qs1).one() %}    
+				<article class="one_rest_rec"> 
 					<div class="rrgrid11">{{r.name}}</div>
-					<div class="rrgrid21">{{properties_this_rest.street}}</div>
-					<div class="rrgrid31">{{properties_this_rest.city}}, {{properties_this_rest.state}} {{properties_this_rest.zip}}</div>
+					<div class="rrgrid21">{{r.street}}</div>
+					<div class="rrgrid31">{{r.city}}, {{r.state}} {{r.zip}}</div>
 					<div class="rrgrid41"></div>
 					<div class="rrgrid51">Call for Reservations</div>
-					<div class="rrgrid61">{{properties_this_rest.phone}}</div>
+					<div class="rrgrid61">{{r.phone}}</div>
 					<div class="rrgrid71"></div>
 					
-					<div class="rrgrid12">Hours Mon: {{properties_this_rest.open_Mon}} - {{properties_this_rest.close_Mon}}</div>
-					<div class="rrgrid22">Hours Tue: {{properties_this_rest.open_Tue}} - {{properties_this_rest.close_Tue}}</div>
-					<div class="rrgrid32">Hours Wed: {{properties_this_rest.open_Wed}} - {{properties_this_rest.close_Wed}}</div>>
-					<div class="rrgrid42">Hours Thu: {{properties_this_rest.open_Thu}} - {{properties_this_rest.close_Thu}}</div>
-					<div class="rrgrid52">Hours Fri: {{properties_this_rest.open_Fri}} - {{properties_this_rest.close_Fri}}</div>>
-					<div class="rrgrid62">Hours Sat: {{properties_this_rest.open_Sat}} - {{properties_this_rest.close_Sat}}</div>
-					<div class="rrgrid72">Hours Sun: {{properties_this_rest.open_Sun}} - {{properties_this_rest.close_Sun}}</div>
+					<div class="rrgrid12">Hours Mon: {{r.open_Mon}} - {{r.close_Mon}}</div>
+					<div class="rrgrid22">Hours Tue: {{r.open_Tue}} - {{r.close_Tue}}</div>
+					<div class="rrgrid32">Hours Wed: {{r.open_Wed}} - {{r.close_Wed}}</div>>
+					<div class="rrgrid42">Hours Thu: {{r.open_Thu}} - {{r.close_Thu}}</div>
+					<div class="rrgrid52">Hours Fri: {{r.open_Fri}} - {{r.close_Fri}}</div>>
+					<div class="rrgrid62">Hours Sat: {{r.open_Sat}} - {{r.close_Sat}}</div>
+					<div class="rrgrid72">Hours Sun: {{r.open_Sun}} - {{r.close_Sun}}</div>
 					
 					<div class="rrgrid13"><img class="one-button" src={{url_for('static', filename='Image_Stars.jpg')}} alt="Review Stars"></div>
 					<div class="rrgrid23"></div>

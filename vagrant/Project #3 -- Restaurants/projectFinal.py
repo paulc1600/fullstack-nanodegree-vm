@@ -29,7 +29,10 @@ session = DBSession()
 @app.route('/restaurant/')
 @app.route('/restaurant/list/')
 def showRestaurants():
-    restaurant_list = session.query(Restaurant).all()
+    rest_record = []
+    # restaurant_list = session.query(Restaurant).all()
+    # properties_list = session.query(RestProperties).all()
+    restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
     return render_template('Main_List.html', restaurants=restaurant_list)
 
 # ------------------------------------------------------------#
