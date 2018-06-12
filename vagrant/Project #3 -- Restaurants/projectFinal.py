@@ -37,10 +37,10 @@ def showRestaurants():
     # properties_dict = dict((row[0], list(row[1:])) for row in properties_list)
     
     for row in restaurant_list:
-        print "  ", row[0]
+        print("  ", row[0])
 
     for row in properties_list:
-        print "  ", row[0]
+        print("  ", row[0])
 		
 	# for rec in range(1, nbr_rest+1):
 	
