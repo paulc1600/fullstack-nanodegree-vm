@@ -24,29 +24,29 @@
     <main role="main">
 		<section class="sect-grid-body">
             {% for r in restaurants %}
-				<article class="one_rest_rec">
+				<article class="one_rest_rec"> 
 					<div class="rrgrid11">{{r.name}}</div>
-					<div class="rrgrid21">1234 Food Court</div>
-					<div class="rrgrid31">Some City, CA 90000</div>
+					<div class="rrgrid21">{{r.street}}</div>
+					<div class="rrgrid31">{{r.city}}, {{r.state}} {{r.zip}}</div>
 					<div class="rrgrid41"></div>
 					<div class="rrgrid51">Call for Reservations</div>
-					<div class="rrgrid61">(408) 555-1212</div>
+					<div class="rrgrid61">{{r.phone}}</div>
 					<div class="rrgrid71"></div>
 					
-					<div class="rrgrid12">Hours Mon: 11:00AM - 11:00PM</div>
-					<div class="rrgrid22">Hours Tue: 11:00AM - 11:00PM</div>
-					<div class="rrgrid32">Hours Wed: 11:00AM - 11:00PM</div>
-					<div class="rrgrid42">Hours Thu: 11:00AM - 11:00PM</div>
-					<div class="rrgrid52">Hours Fri: 11:00AM - 11:00PM</div>
-					<div class="rrgrid62">Hours Sat: Closed</div>
-					<div class="rrgrid72">Hours Sun: Closed</div>
+					<div class="rrgrid12">Hours Mon: {{r.open_Mon}} - {{r.close_Mon}}</div>
+					<div class="rrgrid22">Hours Tue: {{r.open_Tue}} - {{r.close_Tue}}</div>
+					<div class="rrgrid32">Hours Wed: {{r.open_Wed}} - {{r.close_Wed}}</div>>
+					<div class="rrgrid42">Hours Thu: {{r.open_Thu}} - {{r.close_Thu}}</div>
+					<div class="rrgrid52">Hours Fri: {{r.open_Fri}} - {{r.close_Fri}}</div>>
+					<div class="rrgrid62">Hours Sat: {{r.open_Sat}} - {{r.close_Sat}}</div>
+					<div class="rrgrid72">Hours Sun: {{r.open_Sun}} - {{r.close_Sun}}</div>
 					
 					<div class="rrgrid13"><img class="one-button" src={{url_for('static', filename='Image_Stars.jpg')}} alt="Review Stars"></div>
 					<div class="rrgrid23"></div>
 					<div class="rrgrid31"></div>
-					<div class="rrgrid41"><a href={{url_for('editRestaurant', restaurant_id = r.id)}}><img class="one-button" src={{url_for('static', filename='Button_ER.jpg')}} alt="Edit Restaurant"></a></div>
+					<div class="rrgrid41"><a href={{url_for('editRestaurant', restaurant_id = r.restaurant_id)}}><img class="one-button" src={{url_for('static', filename='Button_ER.jpg')}} alt="Edit Restaurant"></a></div>
 					<div class="rrgrid51"></div>
-					<div class="rrgrid61"><a href={{url_for('deleteRestaurant', restaurant_id = r.id)}}><img class="one-button" src={{url_for('static', filename='Button_DR.jpg')}} alt="Delete Restaurant"></a></div>
+					<div class="rrgrid61"><a href={{url_for('deleteRestaurant', restaurant_id = r.restaurant_id)}}><img class="one-button" src={{url_for('static', filename='Button_DR.jpg')}} alt="Delete Restaurant"></a></div>
 					<div class="rrgrid71"></div>
 				</article>
             {% endfor %}
