@@ -60,7 +60,7 @@ def showRestaurants():
     for r in range(nbr_rec_r):
         trg_id = restaurant_all[r]['id']
         for p in range(nbr_rec_p):
-            if properties_all[p]['restaurant_id'] == trg_id
+            if properties_all[p]['restaurant_id'] == trg_id:
                 restaurant_all[r]['street'] = properties_all[p]['street'] 			
                 restaurant_all[r]['city'] = properties_all[p]['city']            		
 
