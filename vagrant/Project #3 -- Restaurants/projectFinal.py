@@ -33,7 +33,7 @@ def showRestaurants():
     properties_rslt = session.query(RestProperties).all()
     
     restaurant_all = []
-	nbr_rec_r = 0
+    nbr_rec_r = 0
     for row in restaurant_rslt:
         # print("  ", row.name)
         rest_rec_dict = {'name' : row.name, 'id' : row.id, 'street' : '', 'city' : '', 'state' : '', 'zip' : '', 'phone' : '', 'description' : '', 
@@ -60,15 +60,14 @@ def showRestaurants():
     for r in range(nbr_rec_r):
         trg_id = restaurant_all[r]['id']
         for p in range(nbr_rec_p):
-		    if properties_all[p]['restaurant_id'] == trg_id
+            if properties_all[p]['restaurant_id'] == trg_id
                 restaurant_all[r]['street'] = properties_all[p]['street'] 			
                 restaurant_all[r]['city'] = properties_all[p]['city']            		
 
-	
 	print("  ", restaurant_all)
 	
     # restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
-    return render_template('Main_List.html', restaurants=restaurant_list)
+    return render_template('Main_List.html', restaurants=restaurant_rslt)
 
 # ------------------------------------------------------------#
 #  Create A New Restaurant Record                             #
