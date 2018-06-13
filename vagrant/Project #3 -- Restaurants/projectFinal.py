@@ -64,7 +64,7 @@ def showRestaurants():
                 restaurant_all[r]['street'] = properties_all[p]['street'] 			
                 restaurant_all[r]['city'] = properties_all[p]['city']            		
 
-	print("  ", restaurant_all)
+    print("  ", restaurant_all)
 	
     # restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
     return render_template('Main_List.html', restaurants=restaurant_rslt)
