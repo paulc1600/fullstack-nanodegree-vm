@@ -46,7 +46,7 @@ def showRestaurants():
 		
     properties_all = []
     nbr_rec_p = 0
-    for row in properties_list:
+    for row in properties_rslt:
         # print("  ", row.street)
         prop_rec_dict = {'id' : row.id, 'street' : row.street, 'city' : row.city, 'state' : row.state, 'zip' : row.zip, 'phone' : row.phone, 'description' : row.description, 
                         'open_Mon' : row.open_Mon, 'close_Mon' : row.close_Mon, 'open_Tue' : row.open_Tue, 'close_Tue' : row.close_Tue, 
