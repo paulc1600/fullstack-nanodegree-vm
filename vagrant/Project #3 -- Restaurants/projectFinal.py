@@ -29,28 +29,44 @@ session = DBSession()
 @app.route('/restaurant/')
 @app.route('/restaurant/list/')
 def showRestaurants():
-    restaurant_list = session.query(Restaurant).all()
-    # restaurant_dict = dict((row[0], list(row[1:])) for row in restaurant_list)
-    # nbr_rest = len(set(open(restaurant_dict).read().split()))
+    restaurant_rslt = session.query(Restaurant).all()
+    properties_rslt = session.query(RestProperties).all()
     
-    properties_list = session.query(RestProperties).all()
-    # properties_dict = dict((row[0], list(row[1:])) for row in properties_list)
-    
-    for row in restaurant_list:
-        print("  ", row.name)
-
-    for row in properties_list:
-        print("  ", row.street)
+    restaurant_all = []
+	nbr_rec_r = 0
+    for row in restaurant_rslt:
+        # print("  ", row.name)
+        rest_rec_dict = {'name' : row.name, 'id' : row.id, 'street' : '', 'city' : '', 'state' : '', 'zip' : '', 'phone' : '', 'description' : '', 
+                        'open_Mon' : '', 'close_Mon' : '', 'open_Tue' : '', 'close_Tue' : '', 
+                        'open_Wed' : '', 'close_Wed' : '', 'open_Thu' : '', 'close_Thu' : '', 
+                        'open_Fri' : '', 'close_Fri' : '', 'open_Sat' : '', 'close_Sat' : '', 
+                        'open_Sun' : '', 'close_Sun' : '', 'review_rating' : '', 'rest_photo_file' : '', 'restaurant_id' : ''}
+        restaurant_all.append(rest_rec_dict)
+        nbr_rec_r = nbr_rec_r + 1		
 		
-	# for rec in range(1, nbr_rest+1):
+    properties_all = []
+	nbr_rec_p = 0
+    for row in properties_list:
+        # print("  ", row.street)
+        prop_rec_dict = {'id' : row.id, 'street' : row.street, 'city' : row.city, 'state' : row.state, 'zip' : row.zip, 'phone' : row.phone, 'description' : row.description, 
+                        'open_Mon' : row.open_Mon, 'close_Mon' : row.close_Mon, 'open_Tue' : row.open_Tue, 'close_Tue' : row.close_Tue, 
+                        'open_Wed' : row.open_Wed, 'close_Wed' : row.close_Wed, 'open_Thu' : row.open_Thu, 'close_Thu' : row.close_Thu, 
+                        'open_Fri' : row.open_Fri, 'close_Fri' : row.close_Fri, 'open_Sat' : row.open_Sat, 'close_Sat' : row.close_Sat, 
+                        'open_Sun' : row.open_Sun, 'close_Sun' : row.close_Sun, 'review_rating' : row.review_rating,
+                        'rest_photo_file' : row.rest_photo_file, 'restaurant_id' : row.restaurant_id}
+        properties_all.append(prop_rec_dict)
+        nbr_rec_p = nbr_rec_p + 1
+		
+    for r in range(nbr_rec_r):
+        trg_id = restaurant_all[r]['id']
+        for p in range(nbr_rec_p):
+		    if properties_all[p]['restaurant_id'] == trg_id
+                restaurant_all[r]['street'] = properties_all[p]['street'] 			
+                restaurant_all[r]['city'] = properties_all[p]['city']            		
+
 	
-	# for restaurant_id, value in restaurant_dict:
-	#	if restaurant_id in properties_dict:
-    #        
-    #		restaurant_dict[restaurant_id].extend(value)
-	#	else:
-	#		restaurant_dict[key] = value
-	#
+	print("  ", restaurant_all)
+	
     # restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
     return render_template('Main_List.html', restaurants=restaurant_list)
 
