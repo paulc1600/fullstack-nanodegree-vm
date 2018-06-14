@@ -34,9 +34,8 @@ def showRestaurants():
     
     restaurant_all = []
     nbr_rec_r = 0
-    for row in restaurant_rslt:
-        # print("  ", row.name)
-        rest_rec_dict = {'name' : row.name, 'id' : row.id, 'street' : '', 'city' : '', 'state' : '', 'zip' : '', 'phone' : '', 'description' : '', 
+    for rrow in restaurant_rslt:
+        rest_rec_dict = {'name' : rrow.name, 'id' : rrow.id, 'street' : '', 'city' : '', 'state' : '', 'zip' : '', 'phone' : '', 'description' : '', 
                         'open_Mon' : '', 'close_Mon' : '', 'open_Tue' : '', 'close_Tue' : '', 
                         'open_Wed' : '', 'close_Wed' : '', 'open_Thu' : '', 'close_Thu' : '', 
                         'open_Fri' : '', 'close_Fri' : '', 'open_Sat' : '', 'close_Sat' : '', 
@@ -46,14 +45,13 @@ def showRestaurants():
 		
     properties_all = []
     nbr_rec_p = 0
-    for row in properties_rslt:
-        # print("  ", row.street)
-        prop_rec_dict = {'id' : row.id, 'street' : row.street, 'city' : row.city, 'state' : row.state, 'zip' : row.zip, 'phone' : row.phone, 'description' : row.description, 
-                        'open_Mon' : row.open_Mon, 'close_Mon' : row.close_Mon, 'open_Tue' : row.open_Tue, 'close_Tue' : row.close_Tue, 
-                        'open_Wed' : row.open_Wed, 'close_Wed' : row.close_Wed, 'open_Thu' : row.open_Thu, 'close_Thu' : row.close_Thu, 
-                        'open_Fri' : row.open_Fri, 'close_Fri' : row.close_Fri, 'open_Sat' : row.open_Sat, 'close_Sat' : row.close_Sat, 
-                        'open_Sun' : row.open_Sun, 'close_Sun' : row.close_Sun, 'review_rating' : row.review_rating,
-                        'rest_photo_file' : row.rest_photo_file, 'restaurant_id' : row.restaurant_id}
+    for prow in properties_rslt:
+        prop_rec_dict = {'id' : prow.id, 'street' : prow.street, 'city' : prow.city, 'state' : prow.state, 'zip' : prow.zip, 'phone' : prow.phone, 'description' : prow.description, 
+                        'open_Mon' : prow.open_Mon, 'close_Mon' : prow.close_Mon, 'open_Tue' : prow.open_Tue, 'close_Tue' : prow.close_Tue, 
+                        'open_Wed' : prow.open_Wed, 'close_Wed' : prow.close_Wed, 'open_Thu' : prow.open_Thu, 'close_Thu' : prow.close_Thu, 
+                        'open_Fri' : prow.open_Fri, 'close_Fri' : prow.close_Fri, 'open_Sat' : prow.open_Sat, 'close_Sat' : prow.close_Sat, 
+                        'open_Sun' : prow.open_Sun, 'close_Sun' : prow.close_Sun, 'review_rating' : prow.review_rating,
+                        'rest_photo_file' : prow.rest_photo_file, 'restaurant_id' : prow.restaurant_id}
         properties_all.append(prop_rec_dict)
         nbr_rec_p = nbr_rec_p + 1
 
