@@ -59,7 +59,7 @@ def showRestaurants():
 
     # Debug broken table links \/\/\/\/\/\/
     for r in range(nbr_rec_r):
-        print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
+        print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['street']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
 
     for p in range(nbr_rec_p):
         print("All properties " + str(properties_all[p]['id']) + "\t" + str(properties_all[r]['street']) + "\t" + "\t" + str(properties_all[r]['restaurant_id']))
@@ -98,7 +98,7 @@ def showRestaurants():
 
     # Debug broken table links \/\/\/\/\/\/
     for r in range(nbr_rec_r):
-        print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
+        print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) str(restaurant_all[r]['street']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
     # Debug broken table links /\/\/\/\/\/\
 	
     # restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
