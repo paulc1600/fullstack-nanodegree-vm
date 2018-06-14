@@ -40,7 +40,7 @@ def showRestaurants():
                         'open_Mon' : '', 'close_Mon' : '', 'open_Tue' : '', 'close_Tue' : '', 
                         'open_Wed' : '', 'close_Wed' : '', 'open_Thu' : '', 'close_Thu' : '', 
                         'open_Fri' : '', 'close_Fri' : '', 'open_Sat' : '', 'close_Sat' : '', 
-                        'open_Sun' : '', 'close_Sun' : '', 'review_rating' : '', 'rest_photo_file' : '', 'restaurant_id' : ''}
+                        'open_Sun' : '', 'close_Sun' : '', 'review_rating' : '', 'rest_photo_file' : '', 'rec_status' : 'Incomplete', 'restaurant_id' : ''}
         restaurant_all.append(rest_rec_dict)
         nbr_rec_r = nbr_rec_r + 1		
 		
@@ -63,11 +63,25 @@ def showRestaurants():
             if properties_all[p]['restaurant_id'] == trg_id:
                 restaurant_all[r]['street'] = properties_all[p]['street'] 			
                 restaurant_all[r]['city'] = properties_all[p]['city']            		
-
+                restaurant_all[r]['state'] = properties_all[p]['state']
+                restaurant_all[r]['zip'] = properties_all[p]['zip']
+                restaurant_all[r]['phone'] = properties_all[p]['phone']
+                restaurant_all[r]['description'] = properties_all[p]['description']
+                restaurant_all[r]['open_Mon'] = properties_all[p]['closeMon']
+                restaurant_all[r]['open_Tue'] = properties_all[p]['closeTue']
+                restaurant_all[r]['open_Wed'] = properties_all[p]['closeWed']
+                restaurant_all[r]['open_Thu'] = properties_all[p]['closeThu']
+                restaurant_all[r]['open_Fri'] = properties_all[p]['closeFri']
+                restaurant_all[r]['open_Sat'] = properties_all[p]['closeSat']
+                restaurant_all[r]['open_Sun'] = properties_all[p]['closeSun']				
+                restaurant_all[r]['review_rating'] = properties_all[p]['review_rating']
+                restaurant_all[r]['rest_photo_file'] = properties_all[p]['rest_photo_file']
+                restaurant_all[r]['rec_status'] = 'Complete'				
+				
     print("  ", restaurant_all)
 	
     # restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
-    return render_template('Main_List.html', restaurants=restaurant_rslt)
+    return render_template('Main_List.html', restaurants=restaurant_all)
 
 # ------------------------------------------------------------#
 #  Create A New Restaurant Record                             #

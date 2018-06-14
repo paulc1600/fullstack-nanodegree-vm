@@ -24,7 +24,10 @@
     <main role="main">
 		<section class="sect-grid-body">
             {% for r in restaurants %}
-				<article class="one_rest_rec"> 
+				<article class="one_rest_rec">
+                {% set RestId = r.id %}
+				{% set editRestPath = url_for('editRestaurant', restaurant_id=RestId) %}
+                {% set delRestPath = url_for('deleteRestaurant', restaurant_id=RestId) %}				
 					<div class="rrgrid11">{{r.name}}</div>
 					<div class="rrgrid21">{{r.street}}</div>
 					<div class="rrgrid31">{{r.city}}, {{r.state}} {{r.zip}}</div>
@@ -44,9 +47,9 @@
 					<div class="rrgrid13"><img class="one-button" src={{url_for('static', filename='Image_Stars.jpg')}} alt="Review Stars"></div>
 					<div class="rrgrid23"></div>
 					<div class="rrgrid33"></div>
-					<div class="rrgrid43"></div>
+					<div class="rrgrid43"><a href='{{editRestPath}}'><img class="one-button" src={{url_for('static', filename='Button_ER.jpg')}} alt="Edit Restaurant"></a></div>
 					<div class="rrgrid53"></div>
-					<div class="rrgrid63"></div>
+					<div class="rrgrid63"><a href='{{delRestPath}}'><img class="one-button" src={{url_for('static', filename='Button_DR.jpg')}} alt="Delete Restaurant"></a></div>
 					<div class="rrgrid73"></div>
 				</article>
             {% endfor %}
@@ -54,7 +57,8 @@
     </main>
 
 	<section class="button-bar">
-		<img class="one-button" src={{url_for('static', filename='Button_ANR.jpg')}} alt="Add New Restaurant">
+        {% set newRestPath = url_for('newRestaurant') %}
+		<a href='{{newRestPath}}'><img class="one-button" src={{url_for('static', filename='Button_ANR.jpg')}} alt="Add New Restaurant"></a>
 	</section>
 	
 	<footer class="sect-grid-footer">
