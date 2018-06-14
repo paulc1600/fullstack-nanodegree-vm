@@ -62,7 +62,7 @@ def showRestaurants():
         print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
 
     for p in range(nbr_rec_p):
-        print("All properties " + str(restaurant_all[p]['id']) + "\t" + str(restaurant_all[r]['street']) + "\t" + "\t" + str(restaurant_all[r]['restaurant_id']))
+        print("All properties " + str(properties_all[p]['id']) + "\t" + str(properties_all[r]['street']) + "\t" + "\t" + str(properties_all[r]['restaurant_id']))
     # Debug broken table links /\/\/\/\/\/\
 		
     # Merge two query results as one big list of dictionary pairs	
