@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 from database_setup import Restaurant, Base, MenuItem, RestProperties 
 
 engine = create_engine('sqlite:///restaurantmenu.db')
@@ -42,118 +41,269 @@ RestPropertyRow.open_Sat="11:00 AM"
 RestPropertyRow.close_Sat="10:30 PM" 
 RestPropertyRow.open_Sun="11:00 AM" 
 RestPropertyRow.close_Sun="10:30 PM" 
-RestPropertyRow.restaurant="1"
+RestPropertyRow.restaurant_id="1"
 session.commit()
-
-
+# --------------------------------------------------------------------------------(2)
+RestPropertyRow2 = session.query(RestProperties).filter_by(RestProperties.id == '2').first()
+RestPropertyRow2.street="2254 Perine Street"
+RestPropertyRow2.city="Alexandria"
+RestPropertyRow2.state="VA"
+RestPropertyRow2.zip="22370"
+RestPropertyRow2.phone="703-806-8377"
+RestPropertyRow2.review_rating="4.0"
+RestPropertyRow2.rest_photo_file="FD2_Restaurant.jpg"
+RestPropertyRow2.description="Two all beef patties, lettuce, cheese, pickles, and onions on a sesame seed bun. Special sauce is extra or on the side."
+RestPropertyRow2.open_Mon="8:30 AM"
+RestPropertyRow2.close_Mon="9:00 PM"
+RestPropertyRow2.open_Tue="8:30 AM" 
+RestPropertyRow2.close_Tue="9:00 PM" 
+RestPropertyRow2.open_Wed="8:30 AM" 
+RestPropertyRow2.close_Wed="10:30 PM" 
+RestPropertyRow2.open_Thu="8:30 AM"
+RestPropertyRow2.close_Thu="10:30 PM"
+RestPropertyRow2.open_Fri="8:30 AM"
+RestPropertyRow2.close_Fri="10:30 PM"
+RestPropertyRow2.open_Sat="11:00 AM"
+RestPropertyRow2.close_Sat="10:30 PM" 
+RestPropertyRow2.open_Sun="11:00 AM"
+RestPropertyRow2.close_Sun="10:30 PM"
+RestPropertyRow2.restaurant_id="2"
+session.commit()
+# --------------------------------------------------------------------------------(3)
+RestPropertyRow3 = session.query(RestProperties).filter_by(RestProperties.id == '3').first()
+RestPropertyRow3.street="2254 Perine Street"
+RestPropertyRow3.city="Alexandria"
+RestPropertyRow3.state="VA", zip="22370"
+RestPropertyRow3.phone="703-806-8377"
+RestPropertyRow3.review_rating="4.0"
+RestPropertyRow3.rest_photo_file="FD2_Restaurant.jpg"
+RestPropertyRow3.description="Like an old friend, Alexandria's Super Stir Fry has been delighting guests and visitors with it's blend of spicy mandarin cuisine and southern hospitality."
+RestPropertyRow3.open_Mon="8:30 AM"
+RestPropertyRow3.close_Mon="9:00 PM"
+RestPropertyRow3.open_Tue="8:30 AM" 
+RestPropertyRow3.close_Tue="9:00 PM" 
+RestPropertyRow3.open_Wed="8:30 AM" 
+RestPropertyRow3.close_Wed="10:30 PM" 
+RestPropertyRow3.open_Thu="8:30 AM"
+RestPropertyRow3.close_Thu="10:30 PM"
+RestPropertyRow3.open_Fri="8:30 AM"
+RestPropertyRow3.close_Fri="10:30 PM"
+RestPropertyRow3.open_Sat="11:00 AM"
+RestPropertyRow3.close_Sat="10:30 PM" 
+RestPropertyRow3.open_Sun="11:00 AM"
+RestPropertyRow3.close_Sun="10:30 PM"
+RestPropertyRow3.open_Sun="11:00 AM"
+RestPropertyRow3.close_Sun="10:30 PM"
+RestPropertyRow3.restaurant_id="3"
+session.commit()
+# --------------------------------------------------------------------------------(4)
+RestPropertyRow4 = session.query(RestProperties).filter_by(RestProperties.id == '4').first()
+RestPropertyRow4.street="909 Yorkshire Circle"
+RestPropertyRow4.city="Alexandria"
+RestPropertyRow4.state="MN"
+RestPropertyRow4.zip="56308"
+RestPropertyRow4.phone="252-327-5503"
+RestPropertyRow4.review_rating="3.5"
+RestPropertyRow4.rest_photo_file="FD3_Restaurant.jpg"
+RestPropertyRow4.description="Beautiful garden courtyard dining experience made memorable through a variety of delicious chicken, fish, beef, and vegetable dishes. Rice noodles are a house specialty."
+RestPropertyRow4.open_Mon="11:00 AM"
+RestPropertyRow4.close_Mon="9:00 PM"
+RestPropertyRow4.open_Tue="11:00 AM"
+RestPropertyRow4.close_Tue="9:00 PM"
+RestPropertyRow4.open_Wed="11:00 AM"
+RestPropertyRow4.close_Wed="10:30 PM"
+RestPropertyRow4.open_Thu="11:00 AM"
+RestPropertyRow4.close_Thu="10:30 PM"
+RestPropertyRow4.open_Fri="11:00 AM"
+RestPropertyRow4.close_Fri="10:30 PM"
+RestPropertyRow4.open_Sat="11:00 AM"
+RestPropertyRow4.close_Sat="10:30 PM"
+RestPropertyRow4.open_Sun="11:00 AM"
+RestPropertyRow4.close_Sun="10:30 PM"
+RestPropertyRow4.restaurant_id="4"
+session.commit()
+# --------------------------------------------------------------------------------(5)
+RestPropertyRow5 = session.query(RestProperties).filter_by(RestProperties.id == '5').first()
+RestPropertyRow5.street="3110 Doctors Drive"
+RestPropertyRow5.city="Los Angeles"
+RestPropertyRow5.state="CA"
+RestPropertyRow5.zip="90017"
+RestPropertyRow5.phone="310-341-3892"
+RestPropertyRow5.review_rating="4.0"
+RestPropertyRow5.rest_photo_file="FD4_Restaurant.jpg"
+RestPropertyRow5.description="Perfectly blended and spiced vegetarian and vegan favorites. All made from fresh, organic, locally grown ingredients."
+RestPropertyRow5.open_Mon="12:00 PM"
+RestPropertyRow5.close_Mon="9:00 PM"
+RestPropertyRow5.open_Tue="12:00 PM"
+RestPropertyRow5.close_Tue="9:00 PM"
+RestPropertyRow5.open_Wed="12:00 PM"
+RestPropertyRow5.close_Wed="10:30 PM" 
+RestPropertyRow5.open_Thu="12:00 PM"
+RestPropertyRow5.close_Thu="10:30 PM"
+RestPropertyRow5.open_Fri="12:00 PM"
+RestPropertyRow5.close_Fri="10:30 PM"
+RestPropertyRow5.open_Sat="12:00 PM"
+RestPropertyRow5.close_Sat="10:30 PM"
+RestPropertyRow5.open_Sun="Closed"
+RestPropertyRow5.close_Sun="Closed"
+RestPropertyRow5.restaurant_id="5"
+session.commit()
+# --------------------------------------------------------------------------------(6)
+RestPropertyRow6 = session.query(RestProperties).filter_by(RestProperties.id == '6').first()
+RestPropertyRow6.street="3079 Joyce Street"
+RestPropertyRow6.city="Gulf Shores"
+RestPropertyRow6.state="AL"
+RestPropertyRow6.zip="36542"
+RestPropertyRow6.phone="251-968-2181"
+RestPropertyRow6.review_rating="3.0"
+RestPropertyRow6.rest_photo_file="FD4_Restaurant.jpg"
+RestPropertyRow6.description="Tony himself still greets guests at the door with a hearty handshake. Casual patio dining is available, and all dishes can be complemented with an excellent wine selection." 
+RestPropertyRow6.open_Mon="12:00 PM"
+RestPropertyRow6.close_Mon="9:00 PM"
+RestPropertyRow6.open_Tue="12:00 PM"
+RestPropertyRow6.close_Tue="9:00 PM"
+RestPropertyRow6.open_Wed="12:00 PM"
+RestPropertyRow6.close_Wed="10:30 PM" 
+RestPropertyRow6.open_Thu="12:00 PM"
+RestPropertyRow6.close_Thu="10:30 PM"
+RestPropertyRow6.open_Fri="12:00 PM"
+RestPropertyRow6.close_Fri="10:30 PM"
+RestPropertyRow6.open_Sat="12:00 PM"
+RestPropertyRow6.close_Sat="10:30 PM"
+RestPropertyRow6.open_Sun="Closed"
+RestPropertyRow6.close_Sun="Closed"
+RestPropertyRow6.restaurant_id="6"
+session.commit()
+# --------------------------------------------------------------------------------(7)
+RestPropertyRow7 = session.query(RestProperties).filter_by(RestProperties.id == '7').first()
+RestPropertyRow7.street="3418 Counts Lane"
+RestPropertyRow7.city="West Hartford"
+RestPropertyRow7.state="CT"
+RestPropertyRow7.zip="06105"
+RestPropertyRow7.phone="860-231-3576"
+RestPropertyRow7.review_rating="2.0"
+RestPropertyRow7.rest_photo_file="FD6_Restaurant.jpg"
+RestPropertyRow7.description="Not exactly fine dining, but if you want it fast and cheap, Joe has got it covered. They serve comfort food in large portions, but don't annoy the waitresses."
+RestPropertyRow7.open_Mon="4:30 PM"
+RestPropertyRow7.close_Mon="10:30 PM"
+RestPropertyRow7.open_Tue="4:30 PM"
+RestPropertyRow7.close_Tue="10:30 PM"
+RestPropertyRow7.open_Wed="4:30 PM"
+RestPropertyRow7.close_Wed="10:30 PM"
+RestPropertyRow7.open_Thu="4:30 PM"
+RestPropertyRow7.close_Thu="10:30 PM"
+RestPropertyRow7.open_Fri="4:30 PM"
+RestPropertyRow7.close_Fri="10:30 PM"
+RestPropertyRow7.open_Sat="12:00 PM"
+RestPropertyRow7.close_Sat="10:30 PM"
+RestPropertyRow7.open_Sun="Closed"
+RestPropertyRow7.close_Sun="Closed"
+RestPropertyRow7.restaurant_id="8"
+session.commit()
+# --------------------------------------------------------------------------------(8)
+RestPropertyRow8 = session.query(RestProperties).filter_by(RestProperties.id == '8').first()
+RestPropertyRow8.street="3155 Sampson Street"
+RestPropertyRow8.city="Aurora"
+RestPropertyRow8.state="CO"
+RestPropertyRow8.zip="80014"
+RestPropertyRow8.phone="303-568-6185"
+RestPropertyRow8.review_rating="4.0"
+RestPropertyRow8.rest_photo_file="FD5_Restaurant.jpg"
+RestPropertyRow8.description="Pelican Bay is a secret gem. They serve a wide variety of delicious seafood favorites in a cozy relaxing atmosphere. Friday seafood buffet should not be missed."
+RestPropertyRow8.open_Mon="3:00 PM"
+RestPropertyRow8.close_Mon="10:30 PM"
+RestPropertyRow8.open_Tue="3:00 PM"
+RestPropertyRow8.close_Tue="10:30 PM"
+RestPropertyRow8.open_Wed="3:00 PM"
+RestPropertyRow8.close_Wed="10:30 PM"
+RestPropertyRow8.open_Thu="3:00 PM"
+RestPropertyRow8.close_Thu="10:30 PM"
+RestPropertyRow8.open_Fri="3:00 PM"
+RestPropertyRow8.close_Fri="10:30 PM"
+RestPropertyRow8.open_Sat="12:00 PM"
+RestPropertyRow8.close_Sat="10:30 PM"
+RestPropertyRow8.open_Sun="Closed"
+RestPropertyRow8.close_Sun="Closed"
+RestPropertyRow8.restaurant_id="10"
+session.commit()
+# --------------------------------------------------------------------------------(9)
+RestPropertyRow9 = session.query(RestProperties).filter_by(RestProperties.id == '9').first()
+RestPropertyRow9.street="3418 Counts Lane"
+RestPropertyRow9.city="West Hartford"
+RestPropertyRow9.state="CT"
+RestPropertyRow9.zip="06105"
+RestPropertyRow9.phone="860-231-3576"
+RestPropertyRow9.review_rating="4.0"
+RestPropertyRow9.rest_photo_file="FD6_Restaurant.jpg"
+RestPropertyRow9.description="Originally a hunting lodge, House of Gator serves wild and exotic game entrées. It's not for everyone, but you have not lived until you have tried the Beefalo steak." 
+RestPropertyRow9.open_Mon="4:30 PM"
+RestPropertyRow9.close_Mon="10:30 PM"
+RestPropertyRow9.open_Tue="4:30 PM"
+RestPropertyRow9.close_Tue="10:30 PM"
+RestPropertyRow9.open_Wed="4:30 PM"
+RestPropertyRow9.close_Wed="10:30 PM"
+RestPropertyRow9.open_Thu="4:30 PM"
+RestPropertyRow9.close_Thu="10:30 PM"
+RestPropertyRow9.open_Fri="4:30 PM"
+RestPropertyRow9.close_Fri="10:30 PM"
+RestPropertyRow9.open_Sat="12:00 PM"
+RestPropertyRow9.close_Sat="10:30 PM"
+RestPropertyRow9.open_Sun="Closed"
+RestPropertyRow9.close_Sun="Closed"
+RestPropertyRow9.restaurant_id="11"
+session.commit()
+# --------------------------------------------------------------------------------(10)
+RestPropertyRow10 = session.query(RestProperties).filter_by(RestProperties.id == '10').first()
+RestPropertyRow10.street="3200 Bailey Drive"
+RestPropertyRow10.city="Iowa City"
+RestPropertyRow10.state="IA"
+RestPropertyRow10.zip="52240"
+RestPropertyRow10.phone="319-337-8002"
+RestPropertyRow10.review_rating="4.0"
+RestPropertyRow10.rest_photo_file="FD7_Restaurant.jpg"
+RestPropertyRow10.description="Ming has been delighting guests with Mandarin and Cantonese house specialties for many years. Generous portions and sophisticated surroundings round out the experience." 
+RestPropertyRow10.open_Mon="5:30 PM"
+RestPropertyRow10.close_Mon="10:30 PM"
+RestPropertyRow10.open_Tue="5:30 PM"
+RestPropertyRow10.close_Tue="10:30 PM"
+RestPropertyRow10.open_Wed="5:30 PM"
+RestPropertyRow10.close_Wed="10:30 PM"
+RestPropertyRow10.open_Thu="5:30 PM"
+RestPropertyRow10.close_Thu="10:30 PM"
+RestPropertyRow10.open_Fri="5:30 PM"
+RestPropertyRow10.close_Fri="10:30 PM"
+RestPropertyRow10.open_Sat="12:00 PM"
+RestPropertyRow10.close_Sat="10:30 PM" 
+RestPropertyRow10.open_Sun="Closed"
+RestPropertyRow10.close_Sun="Closed"
+RestPropertyRow10.restaurant_id="12"
+session.commit()
+# --------------------------------------------------------------------------------(11)
+RestPropertyRow11 = session.query(RestProperties).filter_by(RestProperties.id == '11').first()
+RestPropertyRow11.street="3706 Wescam Court"
+RestPropertyRow11.city="Fallon"
+RestPropertyRow11.state="NV"
+RestPropertyRow11.zip="89406"
+RestPropertyRow11.phone="775-867-4121"
+RestPropertyRow11.review_rating="4.0"
+RestPropertyRow11.rest_photo_file="FD8_Restaurant.jpg"
+RestPropertyRow11.description="Family style dining in a delightful Italian setting. Pasta dishes must be tried with an appropriate wine from their well-stocked cellar.", 
+RestPropertyRow11.open_Mon="5:30 PM"
+RestPropertyRow11.close_Mon="10:30 PM"
+RestPropertyRow11.open_Tue="5:30 PM"
+RestPropertyRow11.close_Tue="10:30 PM"
+RestPropertyRow11.open_Wed="5:30 PM"
+RestPropertyRow11.close_Wed="10:30 PM"
+RestPropertyRow11.open_Thu="5:30 PM"
+RestPropertyRow11.close_Thu="10:30 PM"
+RestPropertyRow11.open_Fri="5:30 PM"
+RestPropertyRow11.close_Fri="10:30 PM"
+RestPropertyRow11.open_Sat="12:00 PM"
+RestPropertyRow11.close_Sat="10:30 PM" 
+RestPropertyRow11.open_Sun="Closed"
+RestPropertyRow11.close_Sun="Closed"
+RestPropertyRow11.restaurant_id="13"
+session.commit()
 # --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = 'Urban Burger').first()
-RestProperty2 = RestProperties(street="2254 Perine Street", city="Alexandria", state="VA", zip="22370", phone="703-806-8377", review_rating="4.0", rest_photo_file="FD2_Restaurant.jpg",
-                               description="Two all beef patties, lettuce, cheese, pickles, and onions on a sesame seed bun. Special sauce is extra or on the side.", 
-                               open_Mon="8:30 AM", close_Mon="9:00 PM", open_Tue="8:30 AM", close_Tue="9:00 PM", open_Wed="8:30 AM", close_Wed="10:30 PM", 
-                               open_Thu="8:30 AM", close_Thu="10:30 PM", open_Fri="8:30 AM", close_Fri="10:30 PM", open_Sat="11:00 AM", close_Sat="10:30 PM", 
-                               open_Sun="11:00 AM", close_Sun="10:30 PM", restaurant=restaurant1)
-session.add(RestProperty2)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = 'Super Stir Fry').first()
-RestProperty2 = RestProperties(street="2254 Perine Street", city="Alexandria", state="VA", zip="22370", phone="703-806-8377", review_rating="4.0", rest_photo_file="FD2_Restaurant.jpg",
-                               description="Like an old friend, Alexandria's Super Stir Fry has been delighting guests and visitors with it's blend of spicy mandarin cuisine and southern hospitality.", 
-                               open_Mon="8:30 AM", close_Mon="9:00 PM", open_Tue="8:30 AM", close_Tue="9:00 PM", open_Wed="8:30 AM", close_Wed="10:30 PM", 
-                               open_Thu="8:30 AM", close_Thu="10:30 PM", open_Fri="8:30 AM", close_Fri="10:30 PM", open_Sat="11:00 AM", close_Sat="10:30 PM", 
-                               open_Sun="11:00 AM", close_Sun="10:30 PM", restaurant=restaurant1)
-session.add(RestProperty2)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = 'Panda Garden').first()
-RestProperty1 = RestProperties(street="909 Yorkshire Circle", city="Alexandria", state="MN", zip="56308", phone="252-327-5503", review_rating="3.5", rest_photo_file="FD3_Restaurant.jpg",
-                               description="Beautiful garden courtyard dining experience made memorable through a variety of delicious chicken, fish, beef, and vegetable dishes. Rice noodles are a house specialty.", 
-                               open_Mon="11:00 AM", close_Mon="9:00 PM", open_Tue="11:00 AM", close_Tue="9:00 PM", open_Wed="11:00 AM", close_Wed="10:30 PM", 
-                               open_Thu="11:00 AM", close_Thu="10:30 PM", open_Fri="11:00 AM", close_Fri="10:30 PM", open_Sat="11:00 AM", close_Sat="10:30 PM", 
-                               open_Sun="11:00 AM", close_Sun="10:30 PM", restaurant=restaurant1)
-session.add(RestProperty1)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = 'Thyme for That Vegetarian Cuisine').first()
-RestProperty2 = RestProperties(street="3110 Doctors Drive", city="Los Angeles", state="CA", zip="90017", phone="310-341-3892", review_rating="4.0", rest_photo_file="FD4_Restaurant.jpg",
-                               description="Perfectly blended and spiced vegetarian and vegan favorites. All made from fresh, organic, locally grown ingredients.", 
-                               open_Mon="12:00 PM", close_Mon="9:00 PM", open_Tue="12:00 PM", close_Tue="9:00 PM", open_Wed="12:00 PM", close_Wed="10:30 PM", 
-                               open_Thu="12:00 PM", close_Thu="10:30 PM", open_Fri="12:00 PM", close_Fri="10:30 PM", open_Sat="12:00 PM", close_Sat="10:30 PM", 
-                               open_Sun="Closed", close_Sun="Closed", restaurant=restaurant1)
-session.add(RestProperty2)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = "Tony\'s Bistro").first()
-RestProperty1 = RestProperties(street="3079 Joyce Street", city="Gulf Shores", state="AL", zip="36542", phone="251-968-2181", review_rating="3.0", rest_photo_file="FD4_Restaurant.jpg",
-                               description="Tony himself still greets guests at the door with a hearty handshake. Casual patio dining is available, and all dishes can be complemented with an excellent wine selection.", 
-                               open_Mon="12:00 PM", close_Mon="9:00 PM", open_Tue="12:00 PM", close_Tue="9:00 PM", open_Wed="12:00 PM", close_Wed="10:30 PM", 
-                               open_Thu="12:00 PM", close_Thu="10:30 PM", open_Fri="12:00 PM", close_Fri="10:30 PM", open_Sat="12:00 PM", close_Sat="10:30 PM", 
-                               open_Sun="Closed", close_Sun="Closed", restaurant=restaurant1)
-session.add(RestProperty1)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = "Uncle Joe\'s Diner").first()
-RestProperty1 = RestProperties(street="3418 Counts Lane", city="West Hartford", state="CT", zip="06105", phone="860-231-3576", review_rating="2.0", rest_photo_file="FD6_Restaurant.jpg",
-                               description="Not exactly fine dining, but if you want it fast and cheap, Joe has got it covered. They serve comfort food in large portions, but don't annoy the waitresses.", 
-                               open_Mon="4:30 PM", close_Mon="10:30 PM", open_Tue="4:30 PM", close_Tue="10:30 PM", open_Wed="4:30 PM", close_Wed="10:30 PM", 
-                               open_Thu="4:30 PM", close_Thu="10:30 PM", open_Fri="4:30 PM", close_Fri="10:30 PM", open_Sat="12:00 PM", close_Sat="10:30 PM", 
-                               open_Sun="Closed", close_Sun="Closed", restaurant=restaurant1)
-session.add(RestProperty1)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = 'Pelican Bay Oyster House').first()
-RestProperty2 = RestProperties(street="3155 Sampson Street", city="Aurora", state="CO", zip="80014", phone="303-568-6185", review_rating="4.0", rest_photo_file="FD5_Restaurant.jpg",
-                               description="Pelican Bay is a secret gem. They serve a wide variety of delicious seafood favorites in a cozy relaxing atmosphere. Friday seafood buffet should not be missed.",  
-                               open_Mon="3:00 PM", close_Mon="10:30 PM", open_Tue="3:00 PM", close_Tue="10:30 PM", open_Wed="3:00 PM", close_Wed="10:30 PM", 
-                               open_Thu="3:00 PM", close_Thu="10:30 PM", open_Fri="3:00 PM", close_Fri="10:30 PM", open_Sat="12:00 PM", close_Sat="10:30 PM", 
-                               open_Sun="Closed", close_Sun="Closed", restaurant=restaurant1)
-session.add(RestProperty2)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = "Bill\'s House of Gator").first()
-RestProperty1 = RestProperties(street="3418 Counts Lane", city="West Hartford", state="CT", zip="06105", phone="860-231-3576", review_rating="4.0", rest_photo_file="FD6_Restaurant.jpg",
-                               description="Originally a hunting lodge, House of Gator serves wild and exotic game entrées. It's not for everyone, but you have not lived until you have tried the Beefalo steak.", 
-                               open_Mon="4:30 PM", close_Mon="10:30 PM", open_Tue="4:30 PM", close_Tue="10:30 PM", open_Wed="4:30 PM", close_Wed="10:30 PM", 
-                               open_Thu="4:30 PM", close_Thu="10:30 PM", open_Fri="4:30 PM", close_Fri="10:30 PM", open_Sat="12:00 PM", close_Sat="10:30 PM", 
-                               open_Sun="Closed", close_Sun="Closed", restaurant=restaurant1)
-session.add(RestProperty1)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = 'Ming Wang Wok Palace').first()
-RestProperty2 = RestProperties(street="3200 Bailey Drive", city="Iowa City", state="IA", zip="52240", phone="319-337-8002", review_rating="4.0", rest_photo_file="FD7_Restaurant.jpg",
-                               description="Ming has been delighting guests with Mandarin and Cantonese house specialties for many years. Generous portions and sophisticated surroundings round out the experience.", 
-                               open_Mon="5:30 PM", close_Mon="10:30 PM", open_Tue="5:30 PM", close_Tue="10:30 PM", open_Wed="5:30 PM", close_Wed="10:30 PM", 
-                               open_Thu="5:30 PM", close_Thu="10:30 PM", open_Fri="5:30 PM", close_Fri="10:30 PM", open_Sat="12:00 PM", close_Sat="10:30 PM", 
-                               open_Sun="Closed", close_Sun="Closed", restaurant=restaurant1)
-session.add(RestProperty2)
-session.commit()
-
-
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = 'Boca Do Papa').first()
-RestProperty1 = RestProperties(street="3706 Wescam Court", city="Fallon", state="NV", zip="89406", phone="775-867-4121", review_rating="4.0", rest_photo_file="FD8_Restaurant.jpg",
-                               description="Family style dining in a delightful Italian setting. Pasta dishes must be tried with an appropriate wine from their well-stocked cellar.", 
-                               open_Mon="5:30 PM", close_Mon="10:30 PM", open_Tue="5:30 PM", close_Tue="10:30 PM", open_Wed="5:30 PM", close_Wed="10:30 PM", 
-                               open_Thu="5:30 PM", close_Thu="10:30 PM", open_Fri="5:30 PM", close_Fri="10:30 PM", open_Sat="12:00 PM", close_Sat="10:30 PM", 
-                               open_Sun="Closed", close_Sun="Closed", restaurant=restaurant1)
-session.add(RestProperty1)
-session.commit()
-
 session.close()
 print("added restaurant properties!")
