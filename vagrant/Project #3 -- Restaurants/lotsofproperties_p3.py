@@ -74,14 +74,14 @@ session.commit()
 # --------------------------------------------------------------------------------(3)
 qs3 = 'id = ' + str(3)
 RestPropertyRow3 = session.query(RestProperties).filter(qs3).first()
-RestPropertyRow3.street="2254 Perine Street"
-RestPropertyRow3.city="Alexandria"
+RestPropertyRow3.street="547 Patriot Ln"
+RestPropertyRow3.city="Richmond"
 RestPropertyRow3.state="VA"
 RestPropertyRow3.zip="22370"
 RestPropertyRow3.phone="703-806-8377"
 RestPropertyRow3.review_rating="4.0"
 RestPropertyRow3.rest_photo_file="FD2_Restaurant.jpg"
-RestPropertyRow3.description="Like an old friend, Alexandria's Super Stir Fry has been delighting guests and visitors with it's blend of spicy mandarin cuisine and southern hospitality."
+RestPropertyRow3.description="Like an old friend, Richmond's Super Stir Fry has been delighting guests and visitors with it's blend of spicy mandarin cuisine and southern hospitality."
 RestPropertyRow3.open_Mon="8:30 AM"
 RestPropertyRow3.close_Mon="9:00 PM"
 RestPropertyRow3.open_Tue="8:30 AM" 
@@ -238,7 +238,7 @@ session.commit()
 # --------------------------------------------------------------------------------(9)
 qs9 = 'id = ' + str(9)
 RestPropertyRow9 = session.query(RestProperties).filter(qs9).first()
-RestPropertyRow9.street="3418 Counts Lane"
+RestPropertyRow9.street="2950 Great Oak Trail"
 RestPropertyRow9.city="West Hartford"
 RestPropertyRow9.state="CT"
 RestPropertyRow9.zip="06105"
