@@ -73,7 +73,8 @@ session.commit()
 RestPropertyRow3 = session.query(RestProperties).filter_by(RestProperties.id == '3').first()
 RestPropertyRow3.street="2254 Perine Street"
 RestPropertyRow3.city="Alexandria"
-RestPropertyRow3.state="VA", zip="22370"
+RestPropertyRow3.state="VA"
+RestPropertyRow3.zip="22370"
 RestPropertyRow3.phone="703-806-8377"
 RestPropertyRow3.review_rating="4.0"
 RestPropertyRow3.rest_photo_file="FD2_Restaurant.jpg"
@@ -287,7 +288,7 @@ RestPropertyRow11.zip="89406"
 RestPropertyRow11.phone="775-867-4121"
 RestPropertyRow11.review_rating="4.0"
 RestPropertyRow11.rest_photo_file="FD8_Restaurant.jpg"
-RestPropertyRow11.description="Family style dining in a delightful Italian setting. Pasta dishes must be tried with an appropriate wine from their well-stocked cellar.", 
+RestPropertyRow11.description="Family style dining in a delightful Italian setting. Pasta dishes must be tried with an appropriate wine from their well-stocked cellar."
 RestPropertyRow11.open_Mon="5:30 PM"
 RestPropertyRow11.close_Mon="10:30 PM"
 RestPropertyRow11.open_Tue="5:30 PM"
