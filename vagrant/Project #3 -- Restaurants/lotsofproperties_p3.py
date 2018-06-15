@@ -18,14 +18,31 @@ DBSession = sessionmaker(bind=engine)
 # session.rollback()
 session = DBSession()
 
-# --------------------------------------------------------------------------------
-restaurant1 = session.query(Restaurant).filter_by(name = 'Pizza Palace').first()
-RestProperty1 = RestProperties(street="1777 Pike Street", city="San Diego", state="CA", zip="92126", phone="619-809-0123", review_rating="3.5", rest_photo_file="FD1_Restaurant.jpg",
-                               description="All delicious pies made from scratch with their famous hand-rolled dough, and topped off with a wide variety of fresh natural ingredients.",   
-                               open_Mon="9:30 AM", close_Mon="2:00 PM", open_Tue="9:30 AM", close_Tue="2:00 PM", open_Wed="9:30 AM", close_Wed="10:30 PM", 
-                               open_Thu="9:30 AM", close_Thu="10:30 PM", open_Fri="9:30 AM", close_Fri="10:30 PM", open_Sat="11:00 AM", close_Sat="10:30 PM", 
-                               open_Sun="11:00 AM", close_Sun="10:30 PM", restaurant=restaurant1)
-session.add(RestProperty1)
+# --------------------------------------------------------------------------------(1)
+RestPropertyRow = session.query(RestProperties).filter_by(RestProperties.id == '1').first()
+RestPropertyRow.street="1777 Pike Street"
+RestPropertyRow.city="San Diego"
+RestPropertyRow.state="CA"
+RestPropertyRow.zip="92126"
+RestPropertyRow.phone="619-809-0123"
+RestPropertyRow.review_rating="3.5"
+RestPropertyRow.rest_photo_file="FD1_Restaurant.jpg"
+RestPropertyRow.description="All delicious pies made from scratch with their famous hand-rolled dough, and topped off with a wide variety of fresh natural ingredients."   
+RestPropertyRow.open_Mon="9:30 AM" 
+RestPropertyRow.close_Mon="2:00 PM" 
+RestPropertyRow.open_Tue="9:30 AM" 
+RestPropertyRow.close_Tue="2:00 PM" 
+RestPropertyRow.open_Wed="9:30 AM" 
+RestPropertyRow.close_Wed="10:30 PM" 
+RestPropertyRow.open_Thu="9:30 AM" 
+RestPropertyRow.close_Thu="10:30 PM" 
+RestPropertyRow.open_Fri="9:30 AM"
+RestPropertyRow.close_Fri="10:30 PM" 
+RestPropertyRow.open_Sat="11:00 AM" 
+RestPropertyRow.close_Sat="10:30 PM" 
+RestPropertyRow.open_Sun="11:00 AM" 
+RestPropertyRow.close_Sun="10:30 PM" 
+RestPropertyRow.restaurant="1"
 session.commit()
 
 
@@ -138,5 +155,5 @@ RestProperty1 = RestProperties(street="3706 Wescam Court", city="Fallon", state=
 session.add(RestProperty1)
 session.commit()
 
-
+session.close()
 print("added restaurant properties!")
