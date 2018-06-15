@@ -18,7 +18,8 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # --------------------------------------------------------------------------------(1)
-RestPropertyRow = session.query(RestProperties).filter_by(RestProperties.id == '1').first()
+qs1 = 'RestProperties.id = ' + str(1)
+RestPropertyRow = session.query(RestProperties).filter(qs1).first()
 RestPropertyRow.street="1777 Pike Street"
 RestPropertyRow.city="San Diego"
 RestPropertyRow.state="CA"
@@ -44,7 +45,8 @@ RestPropertyRow.close_Sun="10:30 PM"
 RestPropertyRow.restaurant_id="1"
 session.commit()
 # --------------------------------------------------------------------------------(2)
-RestPropertyRow2 = session.query(RestProperties).filter_by(RestProperties.id == '2').first()
+qs2 = 'RestProperties.id = ' + str(2)
+RestPropertyRow2 = session.query(RestProperties).filter(qs2).first()
 RestPropertyRow2.street="2254 Perine Street"
 RestPropertyRow2.city="Alexandria"
 RestPropertyRow2.state="VA"
@@ -70,7 +72,8 @@ RestPropertyRow2.close_Sun="10:30 PM"
 RestPropertyRow2.restaurant_id="2"
 session.commit()
 # --------------------------------------------------------------------------------(3)
-RestPropertyRow3 = session.query(RestProperties).filter_by(RestProperties.id == '3').first()
+qs3 = 'RestProperties.id = ' + str(3)
+RestPropertyRow3 = session.query(RestProperties).filter(qs3).first()
 RestPropertyRow3.street="2254 Perine Street"
 RestPropertyRow3.city="Alexandria"
 RestPropertyRow3.state="VA"
@@ -98,7 +101,8 @@ RestPropertyRow3.close_Sun="10:30 PM"
 RestPropertyRow3.restaurant_id="3"
 session.commit()
 # --------------------------------------------------------------------------------(4)
-RestPropertyRow4 = session.query(RestProperties).filter_by(RestProperties.id == '4').first()
+qs4 = 'RestProperties.id = ' + str(4)
+RestPropertyRow4 = session.query(RestProperties).filter(qs4).first()
 RestPropertyRow4.street="909 Yorkshire Circle"
 RestPropertyRow4.city="Alexandria"
 RestPropertyRow4.state="MN"
@@ -124,7 +128,8 @@ RestPropertyRow4.close_Sun="10:30 PM"
 RestPropertyRow4.restaurant_id="4"
 session.commit()
 # --------------------------------------------------------------------------------(5)
-RestPropertyRow5 = session.query(RestProperties).filter_by(RestProperties.id == '5').first()
+qs5 = 'RestProperties.id = ' + str(5)
+RestPropertyRow5 = session.query(RestProperties).filter(qs5).first()
 RestPropertyRow5.street="3110 Doctors Drive"
 RestPropertyRow5.city="Los Angeles"
 RestPropertyRow5.state="CA"
@@ -150,7 +155,8 @@ RestPropertyRow5.close_Sun="Closed"
 RestPropertyRow5.restaurant_id="5"
 session.commit()
 # --------------------------------------------------------------------------------(6)
-RestPropertyRow6 = session.query(RestProperties).filter_by(RestProperties.id == '6').first()
+RestPropertyRow6 = session.query(RestProperties).filter(qs6).first()
+qs6 = 'RestProperties.id = ' + str(6)
 RestPropertyRow6.street="3079 Joyce Street"
 RestPropertyRow6.city="Gulf Shores"
 RestPropertyRow6.state="AL"
@@ -176,7 +182,8 @@ RestPropertyRow6.close_Sun="Closed"
 RestPropertyRow6.restaurant_id="6"
 session.commit()
 # --------------------------------------------------------------------------------(7)
-RestPropertyRow7 = session.query(RestProperties).filter_by(RestProperties.id == '7').first()
+qs7 = 'RestProperties.id = ' + str(7)
+RestPropertyRow7 = session.query(RestProperties).filter(qs7).first()
 RestPropertyRow7.street="3418 Counts Lane"
 RestPropertyRow7.city="West Hartford"
 RestPropertyRow7.state="CT"
@@ -202,7 +209,8 @@ RestPropertyRow7.close_Sun="Closed"
 RestPropertyRow7.restaurant_id="8"
 session.commit()
 # --------------------------------------------------------------------------------(8)
-RestPropertyRow8 = session.query(RestProperties).filter_by(RestProperties.id == '8').first()
+qs8 = 'RestProperties.id = ' + str(8)
+RestPropertyRow8 = session.query(RestProperties).filter(qs8).first()
 RestPropertyRow8.street="3155 Sampson Street"
 RestPropertyRow8.city="Aurora"
 RestPropertyRow8.state="CO"
@@ -228,7 +236,8 @@ RestPropertyRow8.close_Sun="Closed"
 RestPropertyRow8.restaurant_id="10"
 session.commit()
 # --------------------------------------------------------------------------------(9)
-RestPropertyRow9 = session.query(RestProperties).filter_by(RestProperties.id == '9').first()
+qs9 = 'RestProperties.id = ' + str(9)
+RestPropertyRow9 = session.query(RestProperties).filter(qs9).first()
 RestPropertyRow9.street="3418 Counts Lane"
 RestPropertyRow9.city="West Hartford"
 RestPropertyRow9.state="CT"
@@ -254,7 +263,8 @@ RestPropertyRow9.close_Sun="Closed"
 RestPropertyRow9.restaurant_id="11"
 session.commit()
 # --------------------------------------------------------------------------------(10)
-RestPropertyRow10 = session.query(RestProperties).filter_by(RestProperties.id == '10').first()
+qs10 = 'RestProperties.id = ' + str(10)
+RestPropertyRow10 = session.query(RestProperties).filter(qs10).first()
 RestPropertyRow10.street="3200 Bailey Drive"
 RestPropertyRow10.city="Iowa City"
 RestPropertyRow10.state="IA"
@@ -280,7 +290,8 @@ RestPropertyRow10.close_Sun="Closed"
 RestPropertyRow10.restaurant_id="12"
 session.commit()
 # --------------------------------------------------------------------------------(11)
-RestPropertyRow11 = session.query(RestProperties).filter_by(RestProperties.id == '11').first()
+qs11 = 'RestProperties.id = ' + str(11)
+RestPropertyRow11 = session.query(RestProperties).filter(qs11).first()
 RestPropertyRow11.street="3706 Wescam Court"
 RestPropertyRow11.city="Fallon"
 RestPropertyRow11.state="NV"
