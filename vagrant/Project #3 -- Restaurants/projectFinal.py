@@ -29,75 +29,8 @@ session = DBSession()
 @app.route('/restaurant/')
 @app.route('/restaurant/list/')
 def showRestaurants():
-    restaurant_rslt = session.query(Restaurant).all()
-    properties_rslt = session.query(RestProperties).all()
-    
     restaurant_all = []
-    nbr_rec_r = 0
-    for rrow in restaurant_rslt:
-        rest_rec_dict = {'name' : rrow.name, 'id' : rrow.id, 'street' : '', 'city' : '', 'state' : '', 'zip' : '', 'phone' : '', 'description' : '', 
-                        'open_Mon' : '', 'close_Mon' : '', 'open_Tue' : '', 'close_Tue' : '', 
-                        'open_Wed' : '', 'close_Wed' : '', 'open_Thu' : '', 'close_Thu' : '', 
-                        'open_Fri' : '', 'close_Fri' : '', 'open_Sat' : '', 'close_Sat' : '', 
-                        'open_Sun' : '', 'close_Sun' : '', 'review_rating' : '', 'rest_photo_file' : '', 'rec_status' : 'Incomplete', 'p_id' : '', 'restaurant_id' : ''}
-        restaurant_all.append(rest_rec_dict)
-        nbr_rec_r = nbr_rec_r + 1		
-		
-    properties_all = []
-    nbr_rec_p = 0
-    for prow in properties_rslt:
-        prop_rec_dict = {'id' : prow.id, 'street' : prow.street, 'city' : prow.city, 'state' : prow.state, 'zip' : prow.zip, 'phone' : prow.phone, 'description' : prow.description, 
-                        'open_Mon' : prow.open_Mon, 'close_Mon' : prow.close_Mon, 'open_Tue' : prow.open_Tue, 'close_Tue' : prow.close_Tue, 
-                        'open_Wed' : prow.open_Wed, 'close_Wed' : prow.close_Wed, 'open_Thu' : prow.open_Thu, 'close_Thu' : prow.close_Thu, 
-                        'open_Fri' : prow.open_Fri, 'close_Fri' : prow.close_Fri, 'open_Sat' : prow.open_Sat, 'close_Sat' : prow.close_Sat, 
-                        'open_Sun' : prow.open_Sun, 'close_Sun' : prow.close_Sun, 'review_rating' : prow.review_rating,
-                        'rest_photo_file' : prow.rest_photo_file, 'restaurant_id' : prow.restaurant_id}
-        properties_all.append(prop_rec_dict)
-        nbr_rec_p = nbr_rec_p + 1
-
-    # Debug broken table links \/\/\/\/\/\/
-    for r in range(nbr_rec_r):
-        print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['street']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
-
-    for p in range(nbr_rec_p):
-        print("All properties " + str(properties_all[p]['id']) + "\t" + str(properties_all[p]['street']) + "\t" + str(properties_all[p]['state']) + "\t" + str(properties_all[p]['restaurant_id']))
-    # Debug broken table links /\/\/\/\/\/\
-		
-    # Merge two query results as one big list of dictionary pairs	
-    for r in range(nbr_rec_r):
-        trg_id = restaurant_all[r]['id']
-        for p in range(nbr_rec_p):
-            if properties_all[p]['restaurant_id'] == trg_id:
-                restaurant_all[r]['street'] = properties_all[p]['street'] 			
-                restaurant_all[r]['city'] = properties_all[p]['city']            		
-                restaurant_all[r]['state'] = properties_all[p]['state']
-                restaurant_all[r]['zip'] = properties_all[p]['zip']
-                restaurant_all[r]['phone'] = properties_all[p]['phone']
-                restaurant_all[r]['description'] = properties_all[p]['description']
-                restaurant_all[r]['open_Mon'] = properties_all[p]['open_Mon']
-                restaurant_all[r]['open_Tue'] = properties_all[p]['open_Tue']
-                restaurant_all[r]['open_Wed'] = properties_all[p]['open_Wed']
-                restaurant_all[r]['open_Thu'] = properties_all[p]['open_Thu']
-                restaurant_all[r]['open_Fri'] = properties_all[p]['open_Fri']
-                restaurant_all[r]['open_Sat'] = properties_all[p]['open_Sat']
-                restaurant_all[r]['open_Sun'] = properties_all[p]['open_Sun']
-                restaurant_all[r]['close_Mon'] = properties_all[p]['close_Mon']
-                restaurant_all[r]['close_Tue'] = properties_all[p]['close_Tue']
-                restaurant_all[r]['close_Wed'] = properties_all[p]['close_Wed']
-                restaurant_all[r]['close_Thu'] = properties_all[p]['close_Thu']
-                restaurant_all[r]['close_Fri'] = properties_all[p]['close_Fri']
-                restaurant_all[r]['close_Sat'] = properties_all[p]['close_Sat']
-                restaurant_all[r]['close_Sun'] = properties_all[p]['close_Sun']					
-                restaurant_all[r]['review_rating'] = properties_all[p]['review_rating']
-                restaurant_all[r]['rest_photo_file'] = properties_all[p]['rest_photo_file']
-                restaurant_all[r]['rec_status'] = 'Complete'
-                restaurant_all[r]['p_id'] = properties_all[p]['id']
-                restaurant_all[r]['restaurant_id'] = properties_all[p]['restaurant_id']
-
-    # Debug broken table links \/\/\/\/\/\/
-    for r in range(nbr_rec_r):
-        print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['street']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
-    # Debug broken table links /\/\/\/\/\/\
+    restaurant_all = merge_restaurant_properties()
 	
     # restaurant_list = session.query(Restaurant, RestProperties).join(RestProperties).filter(RestProperties.restaurant_id == Restaurant.id)	
     return render_template('Main_List.html', restaurants=restaurant_all)
@@ -292,6 +225,83 @@ def deleteMenuItem(restaurant_id, menu_id):
         return render_template('Menu_Rest_Del.html', restaurant_id=restaurant_id, menu_id=menu_id, item=item, restaurant=restaurant)
 
 
+##---------------------------------------------------------------------------##
+##  Create Combined List of Dictionaries (internal processing)
+##---------------------------------------------------------------------------##
+def merge_restaurant_properties():
+    restaurant_rslt = session.query(Restaurant).all()
+    properties_rslt = session.query(RestProperties).all()
+    
+    restaurant_all = []
+    nbr_rec_r = 0
+    for rrow in restaurant_rslt:
+        rest_rec_dict = {'name' : rrow.name, 'id' : rrow.id, 'street' : '', 'city' : '', 'state' : '', 'zip' : '', 'phone' : '', 'description' : '', 
+                        'open_Mon' : '', 'close_Mon' : '', 'open_Tue' : '', 'close_Tue' : '', 
+                        'open_Wed' : '', 'close_Wed' : '', 'open_Thu' : '', 'close_Thu' : '', 
+                        'open_Fri' : '', 'close_Fri' : '', 'open_Sat' : '', 'close_Sat' : '', 
+                        'open_Sun' : '', 'close_Sun' : '', 'review_rating' : '', 'rest_photo_file' : '', 'rec_status' : 'Incomplete', 'p_id' : '', 'restaurant_id' : ''}
+        restaurant_all.append(rest_rec_dict)
+        nbr_rec_r = nbr_rec_r + 1		
+		
+    properties_all = []
+    nbr_rec_p = 0
+    for prow in properties_rslt:
+        prop_rec_dict = {'id' : prow.id, 'street' : prow.street, 'city' : prow.city, 'state' : prow.state, 'zip' : prow.zip, 'phone' : prow.phone, 'description' : prow.description, 
+                        'open_Mon' : prow.open_Mon, 'close_Mon' : prow.close_Mon, 'open_Tue' : prow.open_Tue, 'close_Tue' : prow.close_Tue, 
+                        'open_Wed' : prow.open_Wed, 'close_Wed' : prow.close_Wed, 'open_Thu' : prow.open_Thu, 'close_Thu' : prow.close_Thu, 
+                        'open_Fri' : prow.open_Fri, 'close_Fri' : prow.close_Fri, 'open_Sat' : prow.open_Sat, 'close_Sat' : prow.close_Sat, 
+                        'open_Sun' : prow.open_Sun, 'close_Sun' : prow.close_Sun, 'review_rating' : prow.review_rating,
+                        'rest_photo_file' : prow.rest_photo_file, 'restaurant_id' : prow.restaurant_id}
+        properties_all.append(prop_rec_dict)
+        nbr_rec_p = nbr_rec_p + 1
+		
+    # Debug broken table links \/\/\/\/\/\/
+    for r in range(nbr_rec_r):
+        print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['street']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
+
+    for p in range(nbr_rec_p):
+        print("All properties " + str(properties_all[p]['id']) + "\t" + str(properties_all[p]['street']) + "\t" + str(properties_all[p]['state']) + "\t" + str(properties_all[p]['restaurant_id']))
+    # Debug broken table links /\/\/\/\/\/\
+		
+    # Merge two query results as one big list of dictionary pairs	
+    for r in range(nbr_rec_r):
+        trg_id = restaurant_all[r]['id']
+        for p in range(nbr_rec_p):
+            if properties_all[p]['restaurant_id'] == trg_id:
+                restaurant_all[r]['street'] = properties_all[p]['street'] 			
+                restaurant_all[r]['city'] = properties_all[p]['city']            		
+                restaurant_all[r]['state'] = properties_all[p]['state']
+                restaurant_all[r]['zip'] = properties_all[p]['zip']
+                restaurant_all[r]['phone'] = properties_all[p]['phone']
+                restaurant_all[r]['description'] = properties_all[p]['description']
+                restaurant_all[r]['open_Mon'] = properties_all[p]['open_Mon']
+                restaurant_all[r]['open_Tue'] = properties_all[p]['open_Tue']
+                restaurant_all[r]['open_Wed'] = properties_all[p]['open_Wed']
+                restaurant_all[r]['open_Thu'] = properties_all[p]['open_Thu']
+                restaurant_all[r]['open_Fri'] = properties_all[p]['open_Fri']
+                restaurant_all[r]['open_Sat'] = properties_all[p]['open_Sat']
+                restaurant_all[r]['open_Sun'] = properties_all[p]['open_Sun']
+                restaurant_all[r]['close_Mon'] = properties_all[p]['close_Mon']
+                restaurant_all[r]['close_Tue'] = properties_all[p]['close_Tue']
+                restaurant_all[r]['close_Wed'] = properties_all[p]['close_Wed']
+                restaurant_all[r]['close_Thu'] = properties_all[p]['close_Thu']
+                restaurant_all[r]['close_Fri'] = properties_all[p]['close_Fri']
+                restaurant_all[r]['close_Sat'] = properties_all[p]['close_Sat']
+                restaurant_all[r]['close_Sun'] = properties_all[p]['close_Sun']					
+                restaurant_all[r]['review_rating'] = properties_all[p]['review_rating']
+                restaurant_all[r]['rest_photo_file'] = properties_all[p]['rest_photo_file']
+                restaurant_all[r]['rec_status'] = 'Complete'
+                restaurant_all[r]['p_id'] = properties_all[p]['id']
+                restaurant_all[r]['restaurant_id'] = properties_all[p]['restaurant_id']
+
+    # Debug broken table links \/\/\/\/\/\/
+    for r in range(nbr_rec_r):
+        print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['street']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
+    # Debug broken table links /\/\/\/\/\/\
+
+return restaurant_all
+
+	
 # ------------------------------------------------------------#
 #  External API Section                                       #
 # ------------------------------------------------------------#
