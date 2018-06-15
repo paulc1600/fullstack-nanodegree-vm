@@ -155,8 +155,8 @@ RestPropertyRow5.close_Sun="Closed"
 RestPropertyRow5.restaurant_id="5"
 session.commit()
 # --------------------------------------------------------------------------------(6)
-RestPropertyRow6 = session.query(RestProperties).filter(qs6).first()
 qs6 = 'id = ' + str(6)
+RestPropertyRow6 = session.query(RestProperties).filter(qs6).first()
 RestPropertyRow6.street="3079 Joyce Street"
 RestPropertyRow6.city="Gulf Shores"
 RestPropertyRow6.state="AL"
