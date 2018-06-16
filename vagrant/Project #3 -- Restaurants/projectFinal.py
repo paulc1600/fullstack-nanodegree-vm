@@ -41,7 +41,37 @@ def showRestaurants():
 # ------------------------------------------------------------#	
 @app.route('/restaurant/new/', methods=['GET', 'POST'])
 def newRestaurant():
-    return render_template('Rest_New.html')
+    if request.method == 'POST':
+        newProperties = RestProperties(street=request.form['street'],
+            city=request.form['city'],
+			state=request.form['state'],
+			zip=request.form['zip'],
+			phone=request.form['phone'],
+			description=request.form['description'],
+			open_Mon=request.form['openMON'],
+			close_Mon=request.form['closeMON'],
+			open_Tue=request.form['openTUE'],
+			close_Tue=request.form['closeTUE'],
+			open_Wed=request.form['openWED'],
+			close_Wed=request.form['closeWED'],
+			open_Thu=request.form['openTHR'],
+			close_Thu=request.form['closeTHR'],
+			open_Fri=request.form['openFRI'],
+			close_Fri=request.form['closeFRI'],
+			open_Sat=request.form['openSAT'],
+			close_Sat=request.form['closeSAT'],
+			open_Sun=request.form['openSUN'],
+			close_Sun=request.form['closeSUN'])			
+        session.add(newProperties)
+        newRestaurant = Restaurant(name=request.form['name'])
+        session.commit()
+		
+		
+        # flash("New menu item created!")
+        return redirect(url_for('showRestaurants'))
+    else:
+        # Go get user input for new restaurant
+        return render_template('Rest_New.html')
 
 # ------------------------------------------------------------#
 #  Edit A Restaurant Record                                   #
