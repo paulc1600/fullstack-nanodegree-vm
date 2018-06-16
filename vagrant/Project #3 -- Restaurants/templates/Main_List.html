@@ -57,7 +57,7 @@
     </main>
 
 	<section class="button-bar">
-        {% set newRestPath = url_for('newRestaurant', newRestImage = 'No_Image.jpg') %}
+        {% set newRestPath = url_for('newRestaurant', newRestImage='No_Image.jpg') %}
 		<a href='{{newRestPath}}'><img class="one-button" src={{url_for('static', filename='Button_ANR.jpg')}} alt="Add New Restaurant"></a>
 	</section>
 	
