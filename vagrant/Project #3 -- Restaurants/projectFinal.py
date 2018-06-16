@@ -83,6 +83,7 @@ def newRestaurant(newRestImage):
         return redirect(url_for('showRestaurants'))
     else:
         # Go get user input for new restaurant
+		print(newRestImage)
         return render_template('Rest_New.html', newRestImage = newRestImage)
 
 
