@@ -352,6 +352,7 @@ def merge_restaurant_properties():
 # ------------------------------------------------------------#
 #  Pick New Restaurant Image File (Python3 Version)           #
 # ------------------------------------------------------------#
+@app.route('/restaurant/new/filedialog')
 def pickRestImage():
     Tk().withdraw()                # we don't want a full GUI, so keep the root window from appearing
     root = Tk()
