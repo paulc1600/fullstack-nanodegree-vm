@@ -52,7 +52,7 @@ def newRestaurant(newRestImage):
 		# Retrieve new record id
         qsnm = 'name = ' + str(newRestName)
         newRestRec = session.query(Restaurant).filter(qsnm).one()
-		newRestId = newRestRec.id
+        newRestId = newRestRec.id
 		
         newProperties = RestProperties(street=request.form['street'],
             city=request.form['city'],
