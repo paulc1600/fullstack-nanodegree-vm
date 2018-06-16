@@ -22,7 +22,9 @@
 			<div class="ilgrid41">Add New Restaurant</div>
 		</section>
 		<section class="sect-grid-right">
-			<div class="box-right"><a href='{{url_for('pickRestImage')}}'><img src={{url_for('static', filename='{{newRestImage}}')}} alt="No Image"></a></div>
+            {% set newImagePath = url_for('static', filename='{{newRestImage}}') %}
+            {% set filePickPath = url_for('pickRestImage') %}
+			<div class="box-right"><a href='{{filePickPath}}'><img src='{{newImagePath}}')}} alt="No Image"></a></div>
 		</section>
 	</header>
 
