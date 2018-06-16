@@ -41,7 +41,7 @@ def showRestaurants():
 #  Create A New Restaurant Record                             #
 #   Template: Rest_New.html                                   #
 # ------------------------------------------------------------#	
-@app.route('/restaurant/new/', methods=['GET', 'POST'])
+@app.route('/restaurant/new/<string:newRestImage>/', methods=['GET', 'POST'])
 def newRestaurant(newRestImage):
     if request.method == 'POST':
         newRestName = request.form['name']
