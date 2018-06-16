@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, RestProperties, MenuItem
+from Tkinter import Tk
+from tkFileDialog import askopenfilename
 
 # ------------------------------------------------------------#
 #  (Phase 2) Temp Fake Restaurants -- until database arrives  #
@@ -40,8 +42,18 @@ def showRestaurants():
 #   Template: Rest_New.html                                   #
 # ------------------------------------------------------------#	
 @app.route('/restaurant/new/', methods=['GET', 'POST'])
-def newRestaurant():
+def newRestaurant(newRestImage):
     if request.method == 'POST':
+        newRestName = request.form['name']
+        newRestaurant = Restaurant(name=newRestName)
+        session.add(newRestaurant)
+        session.commit()
+		
+		# Retrieve new record id
+        qsnm = 'name = ' + str(newRestName)
+        newRestRec = session.query(Restaurant).filter(qsnm).one()
+		newRestId = newRestRec.id
+		
         newProperties = RestProperties(street=request.form['street'],
             city=request.form['city'],
 			state=request.form['state'],
@@ -61,17 +73,20 @@ def newRestaurant():
 			open_Sat=request.form['openSAT'],
 			close_Sat=request.form['closeSAT'],
 			open_Sun=request.form['openSUN'],
-			close_Sun=request.form['closeSUN'])			
+			close_Sun=request.form['closeSUN'],
+			rest_photo_file=newRestImage,
+			restaurant_id=newRestId)			
         session.add(newProperties)
-        newRestaurant = Restaurant(name=request.form['name'])
-        session.commit()
+        session.commit()		
 		
-		
-        # flash("New menu item created!")
+        # flash("New Restaurant created!")
         return redirect(url_for('showRestaurants'))
     else:
         # Go get user input for new restaurant
-        return render_template('Rest_New.html')
+        return render_template('Rest_New.html', newRestImage = newRestImage)
+
+
+
 
 # ------------------------------------------------------------#
 #  Edit A Restaurant Record                                   #
@@ -254,7 +269,9 @@ def deleteMenuItem(restaurant_id, menu_id):
     else:
         return render_template('Menu_Rest_Del.html', restaurant_id=restaurant_id, menu_id=menu_id, item=item, restaurant=restaurant)
 
-
+## --------------------------------------------------------------------------##
+##                     H E L P E R    M O D U L E S                                        
+## --------------------------------------------------------------------------##
 ##---------------------------------------------------------------------------##
 ##  Create Combined List of Dictionaries (internal processing)
 ##---------------------------------------------------------------------------##
@@ -329,9 +346,19 @@ def merge_restaurant_properties():
         print("All restaurants " + str(restaurant_all[r]['name']) + "\t" + str(restaurant_all[r]['id']) + "\t" + str(restaurant_all[r]['street']) + "\t" + str(restaurant_all[r]['rec_status']) + "\t" + str(restaurant_all[r]['p_id']) + "\t" + str(restaurant_all[r]['restaurant_id'])) 	
     # Debug broken table links /\/\/\/\/\/\
 
-return restaurant_all
+    return restaurant_all
 
-	
+# ------------------------------------------------------------#
+#  Pick New Restaurant Image File (Python3 Version)           #
+# ------------------------------------------------------------#
+@app.route('/restaurant/new/image/<string:newRestImage>/')	
+def pickRestImage():
+    Tk().withdraw()                # we don't want a full GUI, so keep the root window from appearing
+    root = Tk()
+    initial_dir = str(url_for('static'))
+    root.filename =  filedialog.askopenfilename(initialdir = initial_dir,title = "Select Restaurant Image",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
+    return redirect(url_for('newRestaurant', newRestImage = str(root.filename)))
+
 # ------------------------------------------------------------#
 #  External API Section                                       #
 # ------------------------------------------------------------#
