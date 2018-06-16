@@ -22,7 +22,7 @@
 			<div class="ilgrid41">Add New Restaurant</div>
 		</section>
 		<section class="sect-grid-right">
-			<div class="box-right"><a href={{url_for('pickRestImage')}}><img src={{url_for('static', filename='No_Image.jpg')}} alt="No Image"></a></div>
+			<div class="box-right"><a href='{{url_for('pickRestImage')}}'><img src={{url_for('static', filename='{{newRestImage}}')}} alt="No Image"></a></div>
 		</section>
 	</header>
 
@@ -120,7 +120,7 @@
     </main>
 
 	<section class="button-bar1">
-		<a href={{url_for('showRestaurants')}}><img class="cancel-button" src={{url_for('static', filename='Button_CN.jpg')}} alt="Cancel"></a>
+		<a href='{{url_for('showRestaurants')}}'><img class="cancel-button" src={{url_for('static', filename='Button_CN.jpg')}} alt="Cancel"></a>
 	</section>
 	
 	<footer class="sect-grid-footer">
