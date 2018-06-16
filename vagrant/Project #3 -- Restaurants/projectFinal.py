@@ -83,10 +83,12 @@ def newRestaurant(newRestImage):
         return redirect(url_for('showRestaurants'))
     else:
         # Go get user input for new restaurant
-        newImagePath = url_for('static', filename=newRestImage)
+        myImagePath = url_for('static', filename=newRestImage)
+        myPickPath = url_for('pickRestImage')
         print(newRestImage)
-        print(newImagePath)
-        return render_template('Rest_New.html', newRestImage = newRestImage)
+        print(myImagePath)
+        print(myPickPath)
+        return render_template('Rest_New.html', newImagePath = myImagePath, filePickPath = myPickPath)
 
 
 
