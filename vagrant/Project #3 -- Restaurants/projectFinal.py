@@ -362,8 +362,8 @@ def pickRestImage():
     mycontent = os.listdir(mypath)
     filecontent = []
     for f in mycontent:
-	    if f isfile:
-		    join(filecontent, f)
+	    if f os.path.isfile:
+		    os.path.join(filecontent, f)
 			
     print(str(filecontent))
     return redirect(url_for('newRestaurant', newRestImage = 'No_Image.jpg'))
