@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, RestProperties, MenuItem
-from os import *
-from os.path import isfile, join
+import os
+from os.path import *
 
 # ------------------------------------------------------------#
 #  (Phase 2) Temp Fake Restaurants -- until database arrives  #
