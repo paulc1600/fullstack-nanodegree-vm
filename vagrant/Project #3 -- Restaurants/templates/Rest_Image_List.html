@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- 3rd Udacity Submission - Restaurant App -->
+<html lang="en">
+<head>  
+    <meta charset="utf-8">     
+    <meta name="viewport" content="width=device-width,initial-scale=1">  
+    <meta name="description" content="Udacity Project 3: The Gourmet's Friend">  
+    <meta name="keywords" content="HTML,CSS">  
+    <meta name="author" content="Paul Carreiro">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <title>The Gourmet's Friend</title> 
+    <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>  
+    <link rel="stylesheet" media="screen and (min-width:500px)" href={{url_for('static', filename='project.css')}}>
+</head>  
+
+<body>
+	<header class="header-simple">
+		<section class="sect-grid-top">
+			<img class="header-logo" src={{url_for('static', filename='Main_Banner.jpg')}} alt="Gourmets Friend Page">
+			<div class="division-box"><p></p></div>
+		</section>
+	</header>
+
+    <main role="main">
+		<section class="sect-grid-body">
+            {% for r in restaurants %}
+				<article class="one_rest_rec">
+                {% set RestId = r.id %}
+				{% set editRestPath = url_for('editRestaurant', restaurant_id=RestId) %}
+                {% set delRestPath = url_for('deleteRestaurant', restaurant_id=RestId) %}				
+					<div class="rrgrid11">{{r.name}}</div>
+					<div class="rrgrid21">{{r.street}}</div>
+					<div class="rrgrid31">{{r.city}}, {{r.state}} {{r.zip}}</div>
+					<div class="rrgrid41"></div>
+					<div class="rrgrid51">Call for Reservations</div>
+					<div class="rrgrid61">{{r.phone}}</div>
+					<div class="rrgrid71"></div>
+					
+					<div class="rrgrid12">Hours Mon: {{r.open_Mon}} - {{r.close_Mon}}</div>
+					<div class="rrgrid22">Hours Tue: {{r.open_Tue}} - {{r.close_Tue}}</div>
+					<div class="rrgrid32">Hours Wed: {{r.open_Wed}} - {{r.close_Wed}}</div>
+					<div class="rrgrid42">Hours Thu: {{r.open_Thu}} - {{r.close_Thu}}</div>
+					<div class="rrgrid52">Hours Fri: {{r.open_Fri}} - {{r.close_Fri}}</div>
+					<div class="rrgrid62">Hours Sat: {{r.open_Sat}} - {{r.close_Sat}}</div>
+					<div class="rrgrid72">Hours Sun: {{r.open_Sun}} - {{r.close_Sun}}</div>
+					
+					<div class="rrgrid13"><img class="one-button" src={{url_for('static', filename='Image_Stars.jpg')}} alt="Review Stars"></div>
+					<div class="rrgrid23"></div>
+					<div class="rrgrid33"></div>
+					<div class="rrgrid43"><a href='{{editRestPath}}'><img class="one-button" src={{url_for('static', filename='Button_ER.jpg')}} alt="Edit Restaurant"></a></div>
+					<div class="rrgrid53"></div>
+					<div class="rrgrid63"><a href='{{delRestPath}}'><img class="one-button" src={{url_for('static', filename='Button_DR.jpg')}} alt="Delete Restaurant"></a></div>
+					<div class="rrgrid73"></div>
+				</article>
+            {% endfor %}
+		</section>
+    </main>
+
+	<section class="button-bar">
+        {% set newRestPath = url_for('newRestaurant', newRestImage='No_Image.jpg') %}
+		<a href='{{newRestPath}}'><img class="one-button" src={{url_for('static', filename='Button_ANR.jpg')}} alt="Add New Restaurant"></a>
+	</section>
+	
+	<footer class="sect-grid-footer">
+	    <div class="footer-s1">
+		    <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_fb.jpg')}} alt="facebook"></a>
+            <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_tw.jpg')}} alt="twitter"></a>
+            <a href='https://www.linkedin.com/in/paulcarreirofsp/'><img class="sm-button" src={{url_for('static', filename='Button_SML_ig.jpg')}} alt="instagram"></a> 			
+		</div>
+	    <div class="footer-s2">The Gourmet's Friend<br>1234 Some Avenue<br>San Jose, CA 90000</div>
+	    <div class="footer-s3">Site Map | <a href='https://www.linkedin.com/in/paulcarreirofsp/'>Contact Us</a> | <a href='https://www.linkedin.com/in/paulcarreirofsp/'>Reviews</a></div>
+    </footer>
+</body>
+</html>

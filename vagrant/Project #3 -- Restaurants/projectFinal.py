@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, RestProperties, MenuItem
-from tkinter import filedialog
-from tkinter import *
+from os import listdir
+from os.path import isfile, join
 
 # ------------------------------------------------------------#
 #  (Phase 2) Temp Fake Restaurants -- until database arrives  #
@@ -358,11 +358,9 @@ def merge_restaurant_properties():
 # ------------------------------------------------------------#
 @app.route('/restaurant/new/filedialog')
 def pickRestImage():
-    Tk().withdraw()                # we don't want a full GUI, so keep the root window from appearing
-    root = Tk()
-    initial_dir = str(url_for('static'))
-    root.filename =  filedialog.askopenfilename(initialdir = initial_dir,title = "Select Restaurant Image",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
-    return redirect(url_for('newRestaurant', newRestImage = str(root.filename)))
+    onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    print(str(onlyfiles))
+    return redirect(url_for('newRestaurant', newRestImage = 'No_Image.jpg')))
 
 # ------------------------------------------------------------#
 #  External API Section                                       #
