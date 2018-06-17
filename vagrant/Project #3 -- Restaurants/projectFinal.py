@@ -358,8 +358,14 @@ def merge_restaurant_properties():
 # ------------------------------------------------------------#
 @app.route('/restaurant/new/filedialog')
 def pickRestImage():
-    onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-    print(str(onlyfiles))
+    mypath = str(os.getcwd()) + '/static'
+    mycontent = os.listdir(mypath)
+    filecontent = []
+    for f in mycontent
+	    if f isfile:
+		    join(filecontent, f)
+			
+    print(str(filecontent))
     return redirect(url_for('newRestaurant', newRestImage = 'No_Image.jpg'))
 
 # ------------------------------------------------------------#
