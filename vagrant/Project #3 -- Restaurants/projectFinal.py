@@ -360,7 +360,7 @@ def merge_restaurant_properties():
 def pickRestImage():
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     print(str(onlyfiles))
-    return redirect(url_for('newRestaurant', newRestImage = 'No_Image.jpg')))
+    return redirect(url_for('newRestaurant', newRestImage = 'No_Image.jpg'))
 
 # ------------------------------------------------------------#
 #  External API Section                                       #
