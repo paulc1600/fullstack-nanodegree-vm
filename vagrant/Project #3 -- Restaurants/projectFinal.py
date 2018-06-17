@@ -361,7 +361,7 @@ def pickRestImage():
     mypath = str(os.getcwd()) + '/static'
     mycontent = os.listdir(mypath)
     filecontent = []
-    for f in mycontent
+    for f in mycontent:
 	    if f isfile:
 		    join(filecontent, f)
 			
