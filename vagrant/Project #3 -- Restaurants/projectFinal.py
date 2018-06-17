@@ -362,7 +362,7 @@ def pickRestImage():
     mycontent = os.listdir(mypath)
     filecontent = []
     for f in mycontent:
-	    if f os.path.isfile:
+	    if os.path.isfile(f):
 		    os.path.join(filecontent, f)
 			
     print(str(filecontent))
