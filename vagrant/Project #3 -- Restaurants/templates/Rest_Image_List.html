@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- 3rd Udacity Submission - Restaurant App -->
+<!-- 3rd Udacity Submission - Restaurant App Image List-->
 <html lang="en">
 <head>  
     <meta charset="utf-8">     
@@ -8,16 +8,21 @@
     <meta name="keywords" content="HTML,CSS">  
     <meta name="author" content="Paul Carreiro">  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-    <title>The Gourmet's Friend</title> 
+    <title>Restaurant Image Listing</title> 
     <link rel="stylesheet" href={{url_for('static', filename='project.css')}}>  
     <link rel="stylesheet" media="screen and (min-width:500px)" href={{url_for('static', filename='project.css')}}>
 </head>  
 
 <body>
 	<header class="header-simple">
-		<section class="sect-grid-top">
-			<img class="header-logo" src={{url_for('static', filename='Main_Banner.jpg')}} alt="Gourmets Friend Page">
-			<div class="division-box"><p></p></div>
+		<section class="sect-grid-left">
+			<div class="ilgrid11"><p></p></div>
+			<div class="ilgrid21"><p></p</div>
+			<div class="ilgrid31"><p></p></div>
+			<div class="ilgrid41">Select Desired Image File</div>
+		</section>
+		<section class="sect-grid-right">
+			<div class="box-right"><img src='{{photo_path}}' alt="Rest Picture"></div>
 		</section>
 	</header>
 
