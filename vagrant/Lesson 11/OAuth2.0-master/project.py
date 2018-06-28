@@ -7,8 +7,6 @@ from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
 import random, string
 
-<<<<<<< HEAD
-=======
 # IMPORTS FOR GConnect STEP
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
@@ -22,7 +20,6 @@ app = Flask(__name__)
 CLIENT_ID = json.loads(open('client_secret.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Restaurant Menu Application"
 
->>>>>>> 6c4abea023278f7ae76ff9d565376fe0b169eb79
 #Connect to Database and create database session
 engine = create_engine('sqlite:///restaurantmenu.db')
 Base.metadata.bind = engine
@@ -30,8 +27,6 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-<<<<<<< HEAD
-=======
 # Create an anti-forgery state token
 # Store it in session for later validation
 @app.route('/login')
@@ -160,7 +155,6 @@ def gdisconnect():
         response.headers['Content-Type'] = 'application/json'
         return response	
 	
->>>>>>> 6c4abea023278f7ae76ff9d565376fe0b169eb79
 #JSON APIs to view Restaurant Information
 @app.route('/restaurant/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
