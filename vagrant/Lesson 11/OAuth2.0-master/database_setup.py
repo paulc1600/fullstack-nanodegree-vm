@@ -54,8 +54,8 @@ class MenuItem(Base):
        }
 
 
-
-engine = create_engine('sqlite:///restaurantmenu.db')
+# Have to switch to new database file 
+engine = create_engine('sqlite:///restaurantmenuwithusers.db')
  
 
 Base.metadata.create_all(engine)
