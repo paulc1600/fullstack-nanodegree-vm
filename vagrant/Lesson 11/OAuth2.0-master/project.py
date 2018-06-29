@@ -197,8 +197,9 @@ def restaurantsJSON():
     restaurants = session.query(Restaurant).all()
     return jsonify(restaurants= [r.serialize for r in restaurants])
 
-
-#Show all restaurants
+# --------------------------------------------------------------
+#  Show all restaurants
+# --------------------------------------------------------------
 @app.route('/')
 @app.route('/restaurant/')
 def showRestaurants():
@@ -208,14 +209,15 @@ def showRestaurants():
 #Create a new restaurant
 @app.route('/restaurant/new/', methods=['GET','POST'])
 def newRestaurant():
-  if request.method == 'POST':
-      newRestaurant = Restaurant(name = request.form['name'])
-      session.add(newRestaurant)
-      flash('New Restaurant %s Successfully Created' % newRestaurant.name)
-      session.commit()
-      return redirect(url_for('showRestaurants'))
-  else:
-      return render_template('newRestaurant.html')
+    if request.method == 'POST':
+        newRestaurant = Restaurant(name = request.form['name'], 
+            user_id=login_session['user_id'])
+        session.add(newRestaurant)
+        flash('New Restaurant %s Successfully Created' % newRestaurant.name)
+        session.commit()
+        return redirect(url_for('showRestaurants'))
+    else:
+        return render_template('newRestaurant.html')
 
 #Edit a restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit/', methods = ['GET', 'POST'])
