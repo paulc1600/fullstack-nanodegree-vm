@@ -108,6 +108,13 @@ def gconnect():
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
 
+    # If this user doesn't already exist in the user database, then create them
+    existing_user_id = getUserID(login_session['email'])
+    if not existing_user_id:
+        new_user_id = createUser(login_session)
+        existing_user_id = new_user_id
+    login_session['user_id'] = existing_user_id    
+	
     output = ''
     output += '<h1>Welcome, '
     output += login_session['username']
@@ -206,8 +213,11 @@ def restaurantsJSON():
 @app.route('/')
 @app.route('/restaurant/')
 def showRestaurants():
-  restaurants = session.query(Restaurant).order_by(asc(Restaurant.name))
-  return render_template('restaurants.html', restaurants = restaurants)
+    restaurants = session.query(Restaurant).order_by(asc(Restaurant.name))
+    if 'username' not in login_session:
+        return render_template('publicrestaurants.html', restaurants = restaurants)   
+    else:
+	    return render_template('restaurants.html', restaurants = restaurants)
 
 #Create a new restaurant
 @app.route('/restaurant/new/', methods=['GET','POST'])
@@ -230,6 +240,11 @@ def editRestaurant(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
     editedRestaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    if editedRestaurant.user_id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not
+            authorized to modify this restaurant. Please create your
+            own restaurant which you will be able to modify.');}</script><body
+            onload=’myFunction()''>"
     if request.method == 'POST':
         if request.form['name']:
             editedRestaurant.name = request.form['name']
@@ -244,6 +259,11 @@ def deleteRestaurant(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
     restaurantToDelete = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    if restaurantToDetete.user_id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not
+            authorized to delete this restaurant. Please create your
+            own restaurant in order to delete.');}</script><body
+            onload=’myFunction()''>"
     if request.method == 'POST':
         session.delete(restaurantToDelete)
         flash('%s Successfully Deleted' % restaurantToDelete.name)
@@ -257,17 +277,26 @@ def deleteRestaurant(restaurant_id):
 @app.route('/restaurant/<int:restaurant_id>/menu/')
 def showMenu(restaurant_id):
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    creator = getUserInfo(restaurant.user_id)
     items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
-    return render_template('menu.html', items = items, restaurant = restaurant)
-     
-
-
+    if 'username' not in login_session or creator.id != login_session['user_id']:
+        return render_template('publicmenu.html', items = items, 
+            restaurant = restaurant, creator= creator)
+    else: 
+	    return render_template('menu.html', items = items, restaurant = restaurant,
+		    creator= creator)
+	
 #Create a new menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/new/',methods=['GET','POST'])
 def newMenuItem(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    if restaurant.user_id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not
+            authorized to add Menu Items to this restaurant. Please create your
+            own restaurant where you can modify their menus.');}</script><body
+            onload=’myFunction()''>"
     if request.method == 'POST':
         newItem = MenuItem(name = request.form['name'], description = request.form['description'], price = request.form['price'], course = request.form['course'], restaurant_id = restaurant_id)
         session.add(newItem)
@@ -284,6 +313,11 @@ def editMenuItem(restaurant_id, menu_id):
         return redirect('/login')
     editedItem = session.query(MenuItem).filter_by(id = menu_id).one()
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    if restaurant.user_id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not
+            authorized to modify Menu Items in this restaurant. Please create your
+            own restaurant where you can modify their menus.');}</script><body
+            onload=’myFunction()''>"
     if request.method == 'POST':
         if request.form['name']:
             editedItem.name = request.form['name']
@@ -308,6 +342,11 @@ def deleteMenuItem(restaurant_id,menu_id):
         return redirect('/login')
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     itemToDelete = session.query(MenuItem).filter_by(id = menu_id).one() 
+    if restaurant.user_id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not
+            authorized to delete Menu Items in this restaurant. Please create your
+            own restaurant where you can modify their menus.');}</script><body
+            onload=’myFunction()''>"
     if request.method == 'POST':
         session.delete(itemToDelete)
         session.commit()
