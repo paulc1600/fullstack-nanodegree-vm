@@ -241,7 +241,7 @@ def editRestaurant(restaurant_id):
         return redirect('/login')
     editedRestaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     if editedRestaurant.user_id != login_session['user_id']:
-        return "<script>function myFunction() {alert('You are not authorized to modify this restaurant. Please create your own restaurant which you will be able to modify.');}</script><body onload=’myFunction()''>"
+        return "<script>function myFunction() {alert('You are not authorized to modify this restaurant. Please create your own restaurant which you will be able to modify.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         if request.form['name']:
             editedRestaurant.name = request.form['name']
@@ -257,7 +257,7 @@ def deleteRestaurant(restaurant_id):
         return redirect('/login')
     restaurantToDelete = session.query(Restaurant).filter_by(id = restaurant_id).one()
     if restaurantToDetete.user_id != login_session['user_id']:
-        return "<script>function myFunction() {alert('You are not authorized to delete this restaurant. Please create your own restaurant in order to delete.');}</script><body onload=’myFunction()''>"
+        return "<script>function myFunction() {alert('You are not authorized to delete this restaurant. Please create your own restaurant in order to delete.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         session.delete(restaurantToDelete)
         flash('%s Successfully Deleted' % restaurantToDelete.name)
@@ -287,7 +287,7 @@ def newMenuItem(restaurant_id):
         return redirect('/login')
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     if restaurant.user_id != login_session['user_id']:
-        return "<script>function myFunction() {alert('You are not authorized to add Menu Items to this restaurant. Please create your own restaurant where you can modify their menus.');}</script><body onload=’myFunction()''>"
+        return "<script>function myFunction() {alert('You are not authorized to add Menu Items to this restaurant. Please create your own restaurant where you can modify their menus.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         newItem = MenuItem(name = request.form['name'], description = request.form['description'], price = request.form['price'], course = request.form['course'], restaurant_id = restaurant_id)
         session.add(newItem)
@@ -305,7 +305,7 @@ def editMenuItem(restaurant_id, menu_id):
     editedItem = session.query(MenuItem).filter_by(id = menu_id).one()
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     if restaurant.user_id != login_session['user_id']:
-        return "<script>function myFunction() {alert('You are not authorized to modify Menu Items in this restaurant. Please create your own restaurant where you can modify their menus.');}</script><body onload=’myFunction()''>"
+        return "<script>function myFunction() {alert('You are not authorized to modify Menu Items in this restaurant. Please create your own restaurant where you can modify their menus.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         if request.form['name']:
             editedItem.name = request.form['name']
@@ -331,7 +331,7 @@ def deleteMenuItem(restaurant_id,menu_id):
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     itemToDelete = session.query(MenuItem).filter_by(id = menu_id).one() 
     if restaurant.user_id != login_session['user_id']:
-        return "<script>function myFunction() {alert('You are not authorized to delete Menu Items in this restaurant. Please create your own restaurant where you can modify their menus.');}</script><body onload=’myFunction()''>"
+        return "<script>function myFunction() {alert('You are not authorized to delete Menu Items in this restaurant. Please create your own restaurant where you can modify their menus.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         session.delete(itemToDelete)
         session.commit()
