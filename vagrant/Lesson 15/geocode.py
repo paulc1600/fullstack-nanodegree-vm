@@ -15,13 +15,13 @@ def getGeocodeLocation(inputString):
 	#  returns an array with two values
     response, content = h.request(url, 'GET')
     result = json.loads(content)
-    print "response header: %s \n \n" % response
-    print "response content: %s \n \n" % content
+    # print "response header: %s \n \n" % response
+    # print "response content: %s \n \n" % content
     latitude = 0
     longitude = 0
 	# print lat and longitude values wanted from JSON data
     latitude = result['results'][0]['geometry']['location']['lat']
     longitude = result['results'][0]['geometry']['location']['lng']
-    print "Latitude: %s \n \n" % latitude
-    print "Longitude: %s \n \n" % longitude
+    print "%s Latitude: %s \n" % (inputString, latitude)
+    print "%s Longitude: %s \n \n" % (inputString, longitude)
     return (latitude, longitude)
