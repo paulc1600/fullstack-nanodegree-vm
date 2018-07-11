@@ -19,6 +19,7 @@ def findARestaurant(mealType,location):
     url = ('https://api.foursquare.com/v2/venues/search?client_id=%s&client_secret=%s&v=20180711&intent=browse&ll=%s,%s&query=%s&limit=1'% (foursquare_client_id, foursquare_client_secret, latitude, longitude, mealType))
     h = httplib2.Http()
     response, content = h.request(url, 'GET')
+	print "URL = %s \n \n" % url
     print "%s response header: %s \n \n" % (location, response)
     result = json.loads(content)
     print "%s response content: %s \n \n" % (location, result)
