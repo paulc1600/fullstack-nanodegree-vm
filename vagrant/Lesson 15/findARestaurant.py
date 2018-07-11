@@ -25,7 +25,7 @@ def findARestaurant(mealType,location):
     print "%s response content: %s \n \n" % (location, venue_record)
     venue_id = venue_record['response']['venues'][0]['id']
     venue_name = venue_record['response']['venues'][0]['name']
-    venue_address = venue_record['response']['venues'][0]['location']['formattedAddress']
+    venue_address = venue_record['response']['venues'][0]['location']['formattedAddress'][0]
     print "%s Venue ID: %s \n" % (location, venue_id)
     print "%s Venue Name: %s \n" % (location, venue_name)
     print "%s Venue address: %s \n" % (location, venue_address)
