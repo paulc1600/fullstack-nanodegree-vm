@@ -19,16 +19,16 @@ def findARestaurant(mealType,location):
     url = ('https://api.foursquare.com/v2/venues/search?client_id=%s&client_secret=%s&v=20180711&intent=browse&ll=%s,%s&radius=32200&query=%s&limit=1'% (foursquare_client_id, foursquare_client_secret, latitude, longitude, mealType))
     h = httplib2.Http()
     response, content = h.request(url, 'GET')
-    print "URL = %s \n \n" % url
-    print "%s response header: %s \n \n" % (location, response)
+    # print "URL = %s \n \n" % url
+    # print "%s response header: %s \n \n" % (location, response)
     venue_record = json.loads(content)
-    print "%s response content: %s \n \n" % (location, venue_record)
+    # print "%s response content: %s \n \n" % (location, venue_record)
     venue_id = venue_record['response']['venues'][0]['id']
     venue_name = venue_record['response']['venues'][0]['name']
     venue_address = venue_record['response']['venues'][0]['location']['formattedAddress'][0]
     print "%s Venue ID: %s \n" % (location, venue_id)
     print "%s Venue Name: %s \n" % (location, venue_name)
-    print "%s Venue address: %s \n" % (location, venue_address)
+    print "%s Venue address: %s \n \n" % (location, venue_address)
 	
 	#3. Grab the first restaurant
 	#4. Get a  300x300 picture of the restaurant using the venue_id (you can change this by altering the 300x300 value in the URL or replacing it with 'orginal' to get the original picture
@@ -45,6 +45,6 @@ if __name__ == '__main__':
 	# findARestaurant("Falafel", "Cairo, Egypt")
 	# findARestaurant("Spaghetti", "New Delhi, India")
 	# findARestaurant("Cappuccino", "Geneva, Switzerland")
-	# findARestaurant("Sushi", "Los Angeles, California")
+	findARestaurant("Sushi", "Los Angeles, California")
 	# findARestaurant("Steak", "La Paz, Bolivia")
 	# findARestaurant("Gyros", "Sydney Australia")
