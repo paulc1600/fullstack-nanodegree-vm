@@ -21,6 +21,7 @@ def findARestaurant(mealType,location):
     response, content = h.request(url, 'GET')
     print "%s response header: %s \n \n" % (location, response)
     result = json.loads(content)
+    print "%s response content: %s \n \n" % (location, result)
     # venue_id = result['results'][0]['geometry']['location']['lat']
 	
 	#3. Grab the first restaurant
