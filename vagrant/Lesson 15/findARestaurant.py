@@ -21,13 +21,19 @@ def findARestaurant(mealType,location):
     response, content = h.request(url, 'GET')
     print "URL = %s \n \n" % url
     print "%s response header: %s \n \n" % (location, response)
-    result = json.loads(content)
-    print "%s response content: %s \n \n" % (location, result)
-    # venue_id = result['results'][0]['geometry']['location']['lat']
+    venue_record = json.loads(content)
+    print "%s response content: %s \n \n" % (location, venue_record)
+    venue_id = venue_record['response']['venues'][0]['id']
+    venue_name = venue_record['response']['venues'][0]['name']
+    venue_address = venue_record['response']['venues'][0]['location']['formattedAddress']
+    print "%s Venue ID: %s \n" % (location, venue_id)
+    print "%s Venue Name: %s \n" % (location, venue_name)
+    print "%s Venue address: %s \n" % (location, venue_address)
 	
 	#3. Grab the first restaurant
 	#4. Get a  300x300 picture of the restaurant using the venue_id (you can change this by altering the 300x300 value in the URL or replacing it with 'orginal' to get the original picture
 	#5. Grab the first image
+	
 	#6. If no image is available, insert default a image url
 	#7. Return a dictionary containing the restaurant name, address, and image url
 
