@@ -16,6 +16,7 @@ def getGeocodeLocation(inputString):
     response, content = h.request(url, 'GET')
     result = json.loads(content)
     print "response header: %s \n \n" % response
+    print "response content: %s \n \n" % content"
 	# print lat and longitude values wanted from JSON data
     latitude = result['results'][0]['geometry']['location']['lat']
     longitude = result['results'][0]['geometry']['location']['lng']
