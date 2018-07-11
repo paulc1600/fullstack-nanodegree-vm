@@ -20,8 +20,8 @@ def getGeocodeLocation(inputString):
     latitude = 0
     longitude = 0
 	# print lat and longitude values wanted from JSON data
-    # latitude = result['results'][0]['geometry']['location']['lat']
-    # longitude = result['results'][0]['geometry']['location']['lng']
+    latitude = result['results'][0]['geometry']['location']['lat']
+    longitude = result['results'][0]['geometry']['location']['lng']
     print "Latitude: %s \n \n" % latitude
     print "Longitude: %s \n \n" % longitude
     return (latitude, longitude)
