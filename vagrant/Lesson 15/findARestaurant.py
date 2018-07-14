@@ -30,7 +30,7 @@ def findARestaurant(mealType,location):
     venue_record = json.loads(content)
     venue_id = venue_record['response']['venues'][0]['id']
     venue_name = venue_record['response']['venues'][0]['name']
-    venue_address = venue_record['response']['venues'][0]['location']['formattedAddress'][0]
+    venue_address = venue_record['response']['venues'][0]['location']['formattedAddress']
     print "%s Venue Latitude: %s" % (location, latitude)
     print "%s Venue Longitude: %s" % (location, longitude)
     print "%s Venue ID: %s" % (location, venue_id)
@@ -42,7 +42,7 @@ def findARestaurant(mealType,location):
 	#  5. Grab the first image
 	#  API DOcs for photos = https://developer.foursquare.com/docs/api/venues/photos
 	# ---------------------------------------------------------------------------------
-    url_pic = ('https://api.foursquare.com/v2/venues/%s/photos&limit=1') % venue_id
+    url_pic = ('https://api.foursquare.com/v2/venues/%s/photos&client_id=%s&client_secret=%s&limit=1') % (venue_id, foursquare_client_id, foursquare_client_secret)
     rpic_response, rpic_content = h.request(url_pic, 'GET')
     pic_record = json.loads(rpic_content)
     print "%s photo response header: %s \n \n" % (location, rpic_response)
@@ -61,9 +61,9 @@ def findARestaurant(mealType,location):
         pic_URL = 'default_pic.jpg'	    
 	
 	#7. Return a dictionary containing the restaurant name, address, and image url
-    dict_records[rest_name] = venue_name
-    dict_records[address] = venue_address
-    dict_records[image] = pic_URL
+    dict_records['rest_name'] = venue_name
+    dict_records['address'] = venue_address
+    dict_records['image'] = pic_URL
     return dict_records
 	
 if __name__ == '__main__':
