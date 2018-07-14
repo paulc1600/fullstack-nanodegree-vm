@@ -50,7 +50,7 @@ def findARestaurant(mealType,location):
     pic_rcode = pic_record['meta']['code']
 
     if pic_rcode == 200:
-        # To assemble a 4Sq photo URL, combine the response’s prefix + size + suffix
+        # To assemble a 4Sq photo URL, combine the response's prefix + size + suffix
         pic_prefix = pic_record['response']['photos']['items'][0]['prefix']
         pic_suffix = pic_record['response']['photos']['items'][0]['suffix']
         pic_width = pic_record['response']['photos']['items'][0]['width']
