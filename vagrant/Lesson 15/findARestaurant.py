@@ -60,6 +60,7 @@ def findARestaurant(mealType,location):
 	    #6. If no image is available, insert a default image url
         pic_URL = 'default_pic.jpg'	    
 	
+	print "%s photo URL: %s" % (location, pic_record)
 	#7. Return a dictionary containing the restaurant name, address, and image url
     dict_records['rest_name'] = venue_name
     dict_records['address'] = venue_address
