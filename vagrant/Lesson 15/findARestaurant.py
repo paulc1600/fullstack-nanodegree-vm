@@ -42,7 +42,7 @@ def findARestaurant(mealType,location):
 	#  5. Grab the first image
 	#  API DOcs for photos = https://developer.foursquare.com/docs/api/venues/photos
 	# ---------------------------------------------------------------------------------
-    url_pic = ('https://api.foursquare.com/v2/venues/%s/photos?&client_id=%s&client_secret=%s&limit=1') % (venue_id, foursquare_client_id, foursquare_client_secret)
+    url_pic = ('https://api.foursquare.com/v2/venues/%s/photos?&client_id=%s&client_secret=%s&v=20180711&limit=1') % (venue_id, foursquare_client_id, foursquare_client_secret)
     rpic_response, rpic_content = h.request(url_pic, 'GET')
     pic_record = json.loads(rpic_content)
     print "%s photo response header: %s \n \n" % (location, rpic_response)
