@@ -55,7 +55,7 @@ def findARestaurant(mealType,location):
         pic_suffix = pic_record['response']['photos']['items'][0]['suffix']
         pic_width = pic_record['response']['photos']['items'][0]['width']
         pic_height = pic_record['response']['photos']['items'][0]['height']
-        pic_URL = pic_prefix + pic_width + 'x' + pic_height + pic_suffix
+        pic_URL = pic_prefix + str(pic_width) + 'x' + str(pic_height) + pic_suffix
     else:
 	    #6. If no image is available, insert a default image url
         pic_URL = 'default_pic.jpg'	    
