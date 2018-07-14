@@ -10,9 +10,9 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 foursquare_client_id = "00F0LDNICP2MBR1G01ZIUG3HB2BWKV4ZTTLFLIJ4F3KKX2OC"
 foursquare_client_secret = "EOGSOCPU4TE0GOFZEGZVRI3PEPKDWUDCM4OCYFV4IKINV40J"
 
-dict_records = {}
-
 def findARestaurant(mealType,location):
+    dict_records = {'rest_name': "", 'address': "", 'image': ""}
+
 	#1. Use getGeocodeLocation to get the latitude and longitude coordinates of the location string.
     latitude, longitude = getGeocodeLocation(location)
     
