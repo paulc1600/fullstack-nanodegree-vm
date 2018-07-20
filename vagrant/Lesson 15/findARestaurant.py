@@ -70,7 +70,7 @@ def findARestaurant(mealType,location):
 	
 if __name__ == '__main__':
 	findARestaurant("Pizza", "Tokyo, Japan")
-	findARestaurant("Tacos", "Jakarta, Indonesia")
+	# findARestaurant("Tacos", "Jakarta, Indonesia")
 	findARestaurant("Tapas", "Maputo, Mozambique")
 	findARestaurant("Falafel", "Cairo, Egypt")
 	findARestaurant("Spaghetti", "New Delhi, India")
