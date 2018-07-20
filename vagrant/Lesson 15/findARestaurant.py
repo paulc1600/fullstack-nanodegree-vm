@@ -31,11 +31,12 @@ def findARestaurant(mealType,location):
     venue_id = venue_record['response']['venues'][0]['id']
     venue_name = venue_record['response']['venues'][0]['name']
     venue_address = venue_record['response']['venues'][0]['location']['formattedAddress']
+    print "===================================================================="
     print "%s Venue Latitude: %s" % (location, latitude)
     print "%s Venue Longitude: %s" % (location, longitude)
     print "%s Venue ID: %s" % (location, venue_id)
     print "%s Venue Name: %s" % (location, venue_name)
-    print "%s Venue address: %s \n \n" % (location, venue_address)
+    print "%s Venue address: %s \n" % (location, venue_address)
 	
 	# ---------------------------------------------------------------------------------
 	#  4. Get a  300x300 picture of the restaurant using the venue_id (you can change this by altering the 300x300 value in the URL or replacing it with 'orginal' to get the original picture
@@ -45,8 +46,8 @@ def findARestaurant(mealType,location):
     url_pic = ('https://api.foursquare.com/v2/venues/%s/photos?&client_id=%s&client_secret=%s&v=20180711&limit=1') % (venue_id, foursquare_client_id, foursquare_client_secret)
     rpic_response, rpic_content = h.request(url_pic, 'GET')
     pic_record = json.loads(rpic_content)
-    print "%s photo response header: %s \n \n" % (location, rpic_response)
-    print "%s photo response content: %s \n \n" % (location, pic_record)
+    # print "%s photo response header: %s \n \n" % (location, rpic_response)
+    # print "%s photo response content: %s \n \n" % (location, pic_record)
     pic_rcode = pic_record['meta']['code']
 
     if pic_rcode == 200:
@@ -60,7 +61,7 @@ def findARestaurant(mealType,location):
 	    #6. If no image is available, insert a default image url
         pic_URL = 'default_pic.jpg'	    
 	
-    print "%s photo URL: %s" % (location, pic_URL)
+    print "%s photo URL: %s \n \n" % (location, pic_URL)
 	#7. Return a dictionary containing the restaurant name, address, and image url
     dict_records['rest_name'] = venue_name
     dict_records['address'] = venue_address
@@ -69,11 +70,11 @@ def findARestaurant(mealType,location):
 	
 if __name__ == '__main__':
 	findARestaurant("Pizza", "Tokyo, Japan")
-	# findARestaurant("Tacos", "Jakarta, Indonesia")
-	# findARestaurant("Tapas", "Maputo, Mozambique")
-	# findARestaurant("Falafel", "Cairo, Egypt")
-	# findARestaurant("Spaghetti", "New Delhi, India")
-	# findARestaurant("Cappuccino", "Geneva, Switzerland")
+	findARestaurant("Tacos", "Jakarta, Indonesia")
+	findARestaurant("Tapas", "Maputo, Mozambique")
+	findARestaurant("Falafel", "Cairo, Egypt")
+	findARestaurant("Spaghetti", "New Delhi, India")
+	findARestaurant("Cappuccino", "Geneva, Switzerland")
 	findARestaurant("Sushi", "Los Angeles, California")
-	# findARestaurant("Steak", "La Paz, Bolivia")
-	# findARestaurant("Gyros", "Sydney Australia")
+	findARestaurant("Steak", "La Paz, Bolivia")
+	findARestaurant("Gyros", "Sydney Australia")
