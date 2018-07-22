@@ -5,7 +5,7 @@ import sys
 print "Running Endpoint Tester....\n"
 address = raw_input("Please enter the address of the server you want to access, \n If left blank the connection will be set to 'http://localhost:5000':   ")
 if address == '':
-	address = '40.112.161.146:5000'
+	address = 'http://40.112.161.146:5000'
 #Making a GET Request
 print "Making a GET Request for /puppies..."
 try:
