@@ -5,6 +5,11 @@ app = Flask(__name__)
 # Create the appropriate app.route functions, test and see if they work, and paste your URIs in the boxes below.
 
 #Make an app.route() decorator here
+@app.route('/')
+def puppyControl():
+	return render_template('puppycontrol.html')
+
+#Make an app.route() decorator here
 @app.route('/puppies/', methods=['GET', 'POST'])
 def puppiesFunction():
   if request.method == 'GET':
