@@ -17,10 +17,11 @@
 	<form action="{{url_for('puppiesFunction')}}" method = 'POST' id="erecord"></form>
 		<div class="border" min-width='15%' style="float:left;margin-right:20px;">
 			<label class="pad-box" for="button" form="erecord"><b>Action</b></label><br><p></p>
-			<button class="pad-box" type="submit" value="New" form="erecord">New</button>
+			<button class="pad-box" type="submit" value="New" form="erecord">New Puppy</button>
 		</div>
 		<br style="clear:both;" />
 	</form>
+	<h3><a href={{url_for('puppiesFunctionId', id=5)}}>Get Puppy 5</a></h3>
 </div>
 </body>
 </html> 
