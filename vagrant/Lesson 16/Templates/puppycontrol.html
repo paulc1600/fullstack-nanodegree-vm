@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Udacity Lesson 16: Project Code">
+    <meta name="keywords" content="HTML,CSS">
+    <meta name="author" content="Paul Carreiro">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Puppy Control</title>
+  </head>
+<body>
+
+<h2>Control Options</h2>
+<p>
+<div class="pad-horizontal">
+    <h3><a href={{url_for('puppiesFunction')}}>All</a></h3>
+	<form action="{{url_for('puppiesFunction')}}" method = 'POST' id="erecord"></form>
+		<div class="border" min-width='15%' style="float:left;margin-right:20px;">
+			<label class="pad-box" for="button" form="erecord"><b>Action</b></label><br><p></p>
+			<button class="pad-box" type="submit" value="New" form="erecord">New</button>
+		</div>
+		<br style="clear:both;" />
+	</form>
+</div>
+</body>
+</html> 
