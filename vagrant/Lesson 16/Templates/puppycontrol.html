@@ -26,14 +26,16 @@
 	<h3><a href={{url_for('puppiesFunctionId', id=5)}}>Get Puppy 5</a></h3>
 	<form action="{{url_for('puppiesFunctionId', id=4)}}" method = 'POST' id="frecord"></form>
 		<div class="border" min-width='15%' style="float:left;margin-right:20px;">
-			<label class="pad-box" for="button" form="frecord"><b>Update</b></label><br><p></p>
-			<button class="pad-box" type="submit" value="PUT" form="frecord">Update Puppy 4</button>
+            <label class="pad-box" for="button" form="frecord"><b>Update / Put</b></label><br><p></p>
+            <input class="form-field" type='text' size='15' name='value' form="frecord"></td>
+            <button class="pad-box" type="submit" value="PUT" form="frecord">Update Puppy 4</button>
 		</div>
 		<br style="clear:both;" />
 	</form>
 	<form action="{{url_for('puppiesFunctionId', id=3)}}" method = 'POST' id="grecord"></form>
-		<div class="border" min-width='15%' style="float:left;margin-right:20px;">
+        <div class="border" min-width='15%' style="float:left;margin-right:20px;">
 			<label class="pad-box" for="button" form="grecord"><b>Delete</b></label><br><p></p>
+            <input class="form-field" type='text' size='15' name='value' form="grecord"></td>
 			<button class="pad-box" type="submit" value="DELETE" form="grecord">Delete Puppy 3</button>
 		</div>
 		<br style="clear:both;" />

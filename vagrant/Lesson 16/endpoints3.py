@@ -48,10 +48,10 @@ def puppiesFunctionId(id):
 
     #Call the method to edit or remove a specific puppy (works with browser / template)  
     elif request.method == 'POST':
-        value = request.args.get('value', '')
+        value = request.form['value']
         if value == 'PUT':
-            name = request.args.get('name', '')
-            description = request.args.get('description', '')
+            name = request.form['name']
+            description = request.form['description']
             return updatePuppy(id,name, description)
         elif value == 'DELETE':
             return deletePuppy(id)	
