@@ -78,11 +78,13 @@ def makeANewPuppy(name, description):
     return jsonify(Puppy=puppy.serialize)
 
 def getPuppy(id):
-    puppy = session.query(Puppy).filter_by(id = id).one()
+    qs1 = 'id = ' + str(id)
+    puppy = session.query(Puppy).filter(qs1).one()
     return jsonify(puppy=puppy.serialize) 
 	
 def updatePuppy(id, name, description):
-    puppy = session.query(Puppy).filter_by(id = id).one()
+    qs1 = 'id = ' + str(id)
+    puppy = session.query(Puppy).filter(qs1).one()
     if not name:
         puppy.name = name
     if not description:
@@ -93,7 +95,8 @@ def updatePuppy(id, name, description):
     return "Updated a Puppy with id %s" % id
 
 def deletePuppy(id):
-    puppy = session.query(Puppy).filter_by(id = id).one()
+    qs1 = 'id = ' + str(id)
+    puppy = session.query(Puppy).filter(qs1).one()
     session.delete(puppy)
     session.commit()
     return "Removed Puppy with id %s" % id
