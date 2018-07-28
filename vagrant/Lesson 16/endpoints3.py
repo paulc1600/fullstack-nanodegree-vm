@@ -46,10 +46,10 @@ def puppiesFunctionId(id):
     if request.method == 'GET':
         return getPuppy(id)
 
-#Call the method to edit or remove a specific puppy (works with browser / template)  
+    #Call the method to edit or remove a specific puppy (works with browser / template)  
     elif request.method == 'POST':
         value = request.args.get('value', '')
-	    if value == 'PUT':
+        if value == 'PUT':
             name = request.args.get('name', '')
             description = request.args.get('description', '')
             return updatePuppy(id,name, description)
@@ -62,9 +62,9 @@ def puppiesFunctionId(id):
         description = request.args.get('description', '')
         return updatePuppy(id,name, description)
     
-   #Call the method to remove a puppy (can never do from browser)
-   elif request.method == 'DELETE':
-       return deletePuppy(id)
+    #Call the method to remove a puppy (can never do from browser)
+    elif request.method == 'DELETE':
+        return deletePuppy(id)
 
 
 def getAllPuppies():
