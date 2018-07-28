@@ -71,7 +71,7 @@ def getAllPuppies():
     puppies = session.query(Puppy).all()
     return jsonify(Puppies=[i.serialize for i in puppies])
   
-def makeANewPuppy():
+def makeANewPuppy(name, description):
     puppy = Puppy(name = name, description = description)
     session.add(puppy)
     session.commit()
