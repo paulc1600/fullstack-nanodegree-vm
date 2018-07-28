@@ -81,7 +81,7 @@ def getPuppy(id):
     puppy = session.query(Puppy).filter_by(id = id).one()
     return jsonify(puppy=puppy.serialize) 
 	
-def updatePuppy(id):
+def updatePuppy(id, name, description):
     puppy = session.query(Puppy).filter_by(id = id).one()
     if not name:
         puppy.name = name
