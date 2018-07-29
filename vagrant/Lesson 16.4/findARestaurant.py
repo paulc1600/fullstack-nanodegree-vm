@@ -43,17 +43,18 @@ def findARestaurant(mealType,location):
     #  5. Grab the first image
     #  API DOcs for photos = https://developer.foursquare.com/docs/api/venues/photos
     # ---------------------------------------------------------------------------------
-	url = ('https://api.foursquare.com/v2/venues/%s/photos?client_id=%s&v=20150603&client_secret=%s' % ((venue_id,foursquare_client_id,foursquare_client_secret)))
-	result = json.loads(h.request(url,'GET')[1])
-	#if no image available, insert default image url
-	if result['response']['photos']['items']:
-		firstpic = result['response']['photos']['items'][0]
-		prefix = firstpic['prefix']
-		suffix = firstpic['suffix']
-		imageURL = prefix + "300x300" + suffix
-	else:
-		#6. If no image is available, insert a default image url
-		pic_URL = 'default_pic.jpg'	    
+    url = ('https://api.foursquare.com/v2/venues/%s/photos?client_id=%s&v=20150603&client_secret=%s' % ((venue_id,foursquare_client_id,foursquare_client_secret)))
+    result = json.loads(h.request(url,'GET')[1])
+
+    #if no image available, insert default image url
+    if result['response']['photos']['items']:
+        firstpic = result['response']['photos']['items'][0]
+        prefix = firstpic['prefix']
+        suffix = firstpic['suffix']
+        imageURL = prefix + "300x300" + suffix
+    else:
+        #6. If no image is available, insert a default image url
+        pic_URL = 'default_pic.jpg'	    
 	
     print "%s photo URL: %s \n \n" % (location, pic_URL)
 	#7. Return a dictionary containing the restaurant name, address, and image url
