@@ -50,14 +50,14 @@ def findARestaurant(mealType,location):
     # print "%s photo response content: %s \n \n" % (location, pic_record)
     pic_rcode = pic_record['meta']['code']
 
-    if pic_rcode == 200:
+    if result['response']['photos']['items']:
         # To assemble a 4Sq photo URL, combine the response's prefix + size + suffix
 		#    Need to repair check for missing photos -- 200 still results missing photos
-        # pic_prefix = pic_record['response']['photos']['items'][0]['prefix']
-        # pic_suffix = pic_record['response']['photos']['items'][0]['suffix']
-        # pic_width = pic_record['response']['photos']['items'][0]['width']
-        # pic_height = pic_record['response']['photos']['items'][0]['height']
-        # pic_URL = pic_prefix + str(pic_width) + 'x' + str(pic_height) + pic_suffix
+        pic_prefix = pic_record['response']['photos']['items'][0]['prefix']
+        pic_suffix = pic_record['response']['photos']['items'][0]['suffix']
+        pic_width = pic_record['response']['photos']['items'][0]['width']
+        pic_height = pic_record['response']['photos']['items'][0]['height']
+        pic_URL = pic_prefix + str(pic_width) + 'x' + str(pic_height) + pic_suffix
 		pic_URL = 'default_pic.jpg'
     else:
 	    #6. If no image is available, insert a default image url
