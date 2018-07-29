@@ -48,9 +48,8 @@ def findARestaurant(mealType,location):
     pic_record = json.loads(rpic_content)
     # print "%s photo response header: %s \n \n" % (location, rpic_response)
     # print "%s photo response content: %s \n \n" % (location, pic_record)
-    pic_rcode = pic_record['meta']['code']
 
-    if result['response']['photos']['items']:
+    if pic_record['response']['photos']['items']:
         # To assemble a 4Sq photo URL, combine the response's prefix + size + suffix
 		#    Need to repair check for missing photos -- 200 still results missing photos
         pic_prefix = pic_record['response']['photos']['items'][0]['prefix']
