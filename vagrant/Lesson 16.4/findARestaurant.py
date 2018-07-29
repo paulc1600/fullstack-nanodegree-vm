@@ -51,7 +51,7 @@ def findARestaurant(mealType,location):
         firstpic = result['response']['photos']['items'][0]
         prefix = firstpic['prefix']
         suffix = firstpic['suffix']
-        imageURL = prefix + "300x300" + suffix
+        pic_URL = prefix + "300x300" + suffix
     else:
         #6. If no image is available, insert a default image url
         pic_URL = 'default_pic.jpg'	    
